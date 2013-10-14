@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block footer_links %}
+  {# Override footer on all pages #}
+  <li><a href="/about">About {{ g.site_title }}</a></li>
+  <li><a href="http://lod2.okfn.org/">Blog</a></li>
+  <li><a href="http://docs.ckan.org/en/latest/api.html">API</a></li>
+  <li><a href="mailto:info@publicdata.eu">Contact Us</a></li>
+  <li><a href="http://www.okfn.org/privacy-policy/">Privacy Policy</a></li>
+  <li><a href="http://www.okfn.org/">Open Knowledge Foundation</a></li>
+{% endblock %}
+
+{% block footer_attribution %}
+	{{ super() }}
+
+{% endblock %}

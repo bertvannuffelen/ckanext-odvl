@@ -1,0 +1,172 @@
+
+
+@font-face {
+    font-family: 'KlavikaRegular';
+    src: url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-regular-webfont.eot);
+    src: local("☺"), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-regular-webfont.eot?#iefix) format('embedded-opentype'), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-regular-webfont.woff) format('woff'), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-regular-webfont.otf) format('opentype'), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-regular-webfont.svg#KlavikaRegular) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KlavikaMedium';
+    src: url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-medium-webfont.eot);
+    src: local("☺"), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-medium-webfont.eot?#iefix) format('embedded-opentype'), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-medium-webfont.woff) format('woff'), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-medium-webfont.otf) format('opentype'), url(http://www.vlaanderen.be/sites/all/themes/portal/fonts/klavika-medium-webfont.svg#KlavikaMedium) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    line-height: normal;
+    font-size: 75%;
+}
+
+[role=main], .main {
+    background: white;
+}
+
+.account-masthead , .masthead {
+    font-family: KlavikaRegular, arial, helvetica, sans-serif;
+}
+
+.account-masthead {
+    background: #43474a;
+    overflow: hidden;
+}
+
+.account-masthead .block-content {
+    padding: 2em 0;
+    display: block;
+    float: left;
+}
+
+.account-masthead .block-content strong {
+    display: block;
+    color: #fff;
+    font-size: 225%;
+    font-weight: 300;
+    -webkit-transition: text-shadow 0.25s ease;
+    -moz-transition: text-shadow 0.25s ease;
+    -o-transition: text-shadow 0.25s ease;
+    transition: text-shadow 0.25s ease;
+    text-transform: uppercase;
+}
+
+.account-masthead .block-content span {
+    display: block;
+    color: #b2b2b2;
+    font-size: 105%;
+}
+
+.account-masthead .block-content strong span {
+    display: inline;
+    color: #fff;
+    font-size: 100%;
+    text-transform: lowercase;
+}
+
+.account-masthead .language-list {
+    float: right
+}
+
+.account-masthead .language-list ul {
+    margin: 0;
+    border-left: 1px solid #00232e;
+    padding: 0 10px;
+}
+
+.account-masthead .language-list li {
+    list-style: none;
+    display: inline;
+    display: -moz-inline-box;
+    display: inline-block;
+    margin-left: 0.3em;
+}
+
+.account-masthead ul li a, .account-masthead ul li a:visited, .account-masthead ul li a:active,
+.account-masthead .account ul li a{
+    font-size: inherit;
+    line-height: 31px;
+    color: #bdba9f;
+    font-family: KlavikaRegular,arial,helvetica,sans-serif;
+    -webkit-transition: color 0.25s ease;
+    -moz-transition: color 0.25s ease;
+    -o-transition: color 0.25s ease;
+    transition: color 0.25s ease;
+    text-decoration: none;
+}
+
+.account-masthead ul li a:hover, .account-masthead ul li a:focus,
+.account-masthead .account ul li a:hover{
+    color: #fff;
+}
+
+.masthead {
+    background: white
+}
+
+.masthead .content {
+    right:0;
+    left:0;
+}
+
+.masthead .navigation {
+    float: left;
+    font-family: KlavikaMedium,arial,helvetica,sans-serif;
+}
+
+.masthead .navigation .nav-pills li a {
+
+    text-transform: uppercase;
+    font-size: 135%;
+    color: #737373;
+    -webkit-transition: color 0.25s ease;
+    -moz-transition: color 0.25s ease;
+    -o-transition: color 0.25s ease;
+    transition: color 0.25s ease;
+}
+
+.masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
+    color: black;
+    background-color: white;
+}
+
+
+.masthead .content .site-search {
+    float: right;
+}
+
+.btn-primary {
+    color: #43474a;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
+    background-color: #ffde00;
+    background-image: -moz-linear-gradient(top, #f4df33, #ffde00);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4df33), to(#ffde00));
+    background-image: -webkit-linear-gradient(top, #f4df33, #ffde00);
+    background-image: -o-linear-gradient(top, #f4df33, #ffde00);
+    background-image: linear-gradient(to bottom, #f4df33, #ffde00);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff30778d', endColorstr='#ff085871', GradientType=0);
+    border-color: #ffde00 #ffde00 #03202a;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
+    color: #43474a;
+    background-color: #ffde00;
+}
+
+
+.toolbar .add_action {
+    float: right;
+}
+
+.toolbar {
+    font-family: KlavikaMedium,arial,helvetica,sans-serif;
+}
+
+.module-heading {
+    font-family: KlavikaMedium,arial,helvetica,sans-serif;
+    font-size: 130%;
+}

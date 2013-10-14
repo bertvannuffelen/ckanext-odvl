@@ -1,0 +1,104 @@
+{% ckan_extends %}
+
+{% block header_account %}
+    <header class="account-masthead">
+        <div class="container">
+            <div class="block-content">
+                <strong>Opendata<span>.vlaanderen.be</span></strong>
+                <span>Open Data site van de Vlaamse overheid</span>
+            </div>
+            <div class="language-list">
+                <ul><li><a href="">nl</a></li>
+                    <li><a href="">en</a></li>
+                    <li><a href="">fr</a></li>
+                    <li><a href="">de</a></li>
+                </ul></div>
+            {% if c.userobj %}
+                <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
+                    <ul class="unstyled">
+                        {{ self.header_account_logged() }}
+                    </ul>
+                </div>
+            {% else %}
+                <nav class="account not-authed">
+                    <ul class="unstyled">
+                        {{ self.header_account_notlogged() }}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </header>
+{% endblock %}
+
+{% block header_logo %}{% endblock %}
+
+{#
+{% block header %}
+<div class="navbar masthead">
+    {{ self.header_debug() }}
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="okfn-ribbon">
+                <a data-toggle="collapse" data-target="#okf-panel">An Open Knowledge Foundation Site</a>
+            </div>
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="/"><img src="/images/logo-big-trans.png"></a>
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    {{ self.header_site_navigation_tabs() }}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    <div class="social-links">
+                        <a class="twitter" href="https://twitter.com/openbelgium">twitter</a>
+                    </div>
+                </ul>
+            </div><!--/.nav-collapse -->
+
+        </div>
+    </div>
+</div>
+
+
+{% block header_account %}
+<header class="account-masthead">
+    <div class="container">
+        {{ self.header_site_search() }}
+        {% if c.userobj %}
+        <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
+            <ul class="unstyled">
+                {{ self.header_account_logged() }}
+            </ul>
+        </div>
+        {% else %}
+        <nav class="account not-authed">
+            <ul class="unstyled">
+                {{ self.header_account_notlogged() }}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+</header>
+{% endblock %}
+
+
+{% endblock %}
+    #}
+
+
+
+

@@ -1,0 +1,16 @@
+{% ckan_extends %}
+
+{% block home_primary_heading %}{{ _("Welcome to OpenData Vlaanderen") }}{% endblock %}
+{% block home_primary_text %}
+    {% trans %}This is the Flemish OpenData portal.
+    {% endtrans %}
+{% endblock %}
+
+
+{% block home_image %}
+<section class="featured media-overlay">
+    {# <h2 class="media-heading">{% block home_image_caption %}{{ _("This is a featured section") }}{% endblock %}</h2> #}
+    {% block home_image_content %}
+    {% endblock %}
+</section>
+{% endblock %}
