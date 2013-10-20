@@ -21,6 +21,12 @@ body {
     font-size: 75%;
 }
 
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
 [role=main], .main {
     background: white;
 }
@@ -72,7 +78,7 @@ body {
 .account-masthead .language-list ul {
     margin: 0;
     border-left: 1px solid #00232e;
-    padding: 0 10px;
+    padding-left: 10px;
 }
 
 .account-masthead .language-list li {
@@ -83,6 +89,9 @@ body {
     margin-left: 0.3em;
 }
 
+.account-masthead ul li {
+    padding-top: 4px;
+}
 .account-masthead ul li a, .account-masthead ul li a:visited, .account-masthead ul li a:active,
 .account-masthead .account ul li a{
     font-size: inherit;
@@ -115,6 +124,18 @@ body {
     font-family: KlavikaMedium,arial,helvetica,sans-serif;
 }
 
+header nav .block-menu li .menu-item-wrapper {
+    font-family: KlavikaMedium,arial,helvetica,sans-serif;
+    padding: 1px 1.3em;
+    border-bottom: 1px dotted #dbdbdb;
+    line-height: 2.5em;
+    height: 2.5em;
+}
+
+.masthead .navigation .nav-pills li:first-child a {
+    padding-left: 0;
+}
+
 .masthead .navigation .nav-pills li a {
 
     text-transform: uppercase;
@@ -124,11 +145,19 @@ body {
     -moz-transition: color 0.25s ease;
     -o-transition: color 0.25s ease;
     transition: color 0.25s ease;
+
+    padding: 1px 1.3em;
+    border-bottom: 1px dotted #dbdbdb;
+    line-height: 2.3em;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
 }
 
 .masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
     color: black;
     background-color: white;
+    border-bottom-color: #000000;
 }
 
 

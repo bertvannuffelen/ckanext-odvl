@@ -16,6 +16,7 @@ class ODVLExtension(p.SingletonPlugin):
         config['search.facets'] = 'groups tags res_format'
         config['ckan.locale_default'] = 'nl'
         config['ckan.locale_order'] = 'nl fr de en'
+        config['ckan.favicon'] = 'http://www.vlaanderen.be/sites/all/themes/portal/favicon.ico'
 
         p.toolkit.add_template_directory(config, 'theme/templates')
         p.toolkit.add_public_directory(config, 'theme/public')
