@@ -56,8 +56,13 @@
 
                         <div class="modulecontent">
                             <ul class="menu dualfish xtcdefaultmenu">
-                                <li class="menu-1 item-21 current active"><a href="/">Home</a></li>
-                                <li class="menu-2 item-82"><a href="http://ckan-001.corve.openminds.be/">DATA</a></li>
+                                <li class="menu-1 item-21"><a href="/">Home</a></li>
+                                <li class="dropdown menu-2 item-82 current active">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">DATA</a>
+                                    <ul class="dropdown-menu">
+                                        {{ self.header_site_navigation_tabs() }}
+                                    </ul>
+                                </li>
                                 <li class="menu-3 item-68"><a href="/index.php/infocenter">INFOCENTER</a></li>
                                 <li class="menu-4 item-64"><a href="/index.php/news2">NEWS</a></li>
                                 <li class="menu-5 item-26"><a href="/index.php/blog">BLOG</a></li>

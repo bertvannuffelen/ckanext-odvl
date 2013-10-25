@@ -15,3 +15,26 @@
     </div>
 {% endblock -%}
 
+
+
+{% block main_content %}
+    {{ self.flash() }}
+
+    {{ self.toolbar() }}
+
+    <div class="wrapper{{ self.wrapper_class() }}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
+
+        {{ self.actions() }}
+
+        {{ self.pre_primary() }}
+
+        <table>
+            <tr><td>
+        {{ self.secondary() }}
+            </td><td>
+        {{ self.primary() }}
+            </td></tr>
+        </table>
+    </div>
+{% endblock %}
+

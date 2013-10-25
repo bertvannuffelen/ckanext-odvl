@@ -4,7 +4,7 @@
 }
 
 #topright .search input#mod-search-searchword.inputbox {
-    width: auto;
+    width: 206px;
 }
 
 #topright .search .btn-search {
@@ -17,9 +17,12 @@
     background: none;
 }
 
+/* needed only when main.css not properly recompiled
 .add_action {
     float: right;
 }
+
+*/
 
 .toolbar {
     padding: 0px;
@@ -34,14 +37,35 @@ ol.breadcrumb li {
 }
 
 [role=main] .primary {
-    width: auto;
-    float: none;
-    margin-left: 221px;
-    position: absolute;
+    width: 100%;
+}
+
+[role=main] .secondary {
+    margin-left: 0;
+}
+
+.wrapper {
+    background: none;
+}
+
+.wrapper td {
+    vertical-align: top;
+}
+
+.wrapper td:first-of-type {
+    border-right: 1px solid #7c7b7a;
+}
+
+.wrapper td:last-of-type {
+    width: 100%
 }
 
 .btn {
     padding: 4px 12px;
+}
+
+.btn:hover, button:hover {
+    color: inherit!important;
 }
 
 .btn-group.actions {
@@ -54,4 +78,41 @@ ol.breadcrumb li {
 
 #content .module {
     margin: 0;
+}
+
+/* re-state here, because it's overridden by bootstrap*/
+.search-giant input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 14px 10px;
+    width: 100%;
+    height: auto;
+}
+
+.dualfish ul.menu > li > ul.dropdown-menu {
+    top: 100%;
+    min-width: 160px;
+    width: auto;
+    position: absolute;
+
+    left: 0;
+    z-index: 1000;
+    display: none;
+    padding: 5px 0;
+    visibility: inherit;
+    overflow: inherit;
+}
+
+.control-order-by {
+    bottom: inherit;
+}
+
+#ty2udate264 {
+    display: inline-block;
+    width: auto;
+    font-size: 18px;
+    font-family: "Times New Roman",Georgia,Serif;
+    letter-spacing: 1px;
 }
