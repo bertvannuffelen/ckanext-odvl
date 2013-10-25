@@ -116,3 +116,45 @@ ol.breadcrumb li {
     font-family: "Times New Roman",Georgia,Serif;
     letter-spacing: 1px;
 }
+
+.group-listing {
+    margin-left: auto;
+}
+.row {
+    margin-left: auto;
+}
+
+[role=main] {
+    min-height: inherit;
+}
+
+
+.dataset-map-expanded #dataset-map {
+    width: 100%;
+}
+
+.site-footer, .site-footer label, .site-footer small {
+    color: inherit;
+}
+.site-footer {
+    color: inherit;
+    background: none;
+}
+
+.site-footer .container:first-of-type {
+    border-top: 3px solid #9e0a0a;
+}
+
+.site-footer a {
+    color: inherit;
+}
+
+h1 {
+    font-size: 38px;
+    letter-spacing: -1px;
+    line-height: 100%;
+}
+
+#field-order-by {
+    margin-bottom: 5px;
+}

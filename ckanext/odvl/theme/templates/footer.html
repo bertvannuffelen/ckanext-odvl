@@ -2,12 +2,15 @@
 
 {% block footer_links %}
   {# Override footer on all pages #}
-  <li><a href="/about">About {{ g.site_title }}</a></li>
-  <li><a href="http://lod2.okfn.org/">Blog</a></li>
-  <li><a href="http://docs.ckan.org/en/latest/api.html">API</a></li>
-  <li><a href="mailto:info@publicdata.eu">Contact Us</a></li>
-  <li><a href="http://www.okfn.org/privacy-policy/">Privacy Policy</a></li>
-  <li><a href="http://www.okfn.org/">Open Knowledge Foundation</a></li>
+    <div class="module title-on bottom">
+        <div class="modulecontent moduletitle">
+            <ul class="menu bottommenu xtcdefaultmenu">
+                <li><a href="/about">About {{ g.site_title }}</a></li>
+                <li><a href="http://docs.ckan.org/en/latest/api.html">API</a></li>
+                <li><a href="mailto:info@opendataforum.be">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer_attribution %}
