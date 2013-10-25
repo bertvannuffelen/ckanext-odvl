@@ -14,34 +14,33 @@
                 </div>
 
                 <div id="topright" class="span3">
-                    <form action="/index.php" method="post">
-                        <div class="search">
-                            <input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox"
-                                   type="text" size="20" value="Search..."
-                                   onblur="if (this.value=='') this.value='Search...';"
-                                   onfocus="if (this.value=='Search...') this.value='';"> <input type="hidden"
-                                                                                                 name="task"
-                                                                                                 value="search">
-                            <input type="hidden" name="option" value="com_search">
-                            <input type="hidden" name="Itemid" value="21">
-                        </div>
-                    </form>
+                    <div class="search">
+                        {% block header_site_search %}
+                            <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}" method="get">
+                                <div class="field">
+                                    <!-- id="field-sitewide-search" -->
+                                    <input size="20" maxlength="20" id="mod-search-searchword" class="inputbox" type="text" name="q" placeholder="{{ _('Search Datasets') }}" />
+                                    <button class="btn-search" type="submit">{{ _('Search') }}</button>
+                                </div>
+                            </form>
+                        {% endblock %}
+                    </div>
 
                 </div>
             </div>
             <div class="menutopwrap">
                 <div id="menuright" class="hd2">
                     <div id="menuright3">
-                        <div class="module title-off ">
+                        <div class="module title-off trigger">
                             {% if c.userobj %}
                                 <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
-                                    <ul class="unstyled">
+                                    <ul>
                                         {{ self.header_account_logged() }}
                                     </ul>
                                 </div>
                             {% else %}
                                 <nav class="account not-authed">
-                                    <ul class="unstyled">
+                                    <ul>
                                         {{ self.header_account_notlogged() }}
                                     </ul>
                                 </nav>

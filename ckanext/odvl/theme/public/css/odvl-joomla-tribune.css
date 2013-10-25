@@ -1,0 +1,22 @@
+.account li {
+    float: left;
+    padding-left: 4px;
+}
+
+#topright .search input#mod-search-searchword.inputbox {
+    width: auto;
+}
+
+#topright .search .btn-search {
+    top:10px;
+    padding-right:5px !important;
+    margin-top: 0px;
+}
+
+[role=main], .main {
+    background: none;
+}
+
+.add_action {
+    float: right;
+}

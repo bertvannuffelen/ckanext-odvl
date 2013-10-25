@@ -4,5 +4,14 @@
   {{ super() }}
 {% endblock %}
 
-
+{# The content block allows you to replace the content of the page if needed #}
+{%- block content %}
+    <div id="region2wrap" class="xtc-bodygutter" role="main">
+        <div id="region2pad" class="xtc-wrapperpad">
+            <div id="content" class="row-fluid xtc-wrapper r2spacer container">
+                {{ self.main_content() }}
+            </div>
+        </div>
+    </div>
+{% endblock -%}
 
