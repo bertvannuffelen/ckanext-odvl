@@ -20,3 +20,38 @@
 .add_action {
     float: right;
 }
+
+.toolbar {
+    padding: 0px;
+}
+
+.toolbar .breadcrumb {
+    margin-top: 3px;
+}
+
+ol.breadcrumb li {
+    margin: 0;
+}
+
+[role=main] .primary {
+    width: auto;
+    float: none;
+    margin-left: 221px;
+    position: absolute;
+}
+
+.btn {
+    padding: 4px 12px;
+}
+
+.btn-group.actions {
+    float: right;
+}
+
+.btn [class^="icon-"], .btn [class*=" icon-"] {
+    vertical-align: middle;
+}
+
+#content .module {
+    margin: 0;
+}
