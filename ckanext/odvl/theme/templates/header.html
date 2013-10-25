@@ -1,46 +1,101 @@
 {% ckan_extends %}
 
-{% block header_site_navigation_tabs %}
-    {{ h.build_nav_main(
-              ('search', _('Datasets')),
-              ('organizations_index', _('Organizations')),
-              ('group_index', _('Groups')),
-              ('related_dashboard', _('Apps & Ideas')),
-              ('about', _('About'))
-            ) }}
-{% endblock %}
+{% block header %}
+<div id="headerwrap" class="xtc-bodygutter">
+    <div id="headerpad" class="xtc-wrapperpad">
+        <div id="header" class="clearfix xtc-wrapper row-fluid header">
 
-{% block header_account %}
-    <header class="account-masthead">
-        <div class="container">
-            <div class="block-content">
-                <strong>Opendata<span>.vlaanderen.be</span></strong>
-                <span>Open Data site van de Vlaamse overheid</span>
-            </div>
-            <div class="language-list">
-                <ul><li><a href="">nl</a></li>
-                    <li><a href="">en</a></li>
-                    <li><a href="">fr</a></li>
-                    <li><a href="">de</a></li>
-                </ul></div>
-            {% if c.userobj %}
-                <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
-                    <ul class="unstyled">
-                        {{ self.header_account_logged() }}
-                    </ul>
+            <div id="topwrap" class="clearfix row-fluid">
+                <div id="topleft" class="span3">
+                    <div id="ty2udate264">Friday,&nbsp;25th&nbsp;October&nbsp;2013</div>
                 </div>
-            {% else %}
-                <nav class="account not-authed">
-                    <ul class="unstyled">
-                        {{ self.header_account_notlogged() }}
-                    </ul>
-                </nav>
-            {% endif %}
+
+                <div align="center" id="logo" class="span6"><a class="hideTxt" href="/index.php">Open Data Forum</a>
+                </div>
+
+                <div id="topright" class="span3">
+                    <form action="/index.php" method="post">
+                        <div class="search">
+                            <input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox"
+                                   type="text" size="20" value="Search..."
+                                   onblur="if (this.value=='') this.value='Search...';"
+                                   onfocus="if (this.value=='Search...') this.value='';"> <input type="hidden"
+                                                                                                 name="task"
+                                                                                                 value="search">
+                            <input type="hidden" name="option" value="com_search">
+                            <input type="hidden" name="Itemid" value="21">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="menutopwrap">
+                <div id="menuright" class="hd2">
+                    <div id="menuright3">
+                        <div class="module title-off ">
+                            {% if c.userobj %}
+                                <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
+                                    <ul class="unstyled">
+                                        {{ self.header_account_logged() }}
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <nav class="account not-authed">
+                                    <ul class="unstyled">
+                                        {{ self.header_account_notlogged() }}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="menu" class="clearfix hd8  dualfish">
+                    <div class="module title-on  moleft">
+                        <h3 class="moduletitle">
+                            <span class="first_word">Main Menu</span></h3>
+
+                        <div class="modulecontent">
+                            <ul class="menu dualfish xtcdefaultmenu">
+                                <li class="menu-1 item-21 current active"><a href="/">Home</a></li>
+                                <li class="menu-2 item-82"><a href="http://ckan-001.corve.openminds.be/">DATA</a></li>
+                                <li class="menu-3 item-68"><a href="/index.php/infocenter">INFOCENTER</a></li>
+                                <li class="menu-4 item-64"><a href="/index.php/news2">NEWS</a></li>
+                                <li class="menu-5 item-26"><a href="/index.php/blog">BLOG</a></li>
+                                <li class="menu-6 item-22"><a href="/index.php/events2">EVENTS</a></li>
+                                <li class="menu-7 item-235"><a href="/index.php/links">LINKS</a></li>
+                                <li class="menu-8 item-482"><a href="/index.php/contact">CONTACT</a></li>
+                            </ul>
+                            <div class="mobilebtn">
+                                <select size="1" class="menu dualfish xtcmobilemenu"
+                                        onchange="location.href=this.value">
+                                    <option value="/" selected="selected">Home</option>
+                                    <option value="http://ckan-001.corve.openminds.be/">DATA</option>
+                                    <option value="/index.php/infocenter">INFOCENTER</option>
+                                    <option value="/index.php/news2">NEWS</option>
+                                    <option value="/index.php/blog">BLOG</option>
+                                    <option value="/index.php/events2">EVENTS</option>
+                                    <option value="/index.php/links">LINKS</option>
+                                    <option value="/index.php/contact">CONTACT</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="menu2" class="clearfix">
+
+            </div>
+
         </div>
-    </header>
+    </div>
+</div>
 {% endblock %}
 
-{% block header_logo %}{% endblock %}
+
 
 {#
 {% block header %}
