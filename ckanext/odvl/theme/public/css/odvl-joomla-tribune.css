@@ -158,3 +158,19 @@ h1 {
 #field-order-by {
     margin-bottom: 5px;
 }
+
+ol.stages li {
+    margin: 0px;
+    list-style-type: inherit;
+}
+ol.stages li.uncomplete span {
+    background-color: inherit;
+}
+
+ol.stages li .highlight {
+    padding: 10px 52px !important;
+}
+
+small {
+    font-size: 85%;
+}
