@@ -17,7 +17,7 @@ Installation
 
    To install the extension directly from github, use::
 
-     (pyenv) $ pip install -e git+https://bitbucket.org/highlatitudes/ckanext-vl.git
+     (pyenv) $ pip install -e git+https://bitbucket.org/highlatitudes/ckanext-odvl.git#egg=ckanext-odvl
 
 2. Make sure the CKAN configuration ini file contains the odvl main plugin::
 
