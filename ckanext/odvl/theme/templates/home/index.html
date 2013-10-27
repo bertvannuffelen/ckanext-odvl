@@ -15,6 +15,14 @@
 </section>
 {% endblock %}
 
+
+{% block home_secondary_content %}
+    <div class="module module-shallow module-narrow module-dark box">
+        {{ self.home_search() }}
+        {{ self.home_tags() }}
+    </div>
+{% endblock %}
+
 {%- block content %}
     <div id="region2wrap" class="xtc-bodygutter" role="main">
         <div id="region2pad" class="xtc-wrapperpad">

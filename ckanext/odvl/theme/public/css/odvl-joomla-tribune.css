@@ -80,6 +80,10 @@ ol.breadcrumb li {
     margin: 0;
 }
 
+.module {
+    margin: 20px 0;
+}
+
 /* re-state here, because it's overridden by bootstrap*/
 .search-giant input {
     -webkit-box-sizing: border-box;
@@ -135,6 +139,9 @@ ol.breadcrumb li {
 
 .site-footer, .site-footer label, .site-footer small {
     color: inherit;
+    text-transform: none;
+    margin-right: 0;
+    margin-top: 4px;
 }
 .site-footer {
     color: inherit;
@@ -173,4 +180,15 @@ ol.stages li .highlight {
 
 small {
     font-size: 85%;
+}
+
+.ckan-footer-logo {
+    display: inline-block;
+    width: 68px;
+    height: 21px;
+    margin-bottom: 1px;
+    background: url("../../../base/images/ckan-logo-footer.png") no-repeat top left;
+    text-indent: -900em;
+    -webkit-filter: invert(100%);
+    vertical-align: text-bottom;
 }

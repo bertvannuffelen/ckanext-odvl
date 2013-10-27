@@ -1,8 +1,7 @@
 {% ckan_extends %}
 
-{% block footer_links %}
-  {# Override footer on all pages #}
-    <div class="module title-on bottom">
+{% block footer_content %}
+    <div class="module title-on bottom" style="float:left">
         <div class="modulecontent moduletitle">
             <ul class="menu bottommenu xtcdefaultmenu">
                 <li><a href="/about">About {{ g.site_title }}</a></li>
@@ -11,9 +10,13 @@
             </ul>
         </div>
     </div>
+    <div class="module title-on bottom" style="float:right">
+        <div class="modulecontent moduletitle">
+            <ul class="menu bottommenu xtcdefaultmenu">
+                <li>{% snippet "snippets/language_selector.html" %}</li>
+                <li>{% trans %}<strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}</li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
 
-{% block footer_attribution %}
-	{{ super() }}
-
-{% endblock %}
