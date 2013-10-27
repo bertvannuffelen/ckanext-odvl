@@ -192,3 +192,13 @@ small {
     -webkit-filter: invert(100%);
     vertical-align: text-bottom;
 }
+
+.hero-secondary {
+    position: inherit;
+    bottom: auto;
+    right: auto;
+}
+
+.hero-primary, .hero-secondary {
+    width: 49%;
+}
