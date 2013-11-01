@@ -202,3 +202,7 @@ small {
 .hero-primary, .hero-secondary {
     width: 49%;
 }
+
+.latestnewstitle {
+    margin-bottom: 0.5em;
+}
