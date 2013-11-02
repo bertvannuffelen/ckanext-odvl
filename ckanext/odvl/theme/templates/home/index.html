@@ -23,6 +23,20 @@
     </div>
 {% endblock %}
 
+{% block home_tags %}
+    <div class="tags">
+        <h3>{{ _('Popular Tags') }}</h3>
+        {% set tags = h.get_facet_items_dict('tags', limit=20) %}
+        <div class="tagcloud" data-totalcount="{{ tags|count }}" data-module="tag-cloud">
+        {% for tag in tags %}
+            <a class="tag" data-count="{{ tag.count }}" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
+        {% endfor %}
+        </div>
+    </div>
+
+    {% resource 'ckanext-odvl/tag_cloud' %}
+{% endblock %}
+
 {%- block content %}
     <div id="region2wrap" class="xtc-bodygutter" role="main">
         <div id="region2pad" class="xtc-wrapperpad">

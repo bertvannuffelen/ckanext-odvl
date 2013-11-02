@@ -206,3 +206,23 @@ small {
 .latestnewstitle {
     margin-bottom: 0.5em;
 }
+
+.module-dark .module-content {
+    -webkit-border-radius: 3px 3px 0 0;
+    -moz-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+    background-color: #dad9d6;
+    border-bottom: none;
+}
+
+.tags {
+    padding: 5px 10px 10px 10px;
+    background-color: #f1df5b;
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+}
+
+.tagcloud {
+    font-size: 30px;
+}
