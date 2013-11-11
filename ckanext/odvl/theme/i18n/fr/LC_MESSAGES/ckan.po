@@ -2579,7 +2579,7 @@ msgstr ""
 
 #: ckan/templates/home/index.html:61
 msgid "Search Your Data"
-msgstr ""
+msgstr "Rechercher vos données"
 
 #: ckan/templates/home/index.html:63
 msgid "eg. Gold Prices"
@@ -2587,7 +2587,7 @@ msgstr "p.ex. les cours de l'or"
 
 #: ckan/templates/home/index.html:70
 msgid "Popular Tags"
-msgstr ""
+msgstr "Tags fréquents"
 
 #: ckan/templates/home/snippets/about_text.html:1
 msgid ""
@@ -2620,7 +2620,7 @@ msgstr ""
 #: ckan/templates/macros/form.html:226 ckan/templates/package/search.html:49
 #: ckan/templates/package/snippets/search_form.html:30
 msgid "Remove"
-msgstr ""
+msgstr "Supprimer"
 
 #: ckan/templates/macros/form.html:255
 msgid "Custom"
@@ -2648,7 +2648,7 @@ msgstr "Il n'y a pas de description pour cette organisation"
 
 #: ckan/templates/organization/base_form_page.html:5
 msgid "Organization Form"
-msgstr ""
+msgstr "Formulaire Organisation"
 
 #: ckan/templates/organization/confirm_delete.html:10
 msgid "Are you sure you want to delete organization - {name}?"
@@ -2676,7 +2676,7 @@ msgstr "Organisation des jeux de données"
 #: ckan/templates/organization/index.html:11
 #: ckanext/organizations/templates/organizations/index.html:10
 msgid "Add Organization"
-msgstr ""
+msgstr "Ajouter une organisation"
 
 #: ckan/templates/organization/index.html:23
 #: ckanext/organizations/templates/organizations/index.html:21
@@ -2687,7 +2687,7 @@ msgstr "Il n'y a actuellement aucune organisation pour ce site"
 #: ckanext/organizations/templates/organizations/index.html:34
 #: ckanext/organizations/templates/organizations/new.html:11
 msgid "What are Organizations?"
-msgstr ""
+msgstr "Que sont les organisations ?"
 
 #: ckan/templates/organization/index.html:41
 msgid ""
@@ -2717,7 +2717,7 @@ msgstr "Enregistrer"
 
 #: ckan/templates/organization/member_new.html:50
 msgid "What are roles?"
-msgstr ""
+msgstr "Que sont les rôles"
 
 #: ckan/templates/organization/member_new.html:53
 msgid ""
@@ -2730,7 +2730,7 @@ msgstr "<p><strong>Admin:</strong> Peut ajouter/modifier et supprimer les jeux d
 
 #: ckan/templates/organization/members.html:40
 msgid "Add member"
-msgstr ""
+msgstr "Ajouter un membre"
 
 #: ckan/templates/organization/new.html:3
 #: ckan/templates/organization/new.html:5
@@ -2802,7 +2802,7 @@ msgstr "Etes-vous sûr de vouloir supprimer la ressource - {name}?"
 
 #: ckan/templates/package/edit.html:17
 msgid "View dataset"
-msgstr ""
+msgstr "Visualiser un jeu de données"
 
 #: ckan/templates/package/new.html:3
 #: ckan/templates/package/snippets/stages.html:25
