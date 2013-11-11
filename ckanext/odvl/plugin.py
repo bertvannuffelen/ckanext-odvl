@@ -1,4 +1,5 @@
 import os
+import inspect
 import ckan.plugins as p
 
 
@@ -15,8 +16,10 @@ class ODVLExtension(p.SingletonPlugin):
         config['package_hide_extras'] = 'spatial'
         config['search.facets'] = 'groups tags res_format'
         config['ckan.locale_default'] = 'nl'
-        config['ckan.locale_order'] = 'nl fr de en'
+        config['ckan.locale_order'] = config['ckan.locales_offered'] = 'nl fr de en'
         config['ckan.favicon'] = 'http://opendataforum.info/templates/tribune2/favicon.ico'
+        #config['ckan.i18n_directory'] = 'theme';
+        config['ckan.i18n_directory'] = os.path.join(os.path.dirname(inspect.getouterframes(inspect.currentframe())[0][1]),'theme')
 
         p.toolkit.add_template_directory(config, 'theme/templates')
         p.toolkit.add_public_directory(config, 'theme/public')

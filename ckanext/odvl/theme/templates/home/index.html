@@ -1,15 +1,17 @@
 {% ckan_extends %}
 
 {% block home_primary %}
-    <img src="images/open-data.png"/>
+    <img src="/images/open-data.png"/>
 {% endblock %}
 
 {% block home_image %}
+{#
 <section class="featured media-overlay">
-    {# <h2 class="media-heading">{% block home_image_caption %}{{ _("This is a featured section") }}{% endblock %}</h2> #}
+    <h2 class="media-heading">{% block home_image_caption %}{{ _("This is a featured section") }}{% endblock %}</h2>
     {% block home_image_content %}
     {% endblock %}
 </section>
+#}
 {% endblock %}
 
 
