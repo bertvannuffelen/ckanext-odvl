@@ -249,10 +249,11 @@ small {
 }
 
 .featured>* {
-    padding: 5px 10px 10px 10px;
+    padding: 5px 5px 5px 5px;
     display: table-cell;
     vertical-align: top;
     border-right: 1px solid #dad9d6;
+    width: 14em;
 }
 
 .featured>*:first-child {
@@ -261,6 +262,16 @@ small {
 
 .featured>*:last-of-type {
     border:none;
+}
+
+.featured ul li {
+    padding-left: 5px;
+}
+
+.featured .additional {
+    position: relative;
+    top: -0.4em;
+    padding-left: 1em;
 }
 
 .tagcloud {

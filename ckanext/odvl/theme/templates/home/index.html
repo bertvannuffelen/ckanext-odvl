@@ -17,14 +17,14 @@
 {% block popular %}
     <div>
         <h3>{{ _('Popular Datasets') }}</h3>
-        {% snippet 'snippets/most_viewed_datasets.html', datasets=h.most_viewed_datasets() %}
+        {% snippet 'snippets/most_viewed_datasets.html', datasets=h.most_viewed_datasets(5) %}
     </div>
 {% endblock %}
 
 {% block recently_updated %}
     <div>
         <h3>{{ _('Recently Updated') }}</h3>
-        {% snippet 'snippets/recent_updates_package_list.html', packages=h.recent_updates(10) %}
+        {% snippet 'snippets/recent_updates_package_list.html', packages=h.recent_updates(5) %}
     </div>
 {% endblock %}
 

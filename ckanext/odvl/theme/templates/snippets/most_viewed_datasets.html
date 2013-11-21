@@ -10,8 +10,8 @@
     <li py:for="dataset in datasets">
       <a href="${h.url_for(controller='package', action='read', id=dataset['name'])}" class="item_link">
         <i class="resource"></i>
-        <strong>${dataset.get('title') or dataset['name']}</strong><br />
-        <span class="additional">(${dataset['tracking_summary']['total']} ${_('views')}</span>)
+        <strong title="${dataset.get('title') or dataset.get('name')}">${h.truncate(dataset.get('title') or dataset['name'], 30)}</strong><br />
+        <!--<span class="additional">(${dataset['tracking_summary']['total']} ${_('views')}</span>)-->
       </a>
     </li>
   </ul>
