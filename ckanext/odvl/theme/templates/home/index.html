@@ -57,9 +57,24 @@
                 </div>
 
                 {{ self.flash() }}
+
+
                 <div class="primary-content">
-                {{ self.primary_content() }}
+                    <div class="home-logo">
+                    <div class="box">
+                        <img src="/images/open-data.png"/>
+                    </div>
+                    </div>
+                    <div>
+                    <div class="box module-dark">
+                        {{ self.home_search() }}
+                        <div class="featured">
+                            {{ self.home_tags() }} {{ self.recently_updated() }} {{ self.popular() }}
+                        </div>
+                    </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -75,30 +90,3 @@
 
 {% endblock -%}
 
-
-{% block primary_content %}
-    <div class="hero-primary module module-popup">
-        <div class="module-content box">
-            {% block home_primary %}<img src="/images/open-data.png"/>{% endblock %}
-        </div>
-    </div>
-    <div class="hero-secondary">
-        <div class="hero-secondary-inner">
-            {% block home_secondary_content %}
-                <div class="module module-shallow module-narrow module-dark box">
-                    {{ self.home_search() }}
-                    <div class="featured">
-                        {#
-            <table><tr>
-                <td>{{ self.home_tags() }}</td>
-                <td>{{ self.recently_updated() }}</td>
-                <td>{{ self.popular() }}</td>
-            </tr></table>
-             #}
-                        {{ self.home_tags() }} {{ self.recently_updated() }} {{ self.popular() }}
-                    </div>
-                </div>
-            {% endblock %}
-        </div>
-    </div>
-{% endblock %}

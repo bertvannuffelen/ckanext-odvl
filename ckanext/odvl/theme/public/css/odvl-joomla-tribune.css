@@ -277,11 +277,20 @@ h3.moduletitle, h3.moduletitle a, h3.moduletitle span, .module h3 span, h3.clien
     font-family: inherit;
     padding-bottom: 0.5em;
 }
-/*
+
 .primary-content {
     display:table;
+    margin-top: 40px;
 }
 .primary-content>* {
     display:table-cell;
+    vertical-align: top;
 }
-*/
+
+.primary-content>*:first-child>* {
+    margin-right: 20px;
+}
+
+.home-logo {
+    width: 50%;
+}
