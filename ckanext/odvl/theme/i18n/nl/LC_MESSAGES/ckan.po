@@ -6070,3 +6070,12 @@ msgstr "Kies een eigenschap van een dataset en ontdek welke categorieën in dat 
 #: ckanext/stats/templates_legacy/ckanext/stats/leaderboard.html:20
 msgid "Choose area"
 msgstr "Kies thema"
+
+
+#: ckanext-odvl/ckanext/odvl/theme/templates/home/index.html:19
+msgid "Popular Datasets"
+msgstr "Populaire Datasets"
+
+#: ckanext-odvl/ckanext/odvl/theme/templates/home/index.html:26
+msgid "Recently Updated"
+msgstr "Onlangs bijgewerkt"

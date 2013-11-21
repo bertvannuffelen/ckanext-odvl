@@ -3,7 +3,7 @@
 {% block home_tags %}
     <div class="tags">
         <h3>{{ _('Popular Tags') }}</h3>
-        {% set tags = h.get_facet_items_dict('tags', limit=20) %}
+        {% set tags = h.get_facet_items_dict('tags', limit=15) %}
         <div class="tagcloud" data-totalcount="{{ tags|count }}" data-module="tag-cloud">
         {% for tag in tags|sort(attribute='name') %}
             <a class="tag" data-count="{{ tag.count }}" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
@@ -17,7 +17,7 @@
 {% block popular %}
     <div>
         <h3>{{ _('Popular Datasets') }}</h3>
-        {% snippet 'snippets/most_viewed_datasets.html', datasets=h.most_viewed_datasets(5) %}
+        {% snippet 'snippets/most_viewed_datasets.html', datasets=h.most_viewed_datasets(10) %}
     </div>
 {% endblock %}
 
@@ -64,17 +64,18 @@
 
                 <div class="primary-content">
                     <div class="home-logo">
-                    <div class="box">
-                        <img src="/images/open-data.png"/>
-                    </div>
-                    </div>
-                    <div>
-                    <div class="box module-dark">
-                        {{ self.home_search() }}
-                        <div class="featured">
-                            {{ self.home_tags() }} {{ self.recently_updated() }} {{ self.popular() }}
+                        <div class="box">
+                            <img src="/images/open-data.png"/>
                         </div>
                     </div>
+                    <div class="featured">
+                        <table class="module-dark">
+                            <tr><td colspan="*">{{ self.home_search() }}</td></tr>
+                            <tr class="featured-content">
+                                <td>{{ self.home_tags() }}</td>
+                                <td>{{ self.popular() }}</td>
+                                <td>{{ self.recently_updated() }}</td></tr>
+                        </table>
                     </div>
                 </div>
 
