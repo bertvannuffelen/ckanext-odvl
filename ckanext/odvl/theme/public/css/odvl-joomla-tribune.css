@@ -239,16 +239,28 @@ small {
     border-bottom: none;
 }
 
-.tags {
-    padding: 5px 10px 10px 10px;
+.featured {
     background-color: #f1df5b;
     -webkit-border-radius: 0 0 3px 3px;
     -moz-border-radius: 0 0 3px 3px;
     border-radius: 0 0 3px 3px;
+    display: table;
+    width: 100%;
+}
+
+.featured>* {
+    padding: 5px 10px 10px 10px;
+    display: table-cell;
+    vertical-align: top;
+    border-right: 1px solid #dad9d6;
+}
+
+.featured>*:last-of-type {
+    border:none;
 }
 
 .tagcloud {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .tag {
@@ -258,3 +270,18 @@ small {
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
+
+
+
+h3.moduletitle, h3.moduletitle a, h3.moduletitle span, .module h3 span, h3.client_title, h4.service_desc, h3.newsitemtitle, h3.newsitemtitlesm, h3.newsitemtitlemed, h3.newsitemtitlemed a, h3.newsitemtitlelg, h3.newsitemtitlelg a, h3.newsitemtitlesm a, h3.newsitemtitle a, h4.newsauthor, .newsitemcattitle, h1.pagetitle, h1.pagetitle span, h1.title, h1.title span, h1.title a, .title, h2, h3, h5.day, span.item-title a, .legend, div.itemHeader h2.itemTitle, .ptabsmtabs > div > div > div, #community-wrap .cModule h3 span, #community-wrap .componentheading, body #community-wrap div.greybox div div div h1, body #community-wrap div.greybox div div div h2, div#eventlist h2, h2.itemTitle, h2.itemTitle a, #Kunena h1, #Kunena h2, .jvs-default div.barbox p, #Kunena #ktab div.moduletable ul.menu li a, h1.componentheading, h2.eventlist, body #community-wrap .profile-info .contentheading, div.itemComments ul.itemCommentsList li span.commentDate, div.itemComments ul.itemCommentsList li span.commentAuthorName, #Kunena .kheader h2, #Kunena .kheader h2 a, #Kunena .kheader h2, #Kunena .kheader h2 a, #Kunena a.ktopic-title, #Kunena div.kthead-title a, #Kunena .ktitle a, #Kunena .ktitle, #Kunena a.ktitle, #Kunena .kheader h2, .category_title, h3.newsitemtitle2, h3.newsitemtitle2 a, h3.newsitemtitlemed2, h3.newsitemtitlemed2 a, .pagetitle, .componentheading, .panel .title span, h1 a, h2 a, h2, h1.pagetitle, .mainslide h2 a.catlink, .modtit, .module h3 span, h2.k2title, div.itemFullText h2, .itemCommentsForm h2, span.titlelink.events, a.acymailing_togglemodule, h1.latestnewstitle, h1 span, h1, #community-wrap {
+    font-family: inherit;
+    padding-bottom: 0.5em;
+}
+/*
+.primary-content {
+    display:table;
+}
+.primary-content>* {
+    display:table-cell;
+}
+*/

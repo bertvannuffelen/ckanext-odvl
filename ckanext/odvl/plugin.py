@@ -1,6 +1,7 @@
 import os
 import inspect
 import ckan.plugins as p
+import ckanext.odvl.helpers as helpers
 
 
 class ODVLExtension(p.SingletonPlugin):
@@ -32,5 +33,8 @@ class ODVLExtension(p.SingletonPlugin):
 
 
     def get_helpers(self):
-        # register our helper function
-        return {'example_helper': self.example_helper}
+        return {
+                'recent_updates': helpers.recent_updates,
+                'top_publishers': helpers.top_publishers,
+                'most_viewed_datasets': helpers.most_viewed_datasets,
+                }

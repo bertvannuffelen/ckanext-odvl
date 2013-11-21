@@ -16,7 +16,7 @@ this.ckan.module('tag-cloud', function ($$, _) {
 
         $el.find(".tag").each(
             function(idx, tag) {
-                var rel = delta == 0 ? 100 : 60 + 80 * ($$(tag).attr("data-count") - min) / delta
+                var rel = delta == 0 ? 100 : 70 + 60 * ($$(tag).attr("data-count") - min) / delta
                 $$(tag).css("font-size", rel+"%")
                        .css("border-radius", 15*rel/100+"px")
             })
