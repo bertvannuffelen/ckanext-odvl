@@ -157,8 +157,8 @@ ol.breadcrumb li {
     width: 100%;
 }
 
-label {
-    padding-right: 5px;
+label.control-label {
+    padding-right: 0px;
 }
 
 .site-footer, .site-footer label, .site-footer small {
