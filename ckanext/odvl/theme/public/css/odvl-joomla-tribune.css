@@ -157,6 +157,10 @@ ol.breadcrumb li {
     width: 100%;
 }
 
+label {
+    padding-right: 5px;
+}
+
 .site-footer, .site-footer label, .site-footer small {
     color: inherit;
     text-transform: none;
