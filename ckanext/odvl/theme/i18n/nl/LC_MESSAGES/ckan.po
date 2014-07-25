@@ -1949,7 +1949,7 @@ msgstr "URL"
 #: ckanext/organizations/templates_legacy/organizations/layout.html:25
 #: ckanext/organizations/templates_legacy/organizations/package_form.html:88
 msgid "Edit"
-msgstr "Bijwerk"
+msgstr "Bewerk"
 
 #: ckan/public/base/javascript/modules/table-toggle-more.js:9
 msgid "Show more"
@@ -3062,7 +3062,7 @@ msgstr "Versie"
 #: ckan/templates_legacy/package/read_core.html:88
 #: ckanext/organizations/templates_legacy/organizations/form.html:54
 msgid "State"
-msgstr "Provincie"
+msgstr "Status"
 
 #: ckan/templates/package/snippets/data_api_button.html:10
 #: ckan/templates/package/snippets/data_api_button.html:12
