@@ -27,5 +27,7 @@ setup(
         [ckan.plugins]
 	# Add plugins here, eg
 	odvl_extension=ckanext.odvl.plugin:ODVLExtension
+	    [paste.paster_command]
+    odvl=ckanext.odvl.commands.odvl:Odvl
 	""",
 )
