@@ -17,12 +17,48 @@
     background: none;
 }
 
+[role=main] #content {
+    width: 100%
+}
+
+@media (min-width: 768px) {
+    .media-grid {
+        margin-left: 0;
+    }
+}
+
+.resource-list {
+    margin-top: 0;
+}
+
+.btn:hover {
+    color:inherit!important;
+}
+
+.stages {
+    margin: -10px -10px 20px;
+}
+
 /* needed only when main.css not properly recompiled
 .add_action {
     float: right;
 }
 
 */
+
+.olMap .layersDiv label {
+    text-transform: none;
+    padding: 0;
+    font-weight: normal;
+}
+                                                            s
+.olMap .layersDiv label:after {
+    content: ""
+}
+
+.olMap .layersDiv input[type=radio] {
+    top: 0px;
+}
 
 .toolbar {
     padding: 0px;
@@ -76,11 +112,9 @@ ol.breadcrumb li {
     vertical-align: middle;
 }
 
-/*
 #content .module {
     margin: 0;
 }
-*/
 
 .module {
     margin: 20px 0 0 0;
@@ -89,6 +123,18 @@ ol.breadcrumb li {
 .module-content, .module-content:last-child, .module-content:first-child {
     margin: 0;
     /* padding: 0; */
+}
+
+.module-content:first-child {
+    padding-top: 10px;
+}
+
+.module-resource .actions {
+    top: 2px;
+}
+
+.resource-view a.btn.pull-right {
+    color: #333333;
 }
 
 .module-content.box, .box {

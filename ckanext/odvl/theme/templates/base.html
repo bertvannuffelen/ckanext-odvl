@@ -1,8 +1,6 @@
 {% ckan_extends %}
 
 {% block styles %}
-    {{ super() }}
-    {# add extra stylesheets here if needed #}
 
     <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&file=default" type="text/css" />
     <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&group=typo" type="text/css" />
@@ -12,6 +10,9 @@
     <link rel="stylesheet" href="http://opendataforum.info/templates/system/css/system.css" type="text/css" />
     <link rel="stylesheet" href="http://opendataforum.info/templates/system/css/general.css" type="text/css" />
     <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&file=template" type="text/css" />
+
+    {{ super() }}
+    {# add extra stylesheets here if needed #}
     <!--
     <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/templates/tribune_featurednews_user1/template.css" type="text/css" />
     <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/css/wall.css" type="text/css" />
@@ -32,10 +33,5 @@
     {#   <link rel="stylesheet" href="/css/odvl-joomla-tribune.css"/>  #}
 {% endblock %}
 
-
-{% block scripts %}
-    {{ super() }}
-    {# add extra scripts here if needed #}
-{% endblock %}
 
 

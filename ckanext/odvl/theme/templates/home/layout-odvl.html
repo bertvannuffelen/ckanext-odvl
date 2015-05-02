@@ -1,0 +1,53 @@
+<div class="home-logo">
+    <div class="box">
+        <img src="/images/open-data.png"/>
+    </div>
+</div>
+<div class="featured">
+    <table class="module-dark">
+        <tr><td colspan="*">
+            {% block home_search %}
+                <form class="dataset-search module-content clearfix" method="get" action="{% url_for controller='package', action='search' %}">
+                    <h3 class="heading">{{ _("Search Your Data") }}</h3>
+                <span class="control-group search-giant">
+                  <input type="text" class="search" name="q" value="{{ c.q }}" autocomplete="off" placeholder="{{ _('eg. Gold Prices') }}" />
+                  <button type="submit" value="{{ _('Search') }}">Submit</button>
+                </span>
+                </form>
+            {% endblock %}
+        </td></tr>
+        <tr class="featured-content">
+            <td>
+                {% block home_tags %}
+                    <div class="tags">
+                        <h3>{{ _('Popular Tags') }}</h3>
+                        {% set tags = h.get_facet_items_dict('tags', limit=15) %}
+                        <div class="tagcloud" data-totalcount="{{ tags|count }}" data-module="tag-cloud">
+                            {% for tag in tags|sort(attribute='name') %}
+                                <a class="tag" data-count="{{ tag.count }}" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% resource 'ckanext-odvl/tag_cloud' %}
+                {% endblock %}
+            </td>
+            <td>
+                {% block popular %}
+                    <div>
+                        <h3>{{ _('Popular Datasets') }}</h3>
+                        {% snippet 'snippets/most_viewed_datasets.html', datasets=h.most_viewed_datasets(10) %}
+                    </div>
+                {% endblock %}
+            </td>
+            <td>
+                {% block recently_updated %}
+                    <div>
+                        <h3>{{ _('Recently Updated') }}</h3>
+                        {% snippet 'snippets/recent_updates_package_list.html', packages=h.recent_updates(5) %}
+                    </div>
+                {% endblock %}
+            </td></tr>
+    </table>
+</div>
+

@@ -11,7 +11,7 @@
             ) }}
 {% endblock %}
 
-{% block header %}
+{% block header_wrapper %}
 <div id="headerwrap" class="xtc-bodygutter">
     <div id="headerpad" class="xtc-wrapperpad">
         <div id="header" class="clearfix xtc-wrapper row-fluid header">
@@ -33,7 +33,7 @@
                                 <div class="field">
                                     <!-- id="field-sitewide-search" -->
                                     <input size="20" maxlength="20" id="mod-search-searchword" class="inputbox" type="text" name="q" placeholder="{{ _('Search Datasets') }}" />
-                                    <button class="btn-search" type="submit">{{ _('Search') }}</button>
+                                    <button class="btn-search ckan-icon ckan-icon-search" type="submit"></button>
                                 </div>
                             </form>
                         {% endblock %}

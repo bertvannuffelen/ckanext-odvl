@@ -1,35 +1,8 @@
 {% ckan_extends %}
 
-{% block home_tags %}
-    <div class="tags">
-        <h3>{{ _('Popular Tags') }}</h3>
-        {% set tags = h.get_facet_items_dict('tags', limit=15) %}
-        <div class="tagcloud" data-totalcount="{{ tags|count }}" data-module="tag-cloud">
-        {% for tag in tags|sort(attribute='name') %}
-            <a class="tag" data-count="{{ tag.count }}" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 22) }}</a>
-        {% endfor %}
-        </div>
-    </div>
-
-    {% resource 'ckanext-odvl/tag_cloud' %}
-{% endblock %}
-
-{% block popular %}
-    <div>
-        <h3>{{ _('Popular Datasets') }}</h3>
-        {% snippet 'snippets/most_viewed_datasets.html', datasets=h.most_viewed_datasets(10) %}
-    </div>
-{% endblock %}
-
-{% block recently_updated %}
-    <div>
-        <h3>{{ _('Recently Updated') }}</h3>
-        {% snippet 'snippets/recent_updates_package_list.html', packages=h.recent_updates(5) %}
-    </div>
-{% endblock %}
 
 {%- block content %}
-    <div id="region2wrap" class="xtc-bodygutter" role="main">
+    <div id="region2wrap" class="homepage layout-{{ homepage_style }} xtc-bodygutter" role="main">
         <div id="region2pad" class="xtc-wrapperpad">
             <div id="content" class="row-fluid xtc-wrapper r2spacer container">
                 <div class="firstarea">
@@ -63,34 +36,14 @@
 
 
                 <div class="primary-content">
-                    <div class="home-logo">
-                        <div class="box">
-                            <img src="/images/open-data.png"/>
-                        </div>
-                    </div>
-                    <div class="featured">
-                        <table class="module-dark">
-                            <tr><td colspan="*">{{ self.home_search() }}</td></tr>
-                            <tr class="featured-content">
-                                <td>{{ self.home_tags() }}</td>
-                                <td>{{ self.popular() }}</td>
-                                <td>{{ self.recently_updated() }}</td></tr>
-                        </table>
-                    </div>
+                    {% block primary_content %}
+                        {% snippet "home/layout{0}.html".format(homepage_style) %}
+                    {% endblock %}
                 </div>
 
             </div>
         </div>
     </div>
-    {# cds
-        <div id="region3wrap" class="xtc-bodygutter" role="main">
-        <div id="region3pad" class="xtc-wrapperpad">
-            <div id="content" class="row-fluid xtc-wrapper r3spacer container">
-                {{ self.secondary_content() }}
-            </div>
-        </div>
-    </div>
-    #}
 
 {% endblock -%}
 

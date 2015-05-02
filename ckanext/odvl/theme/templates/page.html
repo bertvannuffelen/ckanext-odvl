@@ -1,14 +1,10 @@
 {% ckan_extends %}
 
-{% block page %}
-  {{ super() }}
-{% endblock %}
-
 {# The content block allows you to replace the content of the page if needed #}
 {%- block content %}
     <div id="region2wrap" class="xtc-bodygutter" role="main">
         <div id="region2pad" class="xtc-wrapperpad">
-            <div id="content" class="row-fluid xtc-wrapper r2spacer container">
+            <div id="content" class="xtc-wrapper r2spacer container">
                 {{ self.main_content() }}
             </div>
         </div>
@@ -23,8 +19,6 @@
     {{ self.toolbar() }}
 
     <div class="wrapper{{ self.wrapper_class() }}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
-
-        {{ self.actions() }}
 
         {{ self.pre_primary() }}
 

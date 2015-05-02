@@ -21,6 +21,7 @@ class ODVLExtension(p.SingletonPlugin):
         config['ckan.favicon'] = 'http://opendataforum.info/templates/tribune2/favicon.ico'
         #config['ckan.i18n_directory'] = 'theme';
         config['ckan.i18n_directory'] = os.path.join(os.path.dirname(inspect.getouterframes(inspect.currentframe())[0][1]),'theme')
+        config['ckan.homepage_style'] = '-odvl'
 
         p.toolkit.add_template_directory(config, 'theme/templates')
         p.toolkit.add_public_directory(config, 'theme/public')
