@@ -4,6 +4,7 @@ import ckan.plugins as p
 import ckanext.odvl.helpers as helpers
 import ckan.logic as logic
 import ckan.new_authz as new_authz
+import traceback
 import ckan.lib.dictization.model_dictize as model_dictize
 from ckan import model
 
@@ -11,43 +12,46 @@ from ckan import model
 @logic.side_effect_free
 def members_of_orgs(context, data_dict=None):
 
-    model = context['model']
-    currentuser = context['user']
+    try:
 
-    #logic.check_access('members_of_orgs', context, data_dict)
-    sysadmin = new_authz.is_sysadmin(currentuser)
+        model = context['model']
+        currentuser = context['user']
 
-    if sysadmin:
-        users = model.Session.query(model.User) \
-            .filter(model.User.state == 'active')
+        #logic.check_access('members_of_orgs', context, data_dict)
+        sysadmin = new_authz.is_sysadmin(currentuser)
 
-        user_list = []
+        if sysadmin:
+            users = model.Session.query(model.User) \
+                .filter(model.User.state == 'active')
 
-        for user in users.all():
-            if (user):
-                members = model.Session.query(model.Member) \
-                    .filter(model.Member.table_name == 'user') \
-                    .filter(model.Member.capacity.isnot(None)) \
-                    .filter(model.Member.table_id == user.id) \
-                    .filter(model.Member.state == 'active').all()
-                if (len(members)>0):
-                    user_dict = {
-                        'name' : user.name,
-                        'fullname' : user.fullname,
-                        'email' : user.email}
-                    user_dict['orgs'] = []
-                    for role in members:
-                        org = model.Session.query(model.Group.name)\
-                            .filter(model.Group.is_organization == True) \
-                            .filter(model.Group.id == role.group_id) \
-                            .filter(model.Group.state == 'active')\
-                            .first()
-                        user_dict['orgs'].append(
-                            {'role' : role.capacity,
-                             'org_name' : org.name})
-                    user_list.append(user_dict)
-        return user_list
+            user_list = []
 
+            for user in users.all():
+                if (user):
+                    members = model.Session.query(model.Member) \
+                        .filter(model.Member.table_name == 'user') \
+                        .filter(model.Member.capacity.isnot(None)) \
+                        .filter(model.Member.table_id == user.id) \
+                        .filter(model.Member.state == 'active').all()
+                    if (len(members)>0):
+                        user_dict = {
+                            'name' : user.name,
+                            'fullname' : user.fullname,
+                            'email' : user.email}
+                        user_dict['orgs'] = []
+                        for role in members:
+                            org = model.Session.query(model.Group.name)\
+                                .filter(model.Group.is_organization == True) \
+                                .filter(model.Group.id == role.group_id) \
+                                .filter(model.Group.state == 'active')\
+                                .first()
+                            user_dict['orgs'].append(
+                                {'role' : role.capacity,
+                                 'org_name' : org.name})
+                        user_list.append(user_dict)
+            return user_list
+    except:
+        print traceback.format_exc()
 
 class ODVLExtension(p.SingletonPlugin):
     p.implements(p.IConfigurer, inherit=True)
