@@ -45,10 +45,12 @@ def members_of_orgs(context, data_dict=None):
                                 .filter(model.Group.id == role.group_id) \
                                 .filter(model.Group.state == 'active')\
                                 .first()
-                            user_dict['orgs'].append(
-                                {'role' : role.capacity,
-                                 'org_name' : org.name})
-                        user_list.append(user_dict)
+                            if org:
+                                user_dict['orgs'].append(
+                                    {'role' : role.capacity,
+                                     'org_name' : org.name})
+                        if len(user_dict['orgs'])>0:
+                            user_list.append(user_dict)
             return user_list
     except:
         print traceback.format_exc()
