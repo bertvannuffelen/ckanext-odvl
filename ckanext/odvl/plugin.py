@@ -2,10 +2,12 @@ import os
 import inspect
 import ckan.plugins as p
 import ckanext.odvl.helpers as helpers
+import ckanext.hierarchy as hierarchy
 import ckan.logic as logic
 import ckan.new_authz as new_authz
 import traceback
 import ckan.lib.dictization.model_dictize as model_dictize
+from ckanext.hierarchy.model import GroupTreeNode
 from ckan import model
 
 
@@ -55,6 +57,74 @@ def members_of_orgs(context, data_dict=None):
     except:
         print traceback.format_exc()
 
+@logic.side_effect_free
+def organization_list(context, data_dict):
+
+    currentuser = context['user']
+    sysadmin = new_authz.is_sysadmin(currentuser)
+
+    logic.check_access('organization_list', context, data_dict)
+    data_dict['groups'] = data_dict.pop('organizations', [])
+    data_dict['type'] = 'organization'
+
+    orgs = logic.action.get._group_or_org_list(context, data_dict, is_org=True)
+
+    if (not sysadmin):
+        orgs = [org for org in orgs if org['package_count'] > 0]
+
+    return orgs
+
+@logic.side_effect_free
+def org_tree_filtered(context, data_dict):
+    tree = hierarchy.logic.action.group_tree(context, data_dict)
+
+    group_counts = model_dictize.get_group_dataset_counts()['owner_org']
+
+    return [org for org in tree if org['id'] in group_counts]
+
+@logic.side_effect_free
+def group_tree_filtered(context, data_dict):
+    model = context['model']
+    group_type = data_dict.get('type', 'group')
+
+    group_counts = model_dictize.get_group_dataset_counts()['owner_org']
+
+    filtered_groups = []
+    for group in model.Group.get_top_level_groups(type=group_type):
+        branch = _group_tree_branch(group, type=group_type, group_counts=group_counts)
+        if len(branch['children']) > 0 or branch['id'] in group_counts:
+            filtered_groups.append(branch)
+
+    return filtered_groups
+
+def _group_tree_branch(root_group, highlight_group_name=None, type='group', group_counts=None):
+    '''Returns a branch of the group tree hierarchy, rooted in the given group.
+
+    :param root_group_id: group object at the top of the part of the tree
+    :param highlight_group_name: group name that is to be flagged 'highlighted'
+    :returns: the top GroupTreeNode of the tree
+    '''
+    nodes = {}  # group_id: GroupTreeNode()
+    root_node = nodes[root_group.id] = GroupTreeNode(
+        {'id': root_group.id,
+         'name': root_group.name,
+         'title': root_group.title})
+    if root_group.name == highlight_group_name:
+        nodes[root_group.id].highlight()
+        highlight_group_name = None
+    for group_id, group_name, group_title, parent_id in \
+            root_group.get_children_group_hierarchy(type=type):
+        node = GroupTreeNode({'id': group_id,
+                              'name': group_name,
+                              'title': group_title})
+        if not group_counts or group_id in group_counts:
+            nodes[parent_id].add_child_node(node)
+            if highlight_group_name and group_name == highlight_group_name:
+                node.highlight()
+            nodes[group_id] = node
+    return root_node
+
+
 class ODVLExtension(p.SingletonPlugin):
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.ITemplateHelpers)
@@ -63,7 +133,9 @@ class ODVLExtension(p.SingletonPlugin):
 
     def get_actions(self):
         return {
-            'members_of_orgs' : members_of_orgs
+            'members_of_orgs' : members_of_orgs,
+            'organization_list' : organization_list,
+            'group_tree_filtered': group_tree_filtered
         }
 
     def update_config(self, config):
