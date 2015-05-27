@@ -63,11 +63,7 @@ def organization_list(context, data_dict):
     currentuser = context['user']
     sysadmin = new_authz.is_sysadmin(currentuser)
 
-    logic.check_access('organization_list', context, data_dict)
-    data_dict['groups'] = data_dict.pop('organizations', [])
-    data_dict['type'] = 'organization'
-
-    orgs = logic.action.get._group_or_org_list(context, data_dict, is_org=True)
+    orgs = logic.action.get.organization_list(context, data_dict)
 
     if (not sysadmin):
         orgs = [org for org in orgs if org['package_count'] > 0]
@@ -75,15 +71,10 @@ def organization_list(context, data_dict):
     return orgs
 
 @logic.side_effect_free
-def org_tree_filtered(context, data_dict):
-    tree = hierarchy.logic.action.group_tree(context, data_dict)
-
-    group_counts = model_dictize.get_group_dataset_counts()['owner_org']
-
-    return [org for org in tree if org['id'] in group_counts]
-
-@logic.side_effect_free
 def group_tree_filtered(context, data_dict):
+    currentuser = context['user']
+    sysadmin = new_authz.is_sysadmin(currentuser)
+
     model = context['model']
     group_type = data_dict.get('type', 'group')
 
@@ -91,8 +82,8 @@ def group_tree_filtered(context, data_dict):
 
     filtered_groups = []
     for group in model.Group.get_top_level_groups(type=group_type):
-        branch = _group_tree_branch(group, type=group_type, group_counts=group_counts)
-        if len(branch['children']) > 0 or branch['id'] in group_counts:
+        branch = _group_tree_branch(group, type=group_type, group_counts=None if sysadmin else group_counts)
+        if len(branch['children']) > 0 or branch['id'] in group_counts or sysadmin:
             filtered_groups.append(branch)
 
     return filtered_groups
