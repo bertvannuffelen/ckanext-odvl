@@ -428,3 +428,7 @@ a.btn.dropdown-toggle.btn-primary {
 .embedded-content h1 {
     margin: 15px 0px 3px 0;
 }
+
+.embedded-content {
+    margin-bottom: 15px;
+}
