@@ -200,4 +200,8 @@ header nav .block-menu li .menu-item-wrapper {
     font-size: 130%;
 }
 
+.embedded-content h1 {
+    margin: 15px 0px 3px 0;
+}
+
 
