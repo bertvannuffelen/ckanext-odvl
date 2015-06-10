@@ -3038,7 +3038,7 @@ msgstr "Extra Informatie"
 #: ckan/templates/package/snippets/additional_info.html:13
 #: ckan/templates_legacy/package/read_core.html:63
 msgid "Source"
-msgstr "Bron"
+msgstr "Bijsluiter"
 
 #: ckan/templates/package/snippets/additional_info.html:32
 #: ckan/templates/package/snippets/additional_info.html:37
