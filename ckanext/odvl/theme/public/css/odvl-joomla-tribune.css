@@ -27,6 +27,10 @@
     }
 }
 
+.suckerfish ul.menu, .dualfish ul.menu {
+    z-index: 1000!important;
+}
+
 .resource-list {
     margin-top: 0;
 }
@@ -419,4 +423,8 @@ a.btn.dropdown-toggle.btn-primary {
     background-image: -o-linear-gradient(top, #30778d, #085871)!important;
     background-image: linear-gradient(to bottom, #30778d, #085871)!important;
     background-repeat: repeat-x!important;
+}
+
+.embedded-content h1 {
+    margin: 15px 0px 3px 0;
 }
