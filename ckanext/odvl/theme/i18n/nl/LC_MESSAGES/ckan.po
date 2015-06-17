@@ -2980,7 +2980,7 @@ msgstr "Licentie"
 #: ckanext/organizations/templates_legacy/organizations/history.html:32
 #: ckanext/organizations/templates_legacy/organizations/package_form.html:202
 msgid "Author"
-msgstr "Auteur"
+msgstr "Eigenaar/Contactpunt"
 
 #: ckan/templates/package/search.html:4
 msgid "Search for a Dataset"
