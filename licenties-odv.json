@@ -1,3 +1,4 @@
+
 [
     {
         "domain_content": false,
@@ -22,9 +23,9 @@
         "is_okd_compliant": true,
         "is_osi_compliant": false,
         "maintainer": "",
-        "status": "retired",
-        "title": "Modellicentie 1 -  CC0-verklaring - v1.0",
-        "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie 1 -  CC0-verklaring - v1 0bis.htm"
+        "status": "active",
+        "title": "Modellicentie 1 -  CC0-verklaring",
+        "url": "http://opendataforum.info/Docs/licenties/CC0.htm"
     },
     {
         "domain_content": false,
@@ -38,6 +39,19 @@
         "status": "retired",
         "title": "Modellicentie 2 - Gratis Open Data Licentie - v1.0",
         "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%202%20-%20Gratis%20Open%20Data%20Licentie%20-%20v1.0.htm"
+    },
+    {
+        "domain_content": false,
+        "domain_data": true,
+        "domain_software": false,
+        "family": "",
+        "id": "gratis-open-data-licentie-1.1",
+        "is_okd_compliant": true,
+        "is_osi_compliant": false,
+        "maintainer": "",
+        "status": "retired",
+        "title": "Modellicentie 2 - Gratis Open Data Licentie - v1.1",
+        "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%202%20-%20Gratis%20Open%20Data%20Licentie%20-%20v1.1.htm"
     },
     {
         "domain_content": false,
@@ -74,7 +88,7 @@
         "is_okd_compliant": true,
         "is_osi_compliant": false,
         "maintainer": "",
-        "status": "active",
+        "status": "retired",
         "title": "Modellicentie 1 -  CC0-verklaring - v1.2",
         "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%201%20-%20%20CC0-verklaring%20-%20v1%202bis.htm"
     },
@@ -89,7 +103,7 @@
         "maintainer": "",
         "status": "active",
         "title": "Modellicentie 2 - Gratis Open Data Licentie - v1.2",
-        "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%202%20-%20Gratis%20Open%20Data%20Licentie%20-%20v1.2.htm"
+        "url": "http://opendataforum.info/Docs/licenties/GOD.htm"
     },
     {
         "domain_content": false,
@@ -102,7 +116,7 @@
         "maintainer": "",
         "status": "active",
         "title": "Modellicentie 3 - Open Data Licentie tegen Billijke Vergoeding - v1.2",
-        "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%203%20-%20Open%20Data%20Licentie%20tegen%20Billijke%20Vergoeding%20-%20v1.2.htm"
+        "url": "http://opendataforum.info/Docs/licenties/BV.htm"
     },
     {
         "domain_content": false,
@@ -115,6 +129,6 @@
         "maintainer": "",
         "status": "active",
         "title": "Modellicentie 4a+4b - Gratis Open Data Licentie voor Niet-Commercieel Hergebruik en Open Data Licentie voor Commercieel Hergebruik - v1.2",
-        "url": "http://opendataforum.info/Docs/LICENTIES_2014/Modellicentie%204a+4b%20-%20Gratis%20Open%20Data%20Licentie%20voor%20Niet-Commercieel%20Hergebruik%20en%20OpenData%20Licentie%20voor%20Commercieel%20Hergebruik%20-%20v1.2.htm"
+        "url": "http://opendataforum.info/Docs/licenties/GOD_BV.htm"
     }
 ]
