@@ -134,7 +134,12 @@ class ODVLExtension(p.SingletonPlugin):
         #config['ckan.site_logo'] = '/images/logo04.gif'
         #config['ckan.site_intro_text'] = 'test intro'
         # Defining and hiding the spatial extra field
-        config['ckan.extra_resource_fields'] = 'spatial'
+        if ('ckan.extra_resource_fields' in config):
+            if ('spatial' not in config['ckan.extra_resource_fields']):
+                config['ckan.extra_resource_fields'] += ' spatial'
+        else:
+            config['ckan.extra_resource_fields'] = 'spatial'
+
         config['package_hide_extras'] = 'spatial'
         config['search.facets'] = 'groups tags res_format'
         config['ckan.locale_default'] = 'nl'
