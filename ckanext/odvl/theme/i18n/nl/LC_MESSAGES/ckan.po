@@ -5994,6 +5994,9 @@ msgstr "Geen score"
 msgid "Most Edited Datasets"
 msgstr "Meest bewerkte dataset"
 
+msgid "Most Viewed Datasets"
+msgstr "Meest bekeken dataset"
+
 #: ckanext/stats/templates/ckanext/stats/index.html:90
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
 msgid "Number of edits"
