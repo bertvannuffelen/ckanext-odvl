@@ -27,5 +27,8 @@ setup(
         [ckan.plugins]
 	# Add plugins here, eg
 	odvl_extension=ckanext.odvl.plugin:ODVLExtension
+
+	    [ckan.rdf.profiles]
+    vl_dcat_ap=ckanext.odvl.profiles:VLDCATAPProfile
 	""",
 )

@@ -140,7 +140,7 @@ class ODVLExtension(p.SingletonPlugin):
         else:
             config['ckan.extra_resource_fields'] = 'spatial'
 
-        config['package_hide_extras'] = 'spatial'
+        config['package_hide_extras'] = 'spatial guid uri'
         config['search.facets'] = 'groups tags res_format'
         config['ckan.locale_default'] = 'nl'
         config['ckan.locale_order'] = config['ckan.locales_offered'] = 'nl fr de en'

@@ -6082,3 +6082,26 @@ msgstr "Populaire Datasets"
 #: ckanext-odvl/ckanext/odvl/theme/templates/home/index.html:26
 msgid "Recently Updated"
 msgstr "Onlangs bijgewerkt"
+
+
+# Titles for extra fields from DCAT imports
+msgid "issued"
+msgstr "Datum publicatie"
+
+msgid "modified"
+msgstr "Laatst gewijzigd"
+
+msgid "version_notes"
+msgstr "Versie Nota's"
+
+msgid "language"
+msgstr "Taal"
+
+msgid "frequency"
+msgstr "Update frequentie"
+
+msgid "conforms_to"
+msgstr "Compliant met standard"
+
+msgid "conforms_to"
+msgstr "Compliant met standard"
