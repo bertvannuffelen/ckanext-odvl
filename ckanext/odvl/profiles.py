@@ -1,5 +1,6 @@
 from rdflib.namespace import Namespace
 from ckanext.dcat.profiles import RDFProfile
+import ckan.model as model
 
 DCT = Namespace("http://purl.org/dc/terms/")
 
@@ -24,11 +25,17 @@ class VLDCATAPProfile(RDFProfile):
         if not dataset_dict['resources'][0]['url']:
             dataset_dict['resources'][0]['url'] = dataset_dict['resources'][0]['uri']
 
+        licenses = model.Package.get_license_register().licenses
+
         # Licenses : if no license, take license from first resoure
         if not 'license_id' in dataset_dict and 'resources' in dataset_dict:
             for res in dataset_dict['resources']:
                 if 'license' in res:
-                    dataset_dict['license_id'] = res['license']
+                    matching_license_id = next((lic for lic in licenses if (lic['id'] == res['license'] or lic['url'] == res['license']) ), None)
+                    if matching_license_id:
+                        dataset_dict['license_id'] = matching_license_id
+                    else:
+                        dataset_dict['license_id'] = res['license']
                     break
 
         return dataset_dict
