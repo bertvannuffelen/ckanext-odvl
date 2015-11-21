@@ -1,0 +1,114 @@
+/*
+Useful mixins and extends
+*/
+
+// Hide element
+%hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Unhide element
+%hidden-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: visible;
+}
+
+// clearfix
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+%absolute-before {
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+%bullet-before {
+  &:before {
+    @extend %icon-bullet;
+    content: ' ';
+    display: inline-block;
+    width: 0.7rem;
+    height: 1.1rem;
+    margin-right: 0.8rem;
+    background-position: center;
+  }
+}
+
+%bullet-before-absolute {
+  &:before {
+    @extend %icon-bullet;
+    content: ' ';
+    width: 0.7rem;
+    height: 1.1rem;
+    position: absolute;
+    background-position: center;
+  }
+}
+
+%icon-after {
+  &:after {
+    content: ' ';
+    display: inline-block;
+    margin-left: 0.8rem;
+    background-position: center;
+  }
+}
+
+%icon-after-absolute {
+  &:after {
+    content: ' ';
+    right: 0;
+    position: absolute;
+    background-position: center;
+  }
+}
+
+%bullet-before-absolute-light {
+  @extend %bullet-before-absolute;
+  &:before {
+    @extend %background-bullet-light;
+  }
+}
+
+
+// responsiveness
+@mixin respond-to($media) {
+  @if $media == small {
+    @media screen and ($mobileRule: $page-min-width - 1) {
+      @content;
+    }
+  } @else if $media == medium {
+    @media screen and (max-width: $breakpoint) {
+      @content;
+    }
+  } @else if $media == large {
+    @media screen and (min-width: $page-min-width) {
+      @content;
+    }
+  } @else if $media == xlarge {
+    @media screen and (min-width: $box-max-width+1) {
+      @content;
+    }
+  } @else if $media == jump-narrow {
+    @media screen and (max-width: $breakpoint-jump-narrow) {
+      @content;
+    }
+  }
+}
