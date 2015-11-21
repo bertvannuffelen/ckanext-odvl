@@ -1,36 +1,31 @@
 {% ckan_extends %}
 
-{% block styles %}
+{% block meta %}
+    {% block meta_viewport %}<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />{% endblock %}
+    {{ super() }}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, FOLLOW">
+    <meta http-equiv="cleartype" content="on">
+{% endblock %}
 
-    <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&file=default" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&group=typo" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&group=grid" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&group=style3" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&group=css3effects" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/system/css/system.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/system/css/general.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/templates/tribune2/XTC/css.php?id=14&file=template" type="text/css" />
+{% block styles %}
 
     {{ super() }}
     {# add extra stylesheets here if needed #}
     <!--
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/templates/tribune_featurednews_user1/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/css/wall.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/plugins/content/jw_allvideos/jw_allvideos/tmpl/Classic/css/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/templates/tribune_videowall_mediaallnews/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/components/com_jxtcpowertabs/powertabs.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2categorywall/templates/tribune_categories_right_right2/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2categorywall/css/wall.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/templates/tribune_category_news/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/templates/tribune_morenews_user27/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2avatarwall/templates/tribune_contributors_right_right6/template.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2avatarwall/css/wall.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2commentswall/css/wall.css" type="text/css" />
-    <link rel="stylesheet" href="http://opendataforum.info/modules/mod_jxtc_k2contentwall/templates/tribune_breakingnews_right2_right/template.css" type="text/css" />
+    <link rel="stylesheet" href="..." type="text/css" />
     -->
 
-    {% resource 'ckanext-odvl/joomla_theme' %}
-    {#   <link rel="stylesheet" href="/css/odvl-joomla-tribune.css"/>  #}
+    <link rel="stylesheet" href="http://d201gzvprbtpxy.cloudfront.net/sites/all/themes/portal_q4_2013/vlaanderen-ui/vlaanderen-ui.css">
+    {% resource 'ckanext-odvl/odvl_theme' %}
+{% endblock %}
+
+{% block links %}
+    {{ super() }}
+    <link rel="apple-touch-icon-precomposed" href="http://d201gzvprbtpxy.cloudfront.net/sites/all/themes/portal_q4_2013/img/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://d201gzvprbtpxy.cloudfront.net/sites/all/themes/portal_q4_2013/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://d201gzvprbtpxy.cloudfront.net/sites/all/themes/portal_q4_2013/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://d201gzvprbtpxy.cloudfront.net/sites/all/themes/portal_q4_2013/img/apple-touch-icon-144x144-precomposed.png">
 {% endblock %}
 
 

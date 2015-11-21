@@ -1,0 +1,64 @@
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    text-rendering: inherit;
+}
+
+body {
+    color: inherit;
+}
+
+.avatar .image .gravatar {
+    display: inherit;
+    height: auto;
+    width: auto;
+    vertical-align: middle;
+}
+
+[role=main], .main {
+    padding-top: inherit;
+    background: inherit;
+}
+
+.toolbar {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.search-form h2 {
+    font-size: inherit;
+    line-height: inherit;
+    color:inherit;
+    margin-bottom: inherit;
+    margin-top: inherit;
+}
+
+.search-form .filter-list {
+    line-height: inherit
+}
+
+.filter-results--tags-list {
+    display: inline-block;
+}
+
+.filter-results--tags-list .facet.filter-results--tags-list-item {
+    background: inherit;
+    border-radius: inherit;
+    display: inline-block;
+    color: inherit;
+}
+
+.filter__field .module-heading {
+    /* clones style from .filter__form .filter__field .filter__field__label */
+    font-size: 2rem;
+    /* margin-bottom: 1rem; */
+    font-weight: 500;
+    line-height: 1.25;
+
+    /* override default CKAN module-heading */
+    padding: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background-color: inherit;
+    border-top: inherit;
+    border-bottom: inherit;
+}

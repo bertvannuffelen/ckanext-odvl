@@ -459,7 +459,7 @@ html.no-js{
 		font-weight: 500;
 		color: #737373;
 
-		.user-actions--action{
+		.user-actions--action, a{
 			text-decoration: none;
 			&:hover{
 				text-decoration: underline;
@@ -469,7 +469,7 @@ html.no-js{
 		&:not(:last-child){
 			margin: 0 1.8rem 0 0;
 
-			.user-actions--action{
+			.user-actions--action, a{
 				position: relative;
 				&:before{
 					content: "";
@@ -840,7 +840,7 @@ html.no-js{
 		.filter-results--tags-list-item{
 			background: $athens-gray;
 			border-radius: 1.5rem;
-			margin: 0 .8rem 1rem 0;
+			/* margin: 0 .8rem 1rem 0; less margins on tags display */
 			display: inline-block;
 			font-size: 1.4rem;
 			padding: .1rem 0 .1rem 1.5rem;

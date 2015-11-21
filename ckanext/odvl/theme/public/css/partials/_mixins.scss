@@ -41,7 +41,7 @@ Useful mixins and extends
 
 %bullet-before {
   &:before {
-    @extend %icon-bullet;
+    @extend %icon-bullet !optional;
     content: ' ';
     display: inline-block;
     width: 0.7rem;
@@ -53,7 +53,7 @@ Useful mixins and extends
 
 %bullet-before-absolute {
   &:before {
-    @extend %icon-bullet;
+    @extend %icon-bullet !optional;
     content: ' ';
     width: 0.7rem;
     height: 1.1rem;
@@ -81,9 +81,9 @@ Useful mixins and extends
 }
 
 %bullet-before-absolute-light {
-  @extend %bullet-before-absolute;
+  @extend %bullet-before-absolute !optional;
   &:before {
-    @extend %background-bullet-light;
+    @extend %background-bullet-light !optional;
   }
 }
 

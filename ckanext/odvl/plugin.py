@@ -144,7 +144,9 @@ class ODVLExtension(p.SingletonPlugin):
         config['search.facets'] = 'groups tags res_format'
         config['ckan.locale_default'] = 'nl'
         config['ckan.locale_order'] = config['ckan.locales_offered'] = 'nl fr de en'
-        config['ckan.favicon'] = 'http://opendataforum.info/templates/tribune2/favicon.ico'
+        config['ckan.site_title'] = 'Vlaanderen.be'
+        config['ckan.template_title_deliminater'] = '|'
+        config['ckan.favicon'] = 'http://d201gzvprbtpxy.cloudfront.net/sites/all/themes/portal_q4_2013/favicon.ico'
         #config['ckan.i18n_directory'] = 'theme';
         config['ckan.i18n_directory'] = os.path.join(os.path.dirname(inspect.getouterframes(inspect.currentframe())[0][1]),'theme')
         config['ckan.homepage_style'] = '-odvl'

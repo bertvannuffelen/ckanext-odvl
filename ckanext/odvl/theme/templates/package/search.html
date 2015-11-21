@@ -1,9 +1,125 @@
 {% ckan_extends %}
 
+
+{% block page_primary_action %}
+    {% if h.check_access('package_create') %}
+        <div class="page_primary_action">
+            {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block primary_content %}
+    <div class="filter-results">
+        {% block search_title %}
+            {% if not no_title %}
+                <h2 class="filter-results-found">{% snippet 'snippets/search_result_text.html', query=c.s, count=c.page.item_count, type='dataset' %}</h2>
+            {% endif %}
+        {% endblock %}
+
+            {% block form %}
+                {% set sorting = [
+          (_('Relevance'), 'score desc, metadata_modified desc'),
+          (_('Name Ascending'), 'title_string asc'),
+          (_('Name Descending'), 'title_string desc'),
+          (_('Last Modified'), 'metadata_modified desc'),
+          (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
+                        %}
+
+
+
+                <form class="filter-results--order-form" method="get" data-module="select-switch">
+
+                    <input type="hidden"name="q" value="{{ query }}">
+
+                    <div class="order-form-section--block form-select control-group control-order-by">
+                        <select class="select" id="field-order-by" name="sort">
+                            {% for label, value in sorting %}
+                                {% if label and value %}
+                                    <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        {% block search_sortby_button %}
+                            <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
+                        {% endblock %}
+                    </div>
+                </form>
+
+            {% endblock %}
+
+
+        {% block search_facets %}
+            {% set facets = {
+                          'fields': c.fields_grouped,
+                          'search': c.search_facets,
+                          'titles': c.facet_titles,
+                          'translated_fields': c.translated_fields,
+                          'remove_field': c.remove_field }
+                    %}
+            {% if facets %}
+                <div class="filter-list filter-results--tags-list">
+                    {% for field in facets.fields %}
+                        {% set search_facets_items = facets.search.get(field)['items'] %}
+                        <span class="facet filter-results--tags-list-item">{{ facets.titles.get(field) }}:</span>
+                        <ul class="filter-results--tags-list">
+                            {% for value in facets.fields[field] %}
+                                <li class="filter-results--tags-list-item">
+                                    {%- if facets.translated_fields and facets.translated_fields.has_key((field,value)) -%}
+                                        {{ facets.translated_fields[(field,value)] }}
+                                    {%- else -%}
+                                        {{ h.list_dict_filter(search_facets_items, 'name', 'display_name', value) }}
+                                    {%- endif %}
+                                    <a href="{{ facets.remove_field(field, value) }}" class="tags-list-item--action-close" title="{{ _('Remove') }}">✕</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+                <a class="show-filters btn">{{ _('Filter Results') }}</a>
+            {% endif %}
+        {% endblock %}
+
+        {% block package_search_results_list %}
+            {{ h.snippet('snippets/package_list.html', packages=c.page.items, item_class='dataset-item filter-results-section--block') }}
+        {% endblock %}
+
+        {{ self.page_pagination() }}
+
+    {{ self.package_search_results_api() }}
+    </div>
+{% endblock %}
+
 {% block secondary_content %}
 
-{# Add the geospatial search widget #}
-{% snippet "spatial/snippets/spatial_query.html", default_extent="[[50.3, 3.3], [51.0, 6.0]]" %}
-{{ super() }}
+    <div class="filter u-hidden-mobile">
+        <p class="filter__intro">Verfijn uw zoekresultaat</p>
+    </div>
+    <div class="filter__form">
+        <div class="js-accordion">
+            <div class="filter__field">
+                <form class="dataset-search search-aside" method="GET" data-module="select-switch">
+                  <span class="control-group">
+                      <h2 class="module-heading filter__field__label">{{ _('Search') }}</h2>
+                    <input type="text" class="search input-field input-field--block" name="q" value="{{ q }}" autocomplete="off" placeholder="{{ _('Search datasets...') }}" />
+                  </span>
+                </form>
+            </div>
+
+            <div class="filters js-accordion__content">
+                {# Add the geospatial search widget #}
+                <div class="filter__field">
+                    {% snippet "spatial/snippets/spatial_query.html", default_extent="[[50.3, 3.3], [51.0, 6.0]]" %}
+                </div>
+
+                {% for facet in c.facet_titles %}
+                    <div class="filter__field">
+                        {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
+                    </div>
+                {% endfor %}
+                <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

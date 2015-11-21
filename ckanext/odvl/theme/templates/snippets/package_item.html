@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block heading_title %}
+    <h1>
+        {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name), class='filter-results-section--block-link') }}
+    </h1>
+{% endblock %}
+
+
