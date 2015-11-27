@@ -968,8 +968,10 @@ html.no-js{
 		display: inline-block;
 
 		a{
-			background: $athens-gray;
-			color: $dove-gray;
+			/*
+             remove this to allow mimetype-specific colors
+			background: $athen s-gray;
+			color: $dove-gray; */
 			text-decoration: none;
 			margin: 0 .5rem .5rem 0;
 			padding: .3rem .8rem;
@@ -989,7 +991,7 @@ html.no-js{
  * Open data sets -- NEW COMPONENT - Pagination
  * ------------------------------------------------------------------------- */
 
- .pagination-list{
+ div.pagination>ul{ /* adapt to align on CKAN style and structure (div.pagination>ul>li)*/
  	text-align: right;
 
  	&.pagination-list--align-left{
@@ -1000,7 +1002,7 @@ html.no-js{
  		text-align: center;
  	}
 
- 	.pagination-list-item{
+ 	li{
  		display: inline-block;
  		margin: 0 .5rem;
  		font-size: 1.8rem;
@@ -1018,18 +1020,18 @@ html.no-js{
  			}
  		}
 
+        &.active{
+          a{
+            color: $mine-shaft;
+          }
+        }
+
  		&.pagination-list-item--action-prev{
 			margin: 0 1.5rem 0 0;
  		}
 
  		&.pagination-list-item--action-next{
  			margin: 0 0 0 1.5rem;
- 		}
-
- 		&.pagination-list-item--current{
- 			a{
- 				color: $mine-shaft;
- 			}
  		}
 
  		&.pagination-list-item--number{

@@ -84,7 +84,9 @@
             {{ h.snippet('snippets/package_list.html', packages=c.page.items, item_class='dataset-item filter-results-section--block') }}
         {% endblock %}
 
-        {{ self.page_pagination() }}
+        <div class="more-link">
+            {{ self.page_pagination() }}
+        </div>
 
     {{ self.package_search_results_api() }}
     </div>

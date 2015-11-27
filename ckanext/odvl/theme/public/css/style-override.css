@@ -62,3 +62,38 @@ body {
     border-top: inherit;
     border-bottom: inherit;
 }
+
+label:after {
+    content: initial;  /* override colon after label in CKAN */
+}
+
+.tags-list .tags-list-item a {
+    border-radius: 0px;
+    text-shadow: none;
+    display: inline;
+}
+
+/*
+.pagination ul > li > a, .pagination ul > li > span {
+    float: left;
+    padding: inherit;
+    line-height: inherit;
+    text-decoration: inherit;
+    background-color: inherit;
+    border: inherit;
+    border-left-width: inherit;
+}
+
+.pagination ul {
+     display: inherit;
+     margin-left: inherit;
+     margin-bottom: inherit;
+     -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+     border-radius: inherit;
+     -webkit-box-shadow: inherit;
+    -moz-box-shadow: inherit;
+     box-shadow: inherit;
+}
+*/
+
