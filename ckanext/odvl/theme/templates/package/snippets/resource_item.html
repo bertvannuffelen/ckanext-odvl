@@ -1,0 +1,70 @@
+{% set can_edit = h.check_access('package_update', {'id':pkg.id }) %}
+{% set url_action = 'resource_edit' if url_is_edit and can_edit else 'resource_read' %}
+{% set url = h.url_for(controller='package', action=url_action, id=pkg.name, resource_id=res.id) %}
+
+<li class="data-file-list-item js-popup" id="popup-{{ res.id }}" data-id="{{ res.id }}">
+
+
+    <div class="data-file-list-item--icon-wrapper">
+        {#
+        <div class="data-file-list-item--icon">
+            <span class="format-label data-file-list-item--name" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">
+                {{ res.format }}
+            </span>
+        </div>
+        #}
+        <span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">
+                {{ res.format }}
+        </span>
+    </div>
+
+    <div class="data-file-list-item--content">
+        <a href="{{ url }}" title="{{ res.name or res.description }}">
+        <h2>{{ h.resource_display_name(res) | truncate(50) }}</h2>
+        {{ h.popular('views', res.tracking_summary.total, min=10) }}
+        {% if res.tracking_summary.total > 0 %}
+            <em>{{ _('{0} downloads').format(res.tracking_summary.total) }}</em>
+        {% endif %}
+        </a>
+    </div>
+    {% if not url_is_edit %}
+    <button class="data-file-list-item--download js-popup__toggle" aria-expanded="false" aria-controls="popup-{{ res.id }}"></button>
+    <ul class="dropdown-navigation__dropdown">
+        {% block resource_item_explore_links %}
+            <li>
+                <a class="dropdown-navigation__link bullet-link" href="{{ url }}">
+                    {% if res.has_views %}
+                        <i class="icon-bar-chart"></i>
+                        {{ _('Preview') }}
+                    {% else %}
+                        <i class="icon-info-sign"></i>
+                        {{ _('More information') }}
+                    {% endif %}
+                </a>
+            </li>
+            {% if res.url and h.is_url(res.url) %}
+                <li>
+                    <a class="dropdown-navigation__link bullet-link" href="{{ res.url }}" class="resource-url-analytics" target="_blank">
+                        {% if res.has_views %}
+                            <i class="icon-download"></i>
+                            {{ _('Download') }}
+                        {% else %}
+                            <i class="icon-external-link"></i>
+                            {{ _('Go to resource') }}
+                        {% endif %}
+                    </a>
+                </li>
+            {% endif %}
+            {% if can_edit %}
+                <li>
+                    <a class="dropdown-navigation__link bullet-link" href="{{ h.url_for(controller='package', action='resource_edit', id=pkg.name, resource_id=res.id) }}">
+                        <i class="icon-edit"></i>
+                        {{ _('Edit') }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endblock %}
+    </ul>
+    {% endif %}
+
+</li>

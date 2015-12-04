@@ -37,6 +37,15 @@
     <!--</div>-->
 
     <section class="region region--alt u-hidden-mobile">
+
+        {% if breadcrumb_cont %}
+            <div class="toolbar">
+            <ol class="breadcrumb">
+                {% snippet 'snippets/home_breadcrumb_item.html' %}
+                {{ breadcrumb_cont }}
+            </ol>
+            </div>
+        {% endif %}
         {% if c.userobj %}
             <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
                 <ul class="user-actions">

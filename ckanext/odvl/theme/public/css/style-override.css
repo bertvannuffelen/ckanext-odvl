@@ -96,4 +96,184 @@ label:after {
      box-shadow: inherit;
 }
 */
+.data-file-list-item--icon-wrapper .format-label
+{
+    position: relative;
+    top: 2rem;
+    margin: 0 0 2rem 2.2rem;
+}
 
+h2, h3 { /* copied from vlaanderen-ui.css */
+    font-size: 2.4rem;
+    font-family: flanders-serif;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.additional-info thead {
+    display: none
+}
+
+.additional-info .table th {
+    font-weight: inherit;
+}
+
+.activity .item p {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0 0 0 80px;
+}
+
+.activity .item {
+    position: inherit;
+    margin: inherit;
+    padding: inherit;
+}
+
+.grid-item--no-margin {
+    margin: 0!important;
+}
+
+.banner .toolbar {
+    float:left;
+    margin: 0;
+    padding: 0;
+}
+
+.page-title .toolbar {
+    float:right;
+    margin: 0;
+    padding: 0;
+}
+
+.banner .toolbar .breadcrumb {
+    float:left;
+    margin: 0 ;
+    padding: 8px 15px;
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.banner .toolbar .breadcrumb > li {
+    text-shadow: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #737373;
+}
+
+.page-title {
+
+}
+
+.page-title li:not(:last-child) {
+    display: none;
+}
+
+.page-title li {
+    list-style: none;
+    display: inline-block;
+}
+
+.page-title li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.resource-view {
+    margin-top: 0;
+    position: relative;
+}
+
+.ckanext-datapreview {
+    padding-top: 0;
+}
+
+.resource-view>a.btn {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+}
+
+/* apply vlaanderen-ui 'button' style to CKAN .btn */
+.btn {
+
+    /* override bootstrap inherited style */
+    text-shadow: none;
+    background-image: none;
+    filter: none;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-weight: inherit;
+
+    display: inline-block;
+    height: 4.5rem;
+    font-size: 1.8rem;
+    font-family: flanders-sans;
+    line-height: 4.2rem;
+    padding: 0 4rem;
+    border-top: 3px solid #0066cc;
+    background-color: #0066cc;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    outline: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.js .table tr.toggle-show-more>td {
+
+    padding-right: 0;
+    text-align: left;
+}
+
+.js .table tr.toggle-show-more {
+
+}
+
+.resource_extra_info .table td:first-child, .resource_extra_info .table th:first-child {
+    width: 30%;
+}
+
+.resource_extra_info .module-content {
+    padding: 0;
+    margin: 0;
+}
+
+.dataset-map-expanded .h1.page-title {
+    margin-bottom: 430px;
+}
+.dataset-map-expanded #dataset-map {
+    top: 80px!important;
+    margin-left: 3%!important;
+    width: 94%!important;
+    border: 0!important;
+}
+
+.dataset-map-expanded .module-heading {
+    background: #e8ebee;
+    padding: 1rem 1.5rem;
+    position: relative;
+}
+
+.dataset-map-expanded #dataset-map #dataset-map-edit-buttons {
+
+    background: #e8ebee;
+    padding: 1rem 1.5rem .4rem 1.5rem;
+    text-align: right;
+    width: 100%;
+}
+
+.dataset-map-expanded #dataset-map #dataset-map-attribution {
+    position: absolute;
+}

@@ -1,5 +1,10 @@
 {% ckan_extends %}
 
+{% block header %}
+    {% set breadcrumb_cont = self.breadcrumb_content() | trim%}
+    {% include "header.html" %}
+{% endblock -%}
+
 {% block page %}
     <noscript>
         <div class="layout layout--normal">
@@ -42,33 +47,25 @@
         {% endblock %}
 
         {% block toolbar %}
-            <div class="toolbar">
-                {% block breadcrumb %}
-                    {% if self.breadcrumb_content() | trim %}
-                        <ol class="breadcrumb">
-                            {% snippet 'snippets/home_breadcrumb_item.html' %}
-                            {% block breadcrumb_content %}{% endblock %}
-                        </ol>
-                    {% endif %}
-                {% endblock %}
-                {% if self.content_action() | trim %}
-                    <div class="content_action" style="float:right">
-                        {% block content_action %}{% endblock %}
-                    </div>
-                {% endif %}
-                {% if self.page_primary_action() | trim %}
-                    <div class="page_primary_action" style="float:right">
-                        {% block page_primary_action %}{% endblock %}
-                    </div>
-                {% endif %}
-            </div>
-        {% endblock %}
-        {#
-        {% block toolbar %}
             <div class="grid-item grid-item--a-6">
-                <h1 class="h1">{% block breadcrumb_content %}{% endblock %}</h1>
+                <h1 class="h1 page-title">
+                    <div class="toolbar">
+                        {% if self.content_action() | trim %}
+                            <div class="content_action" style="float:right">
+                                {% block content_action %}{% endblock %}
+                            </div>
+                        {% endif %}
+                        {% if self.page_primary_action() | trim %}
+                            <div class="page_primary_action" style="float:right">
+                                {% block page_primary_action %}{% endblock %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% block breadcrumb_content %}{% endblock %}
+                </h1>
             </div>
-        {% endblock %}#}
+
+        {% endblock %}
 
         {% block secondary %}
             {% if self.secondary_content()|trim != '' %}
@@ -91,7 +88,8 @@
         {% endblock %}
 
         {% if self.secondary()|trim == '' %}
-            <article class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+            <!-- <article class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium"> -->
+            <article>
         {% else %}
             <article class="grid-item grid-item--a-4 grid-item--a-6--small">
         {% endif %}
@@ -124,7 +122,7 @@
                                     </ul>
                                 </header>
                             {% endblock %}
-                            <div class="module-content">
+                            <div {# class="module-content" #}>
                                 {% block primary_content_inner %}
                                 {% endblock %}
                             </div>

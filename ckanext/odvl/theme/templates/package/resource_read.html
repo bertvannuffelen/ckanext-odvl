@@ -1,0 +1,99 @@
+{% ckan_extends %}
+
+{% block resource_read_title %}{% endblock %}
+
+{% block resource %}
+    {% block resource_inner %}
+        {{ self.resource_content() }}
+        {% block data_preview %}
+            {% block resource_view %}
+                <nav class="grid-item grid-item--a-5 grid-jump--a-2 grid-jump--a-1--medium grid-item--a-6--medium">
+                    <div class="u-spacer--large"></div>
+                    {{ self.resource_view_nav() }}
+                </nav>
+                <div class="grid-item grid-item--a-6">
+                    {{ self.resource_view_content() }}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    {% endblock %}
+{% endblock %}
+
+
+{% block resource_actions %}
+        {% block resource_actions_inner %}
+            {% if h.check_access('package_update', {'id':pkg.id }) %}
+                <div class="grid-item grid-item--a-2 grid-item--a-6--small">
+                {% link_for _('Manage'), controller='package', action='resource_edit', id=pkg.name, resource_id=res.id, class_='button button--block', icon='wrench' %}
+                </div>
+            {% endif %}
+            {% if res.url and h.is_url(res.url) %}
+                <div class="grid-item grid-item--a-2 grid-item--a-6--small">
+                    <a class="button button--block resource-url-analytics resource-type-{{ res.resource_type }}" href="{{ res.url }}">
+                        {% if res.resource_type in ('listing', 'service') %}
+                            <i class="icon-eye-open"></i> {{ _('View') }}
+                        {% elif  res.resource_type == 'api' %}
+                            <i class="icon-key"></i> {{ _('API Endpoint') }}
+                        {% elif not res.has_views or not res.can_be_previewed %}
+                            <i class="icon-external-link"></i> {{ _('Go to resource') }}
+                        {% else %}
+                            <i class="icon-download"></i> {{ _('Download') }}
+                        {% endif %}
+                    </a>
+                </div>
+            {% endif %}
+            {% if 'datastore' in g.plugins %}
+                <div class="grid-item grid-item--a-2 grid-item--a-6--small">
+                {% snippet 'package/snippets/data_api_button.html', resource=res, datastore_root_url=c.datastore_api %}
+                </div>
+            {% endif %}
+        {% endblock %}
+{% endblock %}
+
+{% block resource_content %}
+    <div class="grid-item grid-item--a-4 grid-jump--a-1--medium grid-item--a-4--medium grid-item--a-6--small grid-jump--a-1--small">
+        <p>
+        {% block resource_read_url %}
+            {{ _('URL:') }}
+                {% if res.url and h.is_url(res.url) %}
+                 <a href="{{ res.url }}" title="{{ res.url }}">{{ res.url }}</a>
+            {% elif res.url %}
+                {{ res.url }}
+            {% endif %}
+            <br/>
+        {% endblock %}
+        <div class="prose notes" property="rdfs:label">
+            {% if res.description %}
+                {{ h.render_markdown(res.description) }}
+            {% endif %}
+            {% if not res.description and c.package.notes %}
+                <h3>{{ _('From the dataset abstract') }}</h3>
+                <blockquote>{{ h.markdown_extract(c.package.get('notes')) }}</blockquote>
+                <p>{% trans dataset=c.package.title, url=h.url_for(controller='package', action='read', id=c.package['name']) %}Source: <a href="{{ url }}">{{ dataset }}</a>{% endtrans %}</p>
+            {% endif %}
+        </div>
+        </p>
+    </div>
+
+    {{ self.resource_actions() }}
+
+{% endblock %}
+
+{% block primary_content %}
+    <div class="resource_extra_info grid-item grid-item--a-5 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small table-data">
+        {{ super() }}
+    </div>
+
+    <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+        {% snippet 'package/snippets/resources_list.html', pkg=pkg, resources=pkg.resources %}
+        <div class="u-spacer--large u-spacer--clear--small"></div>
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+    {#
+    {% block resources_list %}
+        {% snippet "package/snippets/resources.html", pkg=pkg, active=res.id %}
+    {% endblock %}
+     #}
+{% endblock %}
