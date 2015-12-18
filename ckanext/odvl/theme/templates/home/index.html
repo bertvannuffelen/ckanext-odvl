@@ -58,20 +58,21 @@
 
                     <ul class="tags-list">
                         {% for tag in tags|sort(attribute='name') %}
-                            <li class="tags-list-item tags-list-item__rounded tags-list-item__size-{{ tag.count }}">
+                            <li class="tags-list-item tags-list-item__rounded">
                                 <a class="tag" data-count="{{ tag.count }}"  href="{% url_for controller='package', action='search', tags=tag.name %}"><span class="tags-list-item--inner">{{ h.truncate(tag.display_name, 22) }}</span></a>
                             </li>
                         {% endfor %}
                     </ul>
                 </div>
             </div>
+            {% resource 'ckanext-odvl/tag_cloud' %}
         </div>
 
         <div class="u-spacer"></div>
 
         <div class="layout layout--normal">
             <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
-                <h2 class="h3">{{ _('Ppopular Datasets') }}</h2>
+                <h2 class="h3">{{ _('Popular Datasets') }}</h2>
             </div>
 
             <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">

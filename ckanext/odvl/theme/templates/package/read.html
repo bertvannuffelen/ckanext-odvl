@@ -20,7 +20,7 @@
 
 
         <div style="display:inline-block" class="organisation-meta">
-            <h2 class="organisation-meta--title"><i class="icon-building"></i> {{ _('Organization') }}</h2>
+            <h2 class="organisation-meta--title">{{ _('Organization') }}</h2>
             <div class="image" style="display:inline-block; vertical-align: top;">
                 <a href="{{ url }}">
                     <img src="{{ org.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" width="50" alt="{{ org.name }}" />
@@ -32,8 +32,10 @@
 {% endblock %}
 
 {% block package_license %}
-    <h2 class="organisation-meta--title"><i class="icon-medium icon-lock"></i> {{ _('License') }}</h2>
+    <div class="package_license_info">
+    <h2 class="organisation-meta--title">{{ _('License') }}</h2>
     {% snippet "snippets/license.html", pkg_dict=pkg, text_only=true %}
+    </div>
 {% endblock %}
 
 
@@ -75,7 +77,7 @@
              {% if dataset_extent %}
              <div class="grid-item grid-item--a-4 grid-item--no-margin grid-item--a-4--small">
                  <section class="dataset-map organisation-meta">
-                     <h2 class="organisation-meta--title"><i class="icon-medium icon-globe"></i> {{ _('Dataset extent') }}</h2>
+                     <h2 class="organisation-meta--title">{{ _('Dataset extent') }}</h2>
                      {% snippet "spatial/snippets/dataset_map_base.html", extent=dataset_extent %}
                  </section>
              </div>

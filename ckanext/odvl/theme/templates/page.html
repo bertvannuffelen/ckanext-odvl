@@ -1,5 +1,15 @@
 {% ckan_extends %}
 
+{% block skip %}
+    <div class="layout layout--normal">
+        <div class="layout__wrapper">
+            <div class="skiplink">
+                <a href="#content">{{ _('Skip to content') }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block header %}
     {% set breadcrumb_cont = self.breadcrumb_content() | trim%}
     {% include "header.html" %}
