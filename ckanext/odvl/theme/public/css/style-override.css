@@ -15,7 +15,6 @@ body {
 }
 
 [role=main], .main {
-    padding-top: inherit;
     background: inherit;
 }
 
@@ -113,12 +112,15 @@ label:after {
     margin: 0 0 2rem 2.2rem;
 }
 
-h2, h3 { /* copied from vlaanderen-ui.css */
+/* copied from vlaanderen-ui.css */
+/*
+h2, h3 {
     font-size: 2.4rem;
     font-family: flanders-serif;
     font-weight: 500;
     margin-bottom: 2rem;
 }
+*/
 
 .additional-info thead {
     display: none
