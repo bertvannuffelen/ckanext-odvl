@@ -88,6 +88,11 @@ $error-red: #c02f2f;
 }
 
 
+
+.pageBox{
+	overflow: hidden;
+}
+
 /* ----------------------------------------------------------------------------
  * Add in _responsive.scss
  * ------------------------------------------------------------------------- */
@@ -230,6 +235,32 @@ $error-red: #c02f2f;
 
 .bullet-link{
 	font-family: "flanders-sans";
+
+	&.bullet-link--margin{
+		display: block;
+		margin: 0 0 1.2rem 0;
+}
+
+	&.bullet-link__arrow-before{
+		display: block;
+		position: relative;
+		margin: 0 0 0 1.5rem;
+		&:before{
+			position: absolute;
+			top: .7rem;
+			left: -1.5rem;
+
+			@include respond-to(small){
+				top: .3rem;
+			}
+		}
+	}
+}
+
+.bullet-link--meta{
+	display: block;
+	margin: 0 0 1.2rem 1.5rem;
+	color: $ghost;
 }
 
 .more-link{
@@ -989,10 +1020,8 @@ ul.tag-list .tag {
 		display: inline-block;
 
 		a{
-			/*
-             remove this to allow mimetype-specific colors
-			background: $athen s-gray;
-			color: $dove-gray; */
+			background: $athens-gray;
+			color: $dove-gray;
 			text-decoration: none;
 			margin: 0 .5rem .5rem 0;
 			padding: .3rem .8rem;
@@ -1004,6 +1033,70 @@ ul.tag-list .tag {
 				background: lighten($athens-gray, 2%);
 			}
 		}
+
+		&.tags-list-item__rounded{
+			margin: 0 0 .5rem 0;
+			a{
+				border-radius: 30px;
+				padding: .3rem 1.5rem;
+				height: 24px;
+				display: inline-block;
+				line-height: 1;
+				vertical-align: middle;
+				color: $science-blue;
+
+				.tags-list-item--inner{
+					position: relative;
+					display: block;
+					max-width: 235px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+	}
+}
+		}
+
+		&.tags-list-item__size-1{
+			.tags-list-item--inner{
+				position: relative;
+				top: 3px;
+			}
+			a{
+				font-size: 1.4rem;
+				position: relative;
+			}
+		}
+
+		&.tags-list-item__size-2{
+			.tags-list-item--inner{
+				position: relative;
+				top: 2px;
+			}
+			a{
+				font-size: 1.6rem;
+			}
+		}
+
+		&.tags-list-item__size-3{
+			.tags-list-item--inner{
+				position: relative;
+				top: 0;
+			}
+			a{
+				font-size: 1.8rem;
+			}
+		}
+
+		&.tags-list-item__size-4{
+			.tags-list-item--inner{
+				position: relative;
+				top: -2px;
+			}
+			a{
+				font-size: 2.2rem;
+			}
+		}
+
 	}
 }
 
@@ -1167,6 +1260,7 @@ ul.tag-list .tag {
 			top: 0;
 			right: 0;
 			height: 100%;
+			z-index: 30;
 
 			border: none;
 			outline: none;
@@ -1192,6 +1286,7 @@ ul.tag-list .tag {
 			right: 2.1rem;
 			top: 5rem;
 			width: 15rem;
+			z-index: 30;
 
 			@include respond-to(small){
 				right: -1.5rem;

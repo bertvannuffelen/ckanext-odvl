@@ -1,29 +1,19 @@
-{% ckan_extends %}
+<div class="u-spacer u-hidden-mobile"></div>
+<section class="region region--alt">
 
-{% block footer_content %}{% endblock %}
-
-{#
-{% block footer_content %}
-    <img src="/images/vlaamseoverheid-transparent.png" style="float: left; width: 100px;" class="module"/>
-
-
-    <div class="module title-on bottom" style="float:left; margin-left: 2em;">
-        <div class="modulecontent moduletitle">
-            <ul class="menu bottommenu xtcdefaultmenu">
-                <li><a href="/about">About {{ g.site_title }}</a></li>
-                <li><a href="http://docs.ckan.org/en/latest/api.html">API</a></li>
-                <li><a href="mailto:info@opendataforum.info">Contact Us</a></li>
-            </ul>
+    {% if g.debug %}
+        <div style="float:left">
+            {% include 'snippets/debug.html' %}
         </div>
-    </div>
-    <div class="module title-on bottom" style="float:right">
-        <div class="modulecontent moduletitle">
-            <ul class="menu bottommenu xtcdefaultmenu">
-                <li>{% snippet "snippets/language_selector.html" %}</li>
-                <li>{% trans %}<strong>Powered by</strong> <a class="hide-text ckan-footer-logo" href="http://ckan.org">CKAN</a>{% endtrans %}</li>
-            </ul>
-        </div>
-    </div>
-{% endblock %}
-#}
+    {% endif %}
 
+    <ul class="user-actions">
+        <li>Open data:</li>
+        <li>
+            <a href="#" class="user-actions--action">API</a>
+        </li>
+        <li>
+            <a href="#" class="user-actions--action">Contacteer Open data team</a>
+        </li>
+    </ul>
+</section>

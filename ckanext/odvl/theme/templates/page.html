@@ -134,25 +134,9 @@
     {% endblock %}
 
     {# footer #}
-    <div class="u-spacer u-hidden-mobile"></div>
-    <section class="region region--alt">
-
-        {% if g.debug %}
-            <div style="float:left">
-            {% include 'snippets/debug.html' %}
-            </div>
-        {% endif %}
-
-        <ul class="user-actions">
-            <li>Open data:</li>
-            <li>
-                <a href="#" class="user-actions--action">API</a>
-            </li>
-            <li>
-                <a href="#" class="user-actions--action">Contacteer Open data team</a>
-            </li>
-        </ul>
-    </section>
+    {%- block newfooter %}
+    {% include "footer.html" %}
+    {% endblock -%}
 </section>
 </main>
 {% endblock -%}

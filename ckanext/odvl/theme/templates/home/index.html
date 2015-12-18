@@ -1,60 +1,115 @@
 {% ckan_extends %}
 
 
-{#
-{%- block content %}
-    <div id="region2wrap" class="homepage layout-{{ homepage_style }} xtc-bodygutter" role="main">
-        <div id="region2pad" class="xtc-wrapperpad">
-            <div id="content" class="row-fluid xtc-wrapper r2spacer container">
-                <div class="firstarea">
-                    <div class="module title-off  nopad">
-                        <div class="modulecontent">
+{% block primary_content %}
 
+    <section class="region">
+        <div class="layout layout--normal">
+            <div class="grid-item grid-item--a-6">
+                <h1 class="h1">Open data in Vlaanderen</h1>
+            </div>
 
-                            <div align="center" class="latestnewstitle">
-                                <p>
-                                    <span style="font-size:48px;">
-                                        <span
-                                                style="font-family:courier new,courier,monospace;">
-                                            <span class="first_word">
-                                                <img alt="" src="http://opendataforum.info/images/logo.jpg"
-                                                     style="width: 98px; height: 81px;">&nbsp;
-                                                <span style="font-family:georgia,serif;">OPEN DATA&nbsp;</span></span>
-                                            <span style="font-family:georgia,serif;">
-                                            <span style="color:#b22222;">IN VLAANDEREN &nbsp;&nbsp;</span>
-                                        </span>
-                                        </span>
-                                    </span>
-                                    <img
-                                            alt="" src="http://opendataforum.info/images/vlaamse_leeuw.jpeg" style="width: 108px; height: 66px;">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{ self.flash() }}
-
-
-                <div class="box">
-                    Om datasets te kunnen toevoegen aan het Open Data platform gelden volgende afspraken:
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                <div class="typography">
+                    <p>Om datasets te kunnen toevoegen aan het Open Data platform gelden volgende afspraken:</p>
                     <ul>
-                        <li>- Registreren doe je zelf op het Vo Open Data platform. Opm: deze eerste stap geeft je nog geen beheer rechten
-                        <li>- Stuur een mail naar <a href="mailto:info@opendataforum.info">info@opendataforum.info</a> met duidelijke vermelding voor welke organisatie je datasets wilt toevoegen
-                        <li>- Na verificatie krijg je een mail terug met bevestiging.
-                        <li>- Je bent vanaf nu beheerder voor die bepaalde organisatie (en alleen die organisatie) en ook verantwoordelijk voor het correct invullen van alle velden conform het Vo Open Data handboek.
+                        <li>Registreren doe je zelf op het Vo Open Data platform. Opm: deze eerste stap geeft je nog geen beheer rechten</li>
+                        <li>Stuur een mail naar <a href="mailto:info@opendataforum.info">info@opendataforum.info</a> met duidelijke vermelding voor welke organisatie je datasets wilt toevoegen</li>
+                        <li>Na verificatie krijg je een mail terug met bevestiging.</li>
+                        <li>Je bent vanaf nu beheerder voor die bepaalde organisatie (en alleen die organisatie) en ook verantwoordelijk voor het correct invullen van alle velden conform het Vo Open Data handboek.</li>
                     </ul>
+                    <div class="u-spacer u-spacer--clear--small"></div>
                 </div>
-                <div class="primary-content" style="margin-top: 20px">
-                    {% block primary_content %}
-                        {% snippet "home/layout{0}.html".format(homepage_style) %}
-                    {% endblock %}
-                </div>
-
             </div>
         </div>
-    </div>
+    </section>
 
-{% endblock -%}
-#}
+    <section class="region region--alt region--padding">
+        <div class="layout layout--normal">
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+                <div class="u-spacer u-spacer--clear--small"></div>
+                <form class="inline-label-form" method="get" action="{% url_for controller='package', action='search' %}">
+                    <div class="inline-label-form--field-container">
+                        <label class="inline-label-form--label-left" for="field-search">{{ _("Search Your Data") }}</label>
+                        <div class="inline-label-form--input-submit-wrapper">
+                            <input type="text" class="input-field inline-label-form--input-field inline-label-form--input-field--push-left" name="q" value="{{ c.q }}" autocomplete="off" placeholder="{{ _('eg. Gold Prices') }}" />
+                            <button class="inline-label-form--input-submit--icon" type="submit"><span class="icon icon-search"></span></button>
+                        </div>
+                        <div class="inline-label-form--field-container inline-label-form--field-container--push-left">
+                            <input class="inline-label-form--input-submit button button-block" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+                <div class="u-spacer u-spacer--clear--small"></div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="region">
+        <div class="layout layout--normal">
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                <h2 class="h3">{{ _('Popular Tags') }}</h2>
+            </div>
+
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                {% set tags = h.get_facet_items_dict('tags', limit=15) %}
+                <div class="tagcloud" data-totalcount="{{ tags|count }}" data-module="tag-cloud">
+
+                    <ul class="tags-list">
+                        {% for tag in tags|sort(attribute='name') %}
+                            <li class="tags-list-item tags-list-item__rounded tags-list-item__size-{{ tag.count }}">
+                                <a class="tag" data-count="{{ tag.count }}"  href="{% url_for controller='package', action='search', tags=tag.name %}"><span class="tags-list-item--inner">{{ h.truncate(tag.display_name, 22) }}</span></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="u-spacer"></div>
+
+        <div class="layout layout--normal">
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                <h2 class="h3">{{ _('Ppopular Datasets') }}</h2>
+            </div>
+
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+
+                <ul>
+                    {% for tag in tags|sort(attribute='name') %}
+                        <li><a class="bullet-link bullet-link--margin" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 50) }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="u-spacer"></div>
+
+        <div class="layout layout--normal">
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                <h2 class="h3">{{ _('Recently Updated') }}</h2>
+            </div>
+
+            <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                <ul>
+                    {% for package in h.recent_updates(5) %}
+                        <li>
+                            <a class="bullet-link bullet-link__arrow-before" href="#">{{package.get('title') or package.get('name')}}</a>
+                    <span class="bullet-link--meta">
+                        {{_('updated on')}}
+                        {% if package.get('modified_date') %} {{h.render_datetime(h.ecportal_date_to_iso(package['modified_date'].strip('"')), '%d/%m/%y')}}
+                        {% else %} {{h.render_datetime(package['metadata_modified'], '%d/%m/%y')}} {% endif %}.
+                    </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {{ self.newfooter() }}
+
+    </section>
+
+{% endblock %}
 

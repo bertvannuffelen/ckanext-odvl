@@ -71,6 +71,9 @@ Names are generated on http://chir.ag/projects/name-that-color/#e8ebee
     .h3.h3--alt {
       margin-bottom: .3rem; } }
 
+.pageBox {
+  overflow: hidden; }
+
 /* ----------------------------------------------------------------------------
  * Add in _responsive.scss
  * ------------------------------------------------------------------------- */
@@ -174,6 +177,25 @@ Names are generated on http://chir.ag/projects/name-that-color/#e8ebee
 
 .bullet-link {
   font-family: "flanders-sans"; }
+  .bullet-link.bullet-link--margin {
+    display: block;
+    margin: 0 0 1.2rem 0; }
+  .bullet-link.bullet-link__arrow-before {
+    display: block;
+    position: relative;
+    margin: 0 0 0 1.5rem; }
+    .bullet-link.bullet-link__arrow-before:before {
+      position: absolute;
+      top: .7rem;
+      left: -1.5rem; }
+      @media screen and (max-width: 767px) {
+        .bullet-link.bullet-link__arrow-before:before {
+          top: .3rem; } }
+
+.bullet-link--meta {
+  display: block;
+  margin: 0 0 1.2rem 1.5rem;
+  color: #cbd2da; }
 
 .more-link.more-link--align-left {
   text-align: left; }
@@ -653,10 +675,8 @@ ul.tag-list .tag {
   .tags-list .tags-list-item {
     display: inline-block; }
     .tags-list .tags-list-item a {
-      			/*
-                   remove this to allow mimetype-specific colors
-      			background: $athen s-gray;
-      			color: $dove-gray; */
+      background: #e8ebee;
+      color: #666;
       text-decoration: none;
       margin: 0 .5rem .5rem 0;
       padding: .3rem .8rem;
@@ -665,6 +685,44 @@ ul.tag-list .tag {
       .tags-list .tags-list-item a:hover {
         color: #4d4d4d;
         background: #eef0f2; }
+    .tags-list .tags-list-item.tags-list-item__rounded {
+      margin: 0 0 .5rem 0; }
+      .tags-list .tags-list-item.tags-list-item__rounded a {
+        border-radius: 30px;
+        padding: .3rem 1.5rem;
+        height: 24px;
+        display: inline-block;
+        line-height: 1;
+        vertical-align: middle;
+        color: #0066cc; }
+        .tags-list .tags-list-item.tags-list-item__rounded a .tags-list-item--inner {
+          position: relative;
+          display: block;
+          max-width: 235px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis; }
+    .tags-list .tags-list-item.tags-list-item__size-1 .tags-list-item--inner {
+      position: relative;
+      top: 3px; }
+    .tags-list .tags-list-item.tags-list-item__size-1 a {
+      font-size: 1.4rem;
+      position: relative; }
+    .tags-list .tags-list-item.tags-list-item__size-2 .tags-list-item--inner {
+      position: relative;
+      top: 2px; }
+    .tags-list .tags-list-item.tags-list-item__size-2 a {
+      font-size: 1.6rem; }
+    .tags-list .tags-list-item.tags-list-item__size-3 .tags-list-item--inner {
+      position: relative;
+      top: 0; }
+    .tags-list .tags-list-item.tags-list-item__size-3 a {
+      font-size: 1.8rem; }
+    .tags-list .tags-list-item.tags-list-item__size-4 .tags-list-item--inner {
+      position: relative;
+      top: -2px; }
+    .tags-list .tags-list-item.tags-list-item__size-4 a {
+      font-size: 2.2rem; }
 
 /* ----------------------------------------------------------------------------
  * Open data sets -- NEW COMPONENT - Pagination
@@ -812,6 +870,7 @@ div.pagination > ul {
     top: 0;
     right: 0;
     height: 100%;
+    z-index: 30;
     border: none;
     outline: none;
     overflow: visible; }
@@ -830,7 +889,8 @@ div.pagination > ul {
   .data-file-list .data-file-list-item .dropdown-navigation__dropdown {
     right: 2.1rem;
     top: 5rem;
-    width: 15rem; }
+    width: 15rem;
+    z-index: 30; }
     @media screen and (max-width: 767px) {
       .data-file-list .data-file-list-item .dropdown-navigation__dropdown {
         right: -1.5rem; } }
