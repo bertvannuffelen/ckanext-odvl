@@ -5,9 +5,6 @@
               ('home', _('Home')),
               ('search', _('Datasets')),
               ('organizations_index', _('Organizations')),
-              ('group_index', _('Groups')),
-              ('related_dashboard', _('Apps & Ideas')),
-              ('about', _('About'))
             ) }}
 {% endblock %}
 
@@ -38,14 +35,14 @@
 
     <section class="region region--alt u-hidden-mobile">
 
-        {% if breadcrumb_cont %}
-            <div class="toolbar">
-            <ol class="breadcrumb">
-                {% snippet 'snippets/home_breadcrumb_item.html' %}
-                {{ breadcrumb_cont }}
-            </ol>
-            </div>
-        {% endif %}
+        <div data-totalcount="{{ tags|count }}" data-module="vl-breadcrumb" style="display:none">
+            {% if breadcrumb_cont %}
+                <div id="breadcrumb_content">{{ breadcrumb_cont }}</div>
+                <div id="navigation_tabs">{{ self.header_site_navigation_tabs() }}</div>
+            {% endif %}
+        </div>
+        {% resource 'ckanext-odvl/vl_breadcrumb' %}
+
         {% if c.userobj %}
             <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
                 <ul class="user-actions">

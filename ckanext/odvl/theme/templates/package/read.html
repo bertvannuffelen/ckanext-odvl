@@ -39,26 +39,7 @@
 {% endblock %}
 
 
-{% block breadcrumb_content %}
-    {% block package_description %}
-        {% if pkg.private %}
-            <span class="dataset-private label label-inverse pull-right">
-                    <i class="icon-lock"></i>
-                    {{ _('Private') }}
-                </span>
-        {% endif %}
-            {% block page_heading %}
-                {{ pkg.title or pkg.name }}
-                {% if pkg.state.startswith('draft') %}
-                    [{{ _('Draft') }}]
-                {% endif %}
-                {% if pkg.state == 'deleted' %}
-                    [{{ _('Deleted') }}]
-                {% endif %}
-            {% endblock %}
 
-    {% endblock %}
-{% endblock %}
 
 {% block primary_content %}
      <div>

@@ -112,15 +112,12 @@ label:after {
     margin: 0 0 2rem 2.2rem;
 }
 
-/* copied from vlaanderen-ui.css */
-/*
 h2, h3 {
     font-size: 2.4rem;
     font-family: flanders-serif;
     font-weight: 500;
     margin-bottom: 2rem;
 }
-*/
 
 .additional-info thead {
     display: none
@@ -288,4 +285,8 @@ h2, h3 {
 
 .dataset-map-expanded #dataset-map #dataset-map-attribution {
     position: absolute;
+}
+
+.resource_extra_info .table thead {
+    display: none
 }
