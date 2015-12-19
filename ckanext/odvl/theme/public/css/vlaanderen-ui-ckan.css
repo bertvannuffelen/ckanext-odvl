@@ -1,4 +1,45 @@
 /* import vlaanderen-ui.css (temporarily local, soon online) */
 @import url(vlaanderen-ui.css);
+/* duplicate .js .contact-card.js-accordion .contact-card__title:before */
+.icon-link.icon-link--bullet-down:before, .table-data .table-data--read-more:before {
+  background-repeat: no-repeat;
+  background-size: 1.1rem 0.7rem;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAOCAQAAACBOCRGAAAAsUlEQVR4AY2RoQ7CMBRFj8Gi6piZqJiowNRN4Pgb/ooP4CvQMzNLZipIFpIlSzCIkqzLS4G9wJlp7j1Z+/KgpqfjgI6nJSSjIRJ5qLpnnI0ALMfIhOcbx33pn2zgTFy+kT3vWAZpLwBbrhIMVCCUBGkaDCS9kTBgSRR0krYYBEMrRU+xmmTssv90VOR3lSSUF0ZligzL7UMdcag4BnLVI+j7Sjut+UnNNKtH/sJyWh/rBTLpdjXdhNJbAAAAAElFTkSuQmCC"); }
+
+/* duplicate  .pagination-list to match CKAN HTML structure */
+div.pagination > ul {
+  /* adapt to align on CKAN style and structure (div.pagination>ul>li)*/
+  text-align: right; }
+
+div.pagination > ul.pagination-list--align-left {
+  text-align: left; }
+
+div.pagination > ul.pagination-list--align-center {
+  text-align: center; }
+
+div.pagination > ul li {
+  display: inline-block;
+  margin: 0 .5rem;
+  font-size: 1.8rem;
+  font-weight: 400; }
+
+@media screen and (max-width: 767px) {
+  div.pagination > ul li {
+    font-size: 1.5rem; } }
+div.pagination > ul li a {
+  color: #0066cc;
+  text-decoration: none; }
+
+div.pagination > ul li a:hover {
+  text-decoration: underline; }
+
+div.pagination > ul li.active a {
+  color: #333; }
+
+div.pagination > ul li.pagination-list-item--action-prev {
+  margin: 0 1.5rem 0 0; }
+
+div.pagination > ul li.pagination-list-item--action-next {
+  margin: 0 0 0 1.5rem; }
 
 /*# sourceMappingURL=vlaanderen-ui-ckan.css.map */
