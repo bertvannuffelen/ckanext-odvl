@@ -112,12 +112,14 @@ label:after {
     margin: 0 0 2rem 2.2rem;
 }
 
+/*
 h2, h3 {
     font-size: 2.4rem;
     font-family: flanders-serif;
     font-weight: 500;
     margin-bottom: 2rem;
 }
+*/
 
 .additional-info thead {
     display: none
@@ -260,10 +262,10 @@ h2, h3 {
 }
 
 .dataset-map-expanded .h1.page-title {
-    margin-bottom: 430px;
+    margin-bottom: 570px;
 }
 .dataset-map-expanded #dataset-map {
-    top: 80px!important;
+    top: 150px!important;
     margin-left: 3%!important;
     width: 94%!important;
     border: 0!important;
@@ -282,6 +284,18 @@ h2, h3 {
     text-align: right;
     width: 100%;
 }
+
+.dataset-map-expanded #dataset-map #dataset-map-edit-buttons .cancel{
+    background-color: transparent;
+    border: 0;
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.dataset-map-expanded #dataset-map #dataset-map-edit-buttons .apply{
+    min-width: 20rem;
+}
+
 
 .dataset-map-expanded #dataset-map #dataset-map-attribution {
     position: absolute;
