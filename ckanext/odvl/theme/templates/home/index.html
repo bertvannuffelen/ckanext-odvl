@@ -78,8 +78,8 @@
             <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
 
                 <ul>
-                    {% for tag in tags|sort(attribute='name') %}
-                        <li><a class="bullet-link bullet-link--margin" href="{% url_for controller='package', action='search', tags=tag.name %}">{{ h.truncate(tag.display_name, 50) }}</a></li>
+                    {% for dataset in h.most_viewed_datasets(10) %}
+                        <li><a class="bullet-link bullet-link--margin" href="{{ h.url_for(controller='package', action='read', id=dataset['name']) }}">{{ dataset.get('title') or dataset.get('name') }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
