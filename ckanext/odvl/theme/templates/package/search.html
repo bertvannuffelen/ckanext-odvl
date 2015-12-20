@@ -92,12 +92,14 @@
     </div>
 {% endblock %}
 
-{% block secondary_content %}
-
+{% block secondary_header %}
     <div class="filter u-hidden-mobile">
         <p class="filter__intro">Verfijn uw zoekresultaat</p>
     </div>
-    <div class="filter__form">
+{% endblock %}
+
+{% block secondary_content %}
+
         <div class="js-accordion">
             <div class="filter__field">
                 <form class="dataset-search search-aside" method="GET" data-module="select-switch">
@@ -122,6 +124,5 @@
                 <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
             </div>
         </div>
-    </div>
 
 {% endblock %}

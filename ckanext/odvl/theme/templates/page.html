@@ -80,6 +80,8 @@
         {% block secondary %}
             {% if self.secondary_content()|trim != '' %}
             <aside class="grid-item grid-item--a-2 grid-item--a-6--small grid-item--a-6--small--full-width">
+                {% block secondary_header %}{% endblock %}
+                <div class="filter__form">
                 {#
             The secondary_content block can be used to add content to the
             sidebar of the page. This is the main block that is likely to be
@@ -93,7 +95,9 @@
               {% endblock %}
             #}
                 {% block secondary_content %}{% endblock %}
+                </div>
             </aside>
+
             {% endif %}
         {% endblock %}
 
