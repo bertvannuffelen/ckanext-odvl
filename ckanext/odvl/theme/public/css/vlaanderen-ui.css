@@ -4021,19 +4021,19 @@ html.no-js .table--items-clamp tr {
     font-weight: 500;
     color: #737373;
 }
-.user-actions li .user-actions--action {
+.user-actions li .user-actions--action, .user-actions li a {
     text-decoration: none;
 }
-.user-actions li .user-actions--action:hover {
+.user-actions li .user-actions--action:hover, .user-actions li a:hover {
     text-decoration: underline;
 }
 .user-actions li:not(:last-child) {
     margin: 0 1.8rem 0 0;
 }
-.user-actions li:not(:last-child) .user-actions--action {
+.user-actions li:not(:last-child) .user-actions--action, .user-actions li:not(:last-child) a {
     position: relative;
 }
-.user-actions li:not(:last-child) .user-actions--action:before {
+.user-actions li:not(:last-child) .user-actions--action:before, .user-actions li:not(:last-child) a:before {
     content: "";
     position: absolute;
     top: 0;
