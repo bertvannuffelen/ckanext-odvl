@@ -2013,7 +2013,7 @@ msgstr "Inloggen"
 #: ckan/templates/header.html:44 ckan/templates/user/new.html:3
 #: ckan/templates_legacy/layout_base.html:60
 msgid "Register"
-msgstr "Register"
+msgstr "Registreren"
 
 #: ckan/templates/header.html:78 ckan/templates/group/read_base.html:24
 #: ckan/templates/group/read_base.html:58
@@ -3866,7 +3866,7 @@ msgstr "Wachtwoord Herstellen"
 #: ckan/templates/user/perform_reset.html:7
 #: ckan/templates/user/request_reset.html:6
 msgid "Password Reset"
-msgstr "Wachtwoord Herstel"
+msgstr "Herstel uw wachtwoord"
 
 #: ckan/templates/user/perform_reset.html:20
 msgid "Update Password"
