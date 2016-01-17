@@ -14,13 +14,20 @@ this.ckan.module('vl-breadcrumb', function ($$, _) {
                     navtabs[$a.attr('href')] = $a.text()
                 })
 
-            var levels = []
+            var levels = [
+                {
+                    "label": "Open Data",
+                    "url": "/",
+                    "type": "link"
+                }
+            ]
             $el.find("#breadcrumb_content>li>a").each(
                 function(idx, anchor) {
                     var $a = $(anchor)
                     var newLevel = {}
 
-                    if (levels.length == 0) {
+                    if (levels.length == 1) {
+
                         newLevel = {
                             type:'menu',
                             "showAsLink": true,
@@ -53,6 +60,24 @@ this.ckan.module('vl-breadcrumb', function ($$, _) {
 
                     levels.push( newLevel )
                 })
+
+            if (levels.length == 1) {
+                // no breadcrumb li found --> home page
+                levels.push({
+                    type:'menu',
+                        "showAsLink": true,
+                    "sections": [
+                    $.map(navtabs, function(label, href) {
+                        return {
+                            "label": label,
+                            "url": href,
+                            "highlight": href == "/"
+                        }
+                    })
+
+                ]
+                })
+            }
 
             // Ensure the WidgetApi.Event.Handlers namespace exists.
             window.WidgetApi = window.WidgetApi || {};
