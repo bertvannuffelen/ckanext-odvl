@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block header_wrapper %}
-    <script type="text/javascript" src="http://widgets-varnish-ti.vlaanderen.be/widget/live/8c18531070ec4fc69700f98e9bb5c41e"></script>
+
 <header class="banner banner--large" role="banner">
     <!--<div class="banner__wrapper">-->
     <picture>
@@ -39,8 +39,8 @@
         <div data-totalcount="{{ tags|count }}" data-module="vl-breadcrumb" style="display:none">
             {% if breadcrumb_cont %}
                 <div id="breadcrumb_content">{{ breadcrumb_cont }}</div>
-                <div id="navigation_tabs">{{ self.header_site_navigation_tabs() }}</div>
             {% endif %}
+            <div id="navigation_tabs">{{ self.header_site_navigation_tabs() }}</div>
         </div>
         {% resource 'ckanext-odvl/vl_breadcrumb' %}
 

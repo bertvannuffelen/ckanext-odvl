@@ -32,9 +32,31 @@
     </div>
     <![endif]-->
 
+    <script type="text/javascript" src="//widgets.vlaanderen.be/widget/live/9ce89c12a2e6420ebe00d79c7da00d56"></script>
+
     <div class="pageBox">
         {{ super() }}
     </div>
+
+    <section class="region region--alt">
+
+        {% if g.debug %}
+            <div style="float:left">
+                {% include 'snippets/debug.html' %}
+            </div>
+        {% endif %}
+
+        <ul class="user-actions">
+            <li>Open data:</li>
+            <li>
+                <a href="http://docs.ckan.org/en/latest/api/index.html" class="user-actions--action">API</a>
+            </li>
+            <li>
+                <a href="info@opendataforum.info" class="user-actions--action">Contacteer Open data team</a>
+            </li>
+        </ul>
+    </section>
+    <script type="text/javascript" src="//widgets.vlaanderen.be/widget/live/b07720f8f1064ccebf00d07408dd3616"></script>
 
 {% endblock %}
 
