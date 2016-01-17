@@ -96,7 +96,7 @@
                 <ul>
                     {% for package in h.recent_updates(5) %}
                         <li>
-                            <a class="bullet-link bullet-link__arrow-before" href="#">{{package.get('title') or package.get('name')}}</a>
+                            <a class="bullet-link bullet-link__arrow-before" href="{{ h.url_for(controller='package', action='read', id=package['name']) }}">{{package.get('title') or package.get('name')}}</a>
                     <span class="bullet-link--meta">
                         {{_('updated on')}}
                         {% if package.get('modified_date') %} {{h.render_datetime(h.ecportal_date_to_iso(package['modified_date'].strip('"')), '%d/%m/%y')}}
