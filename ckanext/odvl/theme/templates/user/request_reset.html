@@ -1,0 +1,35 @@
+{% ckan_extends %}
+
+{% block subtitle %}{{ _('Reset your password') }}{% endblock %}
+
+{% block breadcrumb_content %}
+  <li class="active">{% link_for _('Password Reset'), controller='user', action='request_reset' %}</li>
+{% endblock %}
+
+{% block primary_content %}
+
+    <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+        <p>Voor je gebruikersnaam in en wij sturen je een e-mail met een link naar een nieuw wachtwoord.</p>
+
+        <div class="u-spacer"></div>
+    </div>
+
+    <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+        <form action="" class="inline-label-form" method="post">
+            <div class="inline-label-form--field-container">
+                <label class="inline-label-form--label-left" for="">{{ _('Username') }}</label>
+                <div class="inline-label-form--input-field">
+                    <input class="input-field input-field--block input-field__dark" id="field-username" name="user" value="" type="text" placeholder="username">
+                </div>
+            </div>
+
+            <div class="inline-label-form--field-container inline-label-form--field-container--push-left">
+                <button class="inline-label-form--input-submit button button-block" type="submit" name="reset">{{ _("Request reset") }}</button>
+            </div>
+        </form>
+        <div class="u-spacer--large"></div>
+    </div>
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}
