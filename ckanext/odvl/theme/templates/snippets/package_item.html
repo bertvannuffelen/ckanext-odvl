@@ -10,6 +10,7 @@
             {% block heading_title %}
                 <h1>
                     {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name), class='filter-results-section--block-link') }}
+                    {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
                 </h1>
                 {% if package.organization %}
                     <h2>
@@ -23,7 +24,6 @@
                 {% elif package.get('state', '').startswith('deleted') %}
                     <span class="label label-important">{{ _('Deleted') }}</span>
                 {% endif %}
-                {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
             {% endblock %}
         {% endblock %}
 
