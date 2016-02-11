@@ -1,26 +1,66 @@
 {% ckan_extends %}
 
-{% block heading_title %}
-    <h1>
-        {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name), class='filter-results-section--block-link') }}
-    </h1>
-    {% if package.organization %}
-        <h2>
-            {{ h.link_to(package.organization.name, h.url_for(controller='organization', action='read', id=package.owner_org), class='filter-results-section--block-link') }}
-        </h2>
-    {% endif %}
+
+
+{% block content %}
+    <div class="dataset-content">
+
+        {% block heading %}
+            {{  self.heading_private() }}
+            {% block heading_title %}
+                <h1>
+                    {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name), class='filter-results-section--block-link') }}
+                </h1>
+                {% if package.organization %}
+                    <h2>
+                        {{ h.link_to(package.organization.name, h.url_for(controller='organization', action='read', id=package.owner_org), class='filter-results-section--block-link') }}
+                    </h2>
+                {% endif %}
+            {% endblock %}
+            {% block heading_meta %}
+                {% if package.get('state', '').startswith('draft') %}
+                    <span class="label label-info">{{ _('Draft') }}</span>
+                {% elif package.get('state', '').startswith('deleted') %}
+                    <span class="label label-important">{{ _('Deleted') }}</span>
+                {% endif %}
+                {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
+            {% endblock %}
+        {% endblock %}
+
+
+        {% block banner %}
+            {% if banner %}
+                <span class="banner">{{ _('Popular') }}</span>
+            {% endif %}
+        {% endblock %}
+        {% block notes %}
+            {% if notes %}
+                <p class="u-hidden-mobile">{{ notes|urlize }}
+            {% else %}
+                <p class="empty u-hidden-mobile">{{ _("This dataset has no description") }}
+            {% endif %}
+            {% if package.tracking_summary.total > 0 %}
+                <em > - {{ _('{0} views').format(package.tracking_summary.total) }}</em>
+            {% endif %}
+            </p>
+        {% endblock %}
+    </div>
+    {% block resources %}
+        {% if package.resources and not hide_resources %}
+            {% block resources_outer %}
+                <ul class="tags-list">
+                    {% block resources_inner %}
+                        {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+                            <li class="tags-list-item">
+                                <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}" class="label" >{{ resource }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endblock %}
+                </ul>
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
 {% endblock %}
 
-{% block resources_outer %}
-    <ul class="tags-list">
-        {% block resources_inner %}
-            {% for resource in h.dict_list_reduce(package.resources, 'format') %}
-                <li class="tags-list-item">
-                    <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}" class="label" >{{ resource }}</a>
-                </li>
-            {% endfor %}
-        {% endblock %}
-    </ul>
-{% endblock %}
 
 

@@ -1,0 +1,6 @@
+{% ckan_extends %}
+
+{# show poular icon #}
+{% if number >= min %}
+<span class="icon icon-flame" title="{{ title.format(number=number) }}"></span>
+{% endif %}
