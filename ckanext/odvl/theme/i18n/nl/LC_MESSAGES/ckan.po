@@ -6126,3 +6126,8 @@ msgstr "Aantal bytes"
 
 msgid "rights"
 msgstr "Rechten"
+
+#: ckan/ckan/templates/snippets/license.html:21
+#, python-format
+msgid " See <a href=\"%(url)s\">original metadata record</a> for more information "
+msgstr " Zie <a href=\"%(url)s\">originele metadatarecord</a> voor meer informatie "
