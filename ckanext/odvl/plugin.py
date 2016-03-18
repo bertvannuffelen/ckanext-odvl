@@ -141,7 +141,7 @@ class ODVLExtension(p.SingletonPlugin):
             config['ckan.extra_resource_fields'] = 'spatial'
 
         config['package_hide_extras'] = 'spatial guid uri'
-        config['search.facets'] = 'groups tags res_format'
+        #config['search.facets'] = 'groups tags res_format license_id'
         config['ckan.locale_default'] = 'nl'
         config['ckan.locale_order'] = config['ckan.locales_offered'] = 'nl fr de en'
         config['ckan.site_title'] = 'Vlaanderen.be'
