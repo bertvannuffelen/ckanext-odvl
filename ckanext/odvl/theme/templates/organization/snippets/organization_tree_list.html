@@ -1,0 +1,6 @@
+{#
+Overrides ckanext-hierarchy with local function that filters out empty organizations
+#}
+<div id="publisher-tree">
+     {% snippet 'organization/snippets/organization_tree.html', top_nodes=h.get_action('group_tree_filtered', {'type': 'organization'}) %}
+</div>

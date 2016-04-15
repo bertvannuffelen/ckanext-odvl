@@ -1,0 +1,36 @@
+/*
+General variables
+*/
+
+// Typography
+$base-font-size: 1.8rem;
+$base-line-height: 1.5;
+
+// GH GF
+$ghHeight: 4.4rem;
+
+// Page width
+$page-min-width: 768px;
+$page-max-width: 1024px;
+$box-max-width: 1600px;
+$page-padding: 30px;
+$breakpoint: 1023px;
+$breakpoint-jump-narrow: 1350px;
+
+// Mobile
+//$mobileRule: max-device-width;
+$mobileRuleInverse: min-device-width;
+$mobileRule: max-width;
+$base-mobile-font-size: 1.5rem;
+$base-mobile-line-size: 1.33;
+
+
+// Grid settings
+$grd-total-width: 100%;
+$grd-gutter-width: 3%;
+$grd-border-gutters: 1; //1 of 0
+$grd-debug: 0;
+$grd-debug-colors: 0;
+
+$grda-columns: 6;
+$grdb-columns: 4;

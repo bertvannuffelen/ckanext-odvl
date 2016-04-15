@@ -17,12 +17,52 @@
     background: none;
 }
 
+[role=main] #content {
+    width: 100%
+}
+
+@media (min-width: 768px) {
+    .media-grid {
+        margin-left: 0;
+    }
+}
+
+.suckerfish ul.menu, .dualfish ul.menu {
+    z-index: 1000!important;
+}
+
+.resource-list {
+    margin-top: 0;
+}
+
+.btn:hover {
+    color:inherit!important;
+}
+
+.stages {
+    margin: -10px -10px 20px;
+}
+
 /* needed only when main.css not properly recompiled
 .add_action {
     float: right;
 }
 
 */
+
+.olMap .layersDiv label {
+    text-transform: none;
+    padding: 0;
+    font-weight: normal;
+}
+                                                            s
+.olMap .layersDiv label:after {
+    content: ""
+}
+
+.olMap .layersDiv input[type=radio] {
+    top: 0px;
+}
 
 .toolbar {
     padding: 0px;
@@ -76,11 +116,9 @@ ol.breadcrumb li {
     vertical-align: middle;
 }
 
-/*
 #content .module {
     margin: 0;
 }
-*/
 
 .module {
     margin: 20px 0 0 0;
@@ -89,6 +127,18 @@ ol.breadcrumb li {
 .module-content, .module-content:last-child, .module-content:first-child {
     margin: 0;
     /* padding: 0; */
+}
+
+.module-content:first-child {
+    padding-top: 10px;
+}
+
+.module-resource .actions {
+    top: 2px;
+}
+
+.resource-view a.btn.pull-right {
+    color: #333333;
 }
 
 .module-content.box, .box {
@@ -155,6 +205,10 @@ ol.breadcrumb li {
 
 .dataset-map-expanded #dataset-map {
     width: 100%;
+}
+
+label.control-label {
+    padding-right: 0px;
 }
 
 .site-footer, .site-footer label, .site-footer small {
@@ -239,22 +293,142 @@ small {
     border-bottom: none;
 }
 
-.tags {
-    padding: 5px 10px 10px 10px;
+.featured, .featured .box>* {
+    width: 100%;
+}
+
+.featured {
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.featured>table {
+    width: 100%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #dad9d6;
+    padding: 4px;
+}
+
+.featured-content {
     background-color: #f1df5b;
     -webkit-border-radius: 0 0 3px 3px;
     -moz-border-radius: 0 0 3px 3px;
     border-radius: 0 0 3px 3px;
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.featured-content>* {
+    padding: 5px 5px 5px 5px;
+    display: table-cell;
+    vertical-align: top;
+    border-right: 3px solid #dad9d6;
+    width: 14em;
+}
+
+.featured-content>*:first-child {
+    padding-left: 25px;
+}
+
+.featured-content>*:last-of-type {
+    border:none;
+}
+
+.featured-content ul li {
+    padding-left: 5px;
+}
+
+.featured-content .additional {
+    position: relative;
+    top: -0.4em;
+    padding-left: 1em;
 }
 
 .tagcloud {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .tag {
     vertical-align: middle;
-    line-height: normal;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    /*line-height: normal; this makes the line height proportional to the tag size */
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 1px 5px;
+}
+
+
+
+h3.moduletitle, h3.moduletitle a, h3.moduletitle span, .module h3 span, h3.client_title, h4.service_desc, h3.newsitemtitle, h3.newsitemtitlesm, h3.newsitemtitlemed, h3.newsitemtitlemed a, h3.newsitemtitlelg, h3.newsitemtitlelg a, h3.newsitemtitlesm a, h3.newsitemtitle a, h4.newsauthor, .newsitemcattitle, h1.pagetitle, h1.pagetitle span, h1.title, h1.title span, h1.title a, .title, h2, h3, h5.day, span.item-title a, .legend, div.itemHeader h2.itemTitle, .ptabsmtabs > div > div > div, #community-wrap .cModule h3 span, #community-wrap .componentheading, body #community-wrap div.greybox div div div h1, body #community-wrap div.greybox div div div h2, div#eventlist h2, h2.itemTitle, h2.itemTitle a, #Kunena h1, #Kunena h2, .jvs-default div.barbox p, #Kunena #ktab div.moduletable ul.menu li a, h1.componentheading, h2.eventlist, body #community-wrap .profile-info .contentheading, div.itemComments ul.itemCommentsList li span.commentDate, div.itemComments ul.itemCommentsList li span.commentAuthorName, #Kunena .kheader h2, #Kunena .kheader h2 a, #Kunena .kheader h2, #Kunena .kheader h2 a, #Kunena a.ktopic-title, #Kunena div.kthead-title a, #Kunena .ktitle a, #Kunena .ktitle, #Kunena a.ktitle, #Kunena .kheader h2, .category_title, h3.newsitemtitle2, h3.newsitemtitle2 a, h3.newsitemtitlemed2, h3.newsitemtitlemed2 a, .pagetitle, .componentheading, .panel .title span, h1 a, h2 a, h2, h1.pagetitle, .mainslide h2 a.catlink, .modtit, .module h3 span, h2.k2title, div.itemFullText h2, .itemCommentsForm h2, span.titlelink.events, a.acymailing_togglemodule, h1.latestnewstitle, h1 span, h1, #community-wrap {
+    font-family: inherit!important;
+    padding-bottom: 0.5em;
+}
+
+.primary-content {
+    display:table;
+    margin-top: 40px;
+    width: 100%;
+}
+.primary-content>* {
+    display:table-cell;
+    vertical-align: top;
+}
+
+.primary-content>*:first-child>* {
+    margin-right: 20px;
+}
+
+.primary-content .box, .featured>table {
+    height: 400px;
+}
+
+.featured>table tr:first-child {
+    height: 100px;
+}
+
+.featured>table tr:last-child {
+    height: 100%;
+}
+
+.home-logo>.box>img {
+    height: inherit;
+    max-width: 400px;
+}
+
+.btn-group > .dropdown-toggle.btn:first-child {
+    margin-left: 0!important;
+    -webkit-border-top-left-radius: 4px!important;
+    -moz-border-radius-topleft: 4px!important;
+    border-top-left-radius: 4px!important;
+    -webkit-border-bottom-left-radius: 4px!important;
+    -moz-border-radius-bottomleft: 4px!important;
+    border-bottom-left-radius: 4px!important;
+}
+
+a.btn.dropdown-toggle.btn-primary {
+    background-color: #206b82!important;
+    background-image: -moz-linear-gradient(top, #30778d, #085871)!important;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#30778d), to(#085871))!important;
+    background-image: -webkit-linear-gradient(top, #30778d, #085871)!important;
+    background-image: -o-linear-gradient(top, #30778d, #085871)!important;
+    background-image: linear-gradient(to bottom, #30778d, #085871)!important;
+    background-repeat: repeat-x!important;
+}
+
+.embedded-content h1 {
+    margin: 15px 0px 3px 0;
+}
+
+.embedded-content {
+    margin-bottom: 15px;
 }

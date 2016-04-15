@@ -2144,7 +2144,7 @@ msgstr "URL"
 #: ckan/templates/package/snippets/resource_item.html:57
 #: ckan/templates/related/snippets/related_item.html:36
 msgid "Edit"
-msgstr "Bijwerk"
+msgstr "Bewerk"
 
 #: ckan/public/base/javascript/modules/table-toggle-more.js:9
 msgid "Show more"
@@ -2206,7 +2206,7 @@ msgstr "Inloggen"
 
 #: ckan/templates/header.html:54 ckan/templates/user/new.html:3
 msgid "Register"
-msgstr "Register"
+msgstr "Registreren"
 
 #: ckan/templates/header.html:99 ckan/templates/group/read_base.html:17
 #: ckan/templates/group/snippets/info.html:36
@@ -2899,7 +2899,7 @@ msgstr "Datum stempel"
 #: ckan/templates/revision/read.html:50
 #: ckan/templates/revision/snippets/revisions_list.html:6
 msgid "Author"
-msgstr "Auteur"
+msgstr "Eigenaar/Contactpunt"
 
 #: ckan/templates/group/snippets/revisions_table.html:10
 #: ckan/templates/package/snippets/revisions_table.html:10
@@ -3533,7 +3533,7 @@ msgstr "Extra Informatie"
 #: ckan/templates/package/snippets/additional_info.html:14
 #: ckan/templates/package/snippets/package_metadata_fields.html:6
 msgid "Source"
-msgstr "Bron"
+msgstr "Bijsluiter"
 
 #: ckan/templates/package/snippets/additional_info.html:37
 #: ckan/templates/package/snippets/additional_info.html:42
@@ -3550,7 +3550,7 @@ msgstr "Versie"
 #: ckan/templates/package/snippets/package_basic_fields.html:107
 #: ckan/templates/user/read_base.html:91
 msgid "State"
-msgstr "Provincie"
+msgstr "Status"
 
 #: ckan/templates/package/snippets/additional_info.html:62
 msgid "Last Updated"
@@ -4418,7 +4418,7 @@ msgstr "Wachtwoord Herstellen"
 
 #: ckan/templates/user/perform_reset.html:7
 msgid "Password Reset"
-msgstr "Wachtwoord Herstel"
+msgstr "Herstel uw wachtwoord"
 
 #: ckan/templates/user/perform_reset.html:24
 msgid "Update Password"
@@ -4745,6 +4745,9 @@ msgstr "Geen score"
 msgid "Most Edited Datasets"
 msgstr "Meest bewerkte dataset"
 
+msgid "Most Viewed Datasets"
+msgstr "Meest bekeken dataset"
+
 #: ckanext/stats/templates/ckanext/stats/index.html:90
 #: ckanext/stats/templates_legacy/ckanext/stats/index.html:74
 msgid "Number of edits"
@@ -4832,6 +4835,7 @@ msgstr "Kies een eigenschap van een dataset en ontdek welke categorieën in dat 
 msgid "Choose area"
 msgstr "Kies thema"
 
+
 #: ckanext/webpageview/plugin.py:24
 msgid "Website"
 msgstr ""
@@ -4848,3 +4852,60 @@ msgstr ""
 #, python-format
 msgid " See <a href=\"%(url)s\">original metadata record</a> for more information "
 msgstr " Zie <a href=\"%(url)s\">originele metadatarecord</a> voor meer informatie "
+
+#: ckanext-odvl/ckanext/odvl/theme/templates/home/index.html:19
+msgid "Popular Datasets"
+msgstr "Populaire Datasets"
+
+#: ckanext-odvl/ckanext/odvl/theme/templates/home/index.html:26
+msgid "Recently Updated"
+msgstr "Onlangs bijgewerkt"
+
+
+# Titles for extra fields from DCAT imports
+msgid "issued"
+msgstr "Datum publicatie"
+
+msgid "modified"
+msgstr "Laatst gewijzigd"
+
+msgid "version_notes"
+msgstr "Versie Nota's"
+
+msgid "language"
+msgstr "Taal"
+
+msgid "frequency"
+msgstr "Update frequentie"
+
+msgid "conforms_to"
+msgstr "Compliant met standard"
+
+msgid "spatial_uri"
+msgstr "Geographishe dekking"
+
+msgid "temporal_start"
+msgstr "Dekking in tijd - Vanaf"
+
+msgid "temporal_end"
+msgstr "Dekking in tijd - Tot"
+
+msgid "download_url"
+msgstr "URL van download"
+
+msgid "mimetype"
+msgstr "Mediatype"
+
+msgid "status"
+msgstr "Status"
+
+msgid "size"
+msgstr "Aantal bytes"
+
+msgid "rights"
+msgstr "Rechten"
+
+#: ckan/ckan/templates/snippets/license.html:21
+#, python-format
+msgid " See <a href=\"%(url)s\">original metadata record</a> (Usage Rights) "
+msgstr " Zie <a href=\"%(url)s\">originele metadatarecord</a> (Gebruiksrecht) "

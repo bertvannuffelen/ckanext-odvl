@@ -1,0 +1,57 @@
+{% ckan_extends %}
+
+
+{% block primary_content %}
+    <section class="region">
+    <div class="layout layout--normal">
+
+        {% import 'macros/form.html' as form %}
+        {% set username_error = true if error_summary %}
+        {% set password_error = true if error_summary %}
+
+
+        <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+            <form action="{{ c.login_handler }}" method="post" class="inline-label-form">
+                <div class="inline-label-form--field-container">
+                    {{ form.errors(errors=error_summary) }}
+
+                    <label class="inline-label-form--label-left" for="">{{ _("Username") }}</label>
+                    <div class="inline-label-form--input-field">
+                        <input name="login" id='field-login' class="input-field input-field--block input-field__dark" type="text" placeholder="{{ _("Username") }}">
+                        {% if username_error and username_error is iterable %}<span class="error-block">{{ username_error|join(', ') }}</span>{% endif %}
+                    </div>
+                </div>
+                <div class="inline-label-form--field-container">
+                    <label class="inline-label-form--label-left" for="">{{ _("Password") }}</label>
+                    <div class="inline-label-form--input-field">
+                        <input name="password" id='field-password' class="input-field input-field--block input-field__dark" type="password" placeholder="{{ _("Password") }}">
+                        {% if password_error and password_error is iterable %}<span class="error-block">{{ password_error|join(', ') }}</span>{% endif %}
+                    </div>
+                </div>
+                <div class="inline-label-form--field-container inline-label-form--field-container--push-left">
+                    <input name="remember" id="field-remember" type="checkbox" value="63072000" checked="true"> <label class="inline-label-form--label-checkbox" for="remember">{{ _("Remember me") }}</label>
+                </div>
+                <div class="inline-label-form--field-container inline-label-form--field-container--push-left">
+                    <input id="check" class="inline-label-form--input-submit button button-block" type="submit" value="inloggen">
+                    <a href="{{ h.url_for(controller='user', action='request_reset') }}" class="inline-label-form--default-link">{{ _('Forgotten your password?') }}</a>
+                </div>
+            </form>
+            <div class="u-spacer--large"></div>
+        </div>
+    </div>
+    </section>
+
+    {% if h.check_access('user_create') %}
+        <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+            <h2 class="h3 h3--alt">{{ _('Need an Account?') }}</h2>
+            <p><a href="{{ h.url_for(controller='user', action='register') }}">{% trans %}Then sign right up, it only takes a minute.{% endtrans %}</a></p>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block secondary_content %}
+
+
+{% endblock %}

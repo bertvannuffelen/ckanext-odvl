@@ -1,14 +1,191 @@
 {% ckan_extends %}
 
-{% block page %}
-  {{ super() }}
+{% block skip %}
+    <div class="layout layout--normal">
+        <div class="layout__wrapper">
+            <div class="skiplink">
+                <a href="#content">{{ _('Skip to content') }}</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
+{% block header %}
+    {% set breadcrumb_cont = self.breadcrumb_content() | trim%}
+    {% include "header.html" %}
+{% endblock -%}
+
+{% block page %}
+    <noscript>
+        <div class="layout layout--normal">
+            <div class="browser-error">
+                <span>Om de website optimaal te bekijken in uw browser, schakelt u best Javascript in.</span>
+            </div>
+        </div>
+    </noscript>
+
+    <!--[if lt IE 9]>
+    <div class="layout layout--normal">
+        <div class="browser-error">
+            <span>De huidige versie van uw browser is verouderd. Om de website optimaal te bekijken, installeert u best een recente versie.</span>
+        </div>
+    </div>
+    <![endif]-->
+
+    <script type="text/javascript" src="//widgets.vlaanderen.be/widget/live/9ce89c12a2e6420ebe00d79c7da00d56"></script>
+
+    <div class="pageBox">
+        {{ super() }}
+    </div>
+
+    <section class="region region--alt">
+
+        {% if g.debug %}
+            <div style="float:left">
+                {% include 'snippets/debug.html' %}
+            </div>
+        {% endif %}
+
+        <ul class="user-actions">
+            <li>Open data:</li>
+            <li>
+                <a href="http://docs.ckan.org/en/latest/api/index.html" class="user-actions--action">API</a>
+            </li>
+            <li>
+                <a href="mailto:opendata@vlaanderen.be" class="user-actions--action">Contacteer Open data team</a>
+            </li>
+        </ul>
+    </section>
+    <script type="text/javascript" src="//widgets.vlaanderen.be/widget/live/b07720f8f1064ccebf00d07408dd3616"></script>
+
+{% endblock %}
+
+
+{%- block content %}
+    <main id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content main-content--drop-padding">
+    <section class="region" id="content" class="container">
+    {% block main_content %}
+        <div class="layout layout--normal">
+        {% block flash %}
+            <div class="flash-messages">
+                {% block flash_inner %}
+                    {% for message in h.flash.pop_messages() | list %}
+                        <div class="alert fade in {{ message.category }}">
+                            {{ h.literal(message) }}
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block toolbar %}
+            <div class="grid-item grid-item--a-6">
+                <h1 class="h1 page-title">
+                    <div class="toolbar">
+                        {% if self.content_action() | trim %}
+                            <div class="content_action" style="float:right">
+                                {% block content_action %}{% endblock %}
+                            </div>
+                        {% endif %}
+                        {% if self.page_primary_action() | trim %}
+                            <div class="page_primary_action" style="float:right">
+                                {% block page_primary_action %}{% endblock %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% block breadcrumb_content %}{% endblock %}
+                </h1>
+            </div>
+
+        {% endblock %}
+
+        {% block secondary %}
+            {% if self.secondary_content()|trim != '' %}
+            <aside class="grid-item grid-item--a-2 grid-item--a-6--small grid-item--a-6--small--full-width">
+                {% block secondary_header %}{% endblock %}
+                <div class="filter__form">
+                {#
+            The secondary_content block can be used to add content to the
+            sidebar of the page. This is the main block that is likely to be
+            used within a template.
+
+            Example:
+
+              {% block secondary_content %}
+                <h2>A sidebar item</h2>
+                <p>Some content for the item</p>
+              {% endblock %}
+            #}
+                {% block secondary_content %}{% endblock %}
+                </div>
+            </aside>
+
+            {% endif %}
+        {% endblock %}
+
+        {% if self.secondary()|trim == '' %}
+            <!-- <article class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium"> -->
+            <article>
+        {% else %}
+            <article class="grid-item grid-item--a-4 grid-item--a-6--small">
+        {% endif %}
+
+
+            {#
+            The pre_primary block can be used to add content to before the
+            rendering of the main content columns of the page.
+            #}
+            {% block pre_primary %}
+            {% endblock %}
+
+            {% block primary %}
+                    {#
+                The primary_content block can be used to add content to the page.
+                This is the main block that is likely to be used within a template.
+
+                Example:
+
+                  {% block primary_content %}
+                    <h1>My page content</h1>
+                    <p>Some content for the page</p>
+                  {% endblock %}
+                #}
+                    {% block primary_content %}
+                            {% block page_header %}
+                                <header class="module-content page-header">
+                                    <ul class="nav nav-tabs">
+                                        {% block content_primary_nav %}{% endblock %}
+                                    </ul>
+                                </header>
+                            {% endblock %}
+                            <div {# class="module-content" #}>
+                                {% block primary_content_inner %}
+                                {% endblock %}
+                            </div>
+                    {% endblock %}
+            {% endblock %}
+
+        </article>
+    </div>
+    {% endblock %}
+
+    {# footer #}
+    {%- block newfooter %}
+    {% include "footer.html" %}
+    {% endblock -%}
+</section>
+</main>
+{% endblock -%}
+
+{# remove footer as it is included in main section above #}
+{%- block footer %}{% endblock -%}
+
 {# The content block allows you to replace the content of the page if needed #}
+{#
 {%- block content %}
     <div id="region2wrap" class="xtc-bodygutter" role="main">
         <div id="region2pad" class="xtc-wrapperpad">
-            <div id="content" class="row-fluid xtc-wrapper r2spacer container">
+            <div id="content" class="xtc-wrapper r2spacer container">
                 {{ self.main_content() }}
             </div>
         </div>
@@ -24,8 +201,6 @@
 
     <div class="wrapper{{ self.wrapper_class() }}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
 
-        {{ self.actions() }}
-
         {{ self.pre_primary() }}
 
         <table>
@@ -37,4 +212,5 @@
         </table>
     </div>
 {% endblock %}
+#}
 

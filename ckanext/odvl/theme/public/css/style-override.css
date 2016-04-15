@@ -1,0 +1,310 @@
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    text-rendering: inherit;
+}
+
+body {
+    color: inherit;
+}
+
+.avatar .image .gravatar {
+    display: inherit;
+    height: auto;
+    width: auto;
+    vertical-align: middle;
+}
+
+[role=main], .main {
+    background: inherit;
+}
+
+.toolbar {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.search-form h2 {
+    font-size: inherit;
+    line-height: inherit;
+    color:inherit;
+    margin-bottom: inherit;
+    margin-top: inherit;
+}
+
+.search-form .filter-list {
+    line-height: inherit
+}
+
+.filter-results--tags-list {
+    display: inline-block;
+}
+
+.filter-results--tags-list .facet.filter-results--tags-list-item {
+    background: inherit;
+    border-radius: inherit;
+    display: inline-block;
+    color: inherit;
+}
+
+.filter__field .module-heading {
+    /* clones style from .filter__form .filter__field .filter__field__label */
+    font-size: 2rem;
+    /* margin-bottom: 1rem; */
+    font-weight: 500;
+    line-height: 1.25;
+
+    /* override default CKAN module-heading */
+    padding: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    background-color: inherit;
+    border-top: inherit;
+    border-bottom: inherit;
+}
+
+label:after {
+    content: initial;  /* override colon after label in CKAN */
+}
+
+.tags-list .tags-list-item a {
+    border-radius: 0px;
+    text-shadow: none;
+    display: inline;
+}
+
+.tagcloud .tags-list .tags-list-item a.tag {
+    background: #e8ebee;   /* $athens-gray */
+
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+/*
+.pagination ul > li > a, .pagination ul > li > span {
+    float: left;
+    padding: inherit;
+    line-height: inherit;
+    text-decoration: inherit;
+    background-color: inherit;
+    border: inherit;
+    border-left-width: inherit;
+}
+
+.pagination ul {
+     display: inherit;
+     margin-left: inherit;
+     margin-bottom: inherit;
+     -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+     border-radius: inherit;
+     -webkit-box-shadow: inherit;
+    -moz-box-shadow: inherit;
+     box-shadow: inherit;
+}
+*/
+.data-file-list-item--icon-wrapper .format-label
+{
+    position: relative;
+    top: 2rem;
+    margin: 0 0 2rem 2.2rem;
+}
+
+
+h2, h3 {
+    font-size: 2.4rem;
+    font-family: flanders-serif;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+#dataset-map h2, #dataset-map h3 {
+    margin-bottom: inherit;
+}
+
+
+.additional-info thead {
+    display: none
+}
+
+.additional-info .table th {
+    font-weight: inherit;
+}
+
+.activity .item p {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0 0 0 80px;
+}
+
+.activity .item {
+    position: inherit;
+    margin: inherit;
+    padding: inherit;
+}
+
+.grid-item--no-margin {
+    margin: 0!important;
+}
+
+.banner .toolbar {
+    float:left;
+    margin: 0;
+    padding: 0;
+}
+
+.page-title .toolbar {
+    float:right;
+    margin: 0;
+    padding: 0;
+}
+
+.banner .toolbar .breadcrumb {
+    float:left;
+    margin: 0 ;
+    padding: 8px 15px;
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.banner .toolbar .breadcrumb > li {
+    text-shadow: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #737373;
+}
+
+.page-title {
+
+}
+
+.page-title li:not(:last-child) {
+    display: none;
+}
+
+.page-title li {
+    list-style: none;
+    display: inline-block;
+}
+
+.page-title li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.resource-view {
+    margin-top: 0;
+    position: relative;
+}
+
+.ckanext-datapreview {
+    padding-top: 0;
+}
+
+.resource-view>a.btn {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+}
+
+/* apply vlaanderen-ui 'button' style to CKAN .btn */
+.btn {
+
+    /* override bootstrap inherited style */
+    text-shadow: none;
+    background-image: none;
+    filter: none;
+    border: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-weight: inherit;
+
+    display: inline-block;
+    height: 4.5rem;
+    font-size: 1.8rem;
+    font-family: flanders-sans;
+    line-height: 4.2rem;
+    padding: 0 4rem;
+    border-top: 3px solid #0066cc;
+    background-color: #0066cc;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    outline: 0;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.js .table tr.toggle-show-more>td {
+
+    padding-right: 0;
+    text-align: left;
+}
+
+.js .table tr.toggle-show-more {
+
+}
+
+.resource_extra_info .table td:first-child, .resource_extra_info .table th:first-child {
+    width: 30%;
+}
+
+.resource_extra_info .module-content {
+    padding: 0;
+    margin: 0;
+}
+
+.dataset-map-expanded .h1.page-title {
+    margin-bottom: 570px;
+}
+.dataset-map-expanded #dataset-map {
+    top: 150px!important;
+    margin-left: 3%!important;
+    width: 94%!important;
+    border: 0!important;
+}
+
+.dataset-map-expanded .module-heading {
+    background: #e8ebee;
+    padding: 1rem 1.5rem;
+    position: relative;
+}
+
+.dataset-map-expanded #dataset-map #dataset-map-edit-buttons {
+
+    background: #e8ebee;
+    padding: 1rem 1.5rem .4rem 1.5rem;
+    text-align: right;
+    width: 100%;
+}
+
+.dataset-map-expanded #dataset-map #dataset-map-edit-buttons .cancel{
+    background-color: transparent;
+    border: 0;
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.dataset-map-expanded #dataset-map #dataset-map-edit-buttons .apply{
+    min-width: 20rem;
+}
+
+
+.dataset-map-expanded #dataset-map #dataset-map-attribution {
+    position: absolute;
+}
+
+.resource_extra_info .table thead {
+    display: none
+}

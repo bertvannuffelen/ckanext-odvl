@@ -1,0 +1,69 @@
+{% import "macros/form.html" as form %}
+
+
+
+<div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+    <h2 class="h3 h3--alt">Waarom registreren?</h2>
+    <p>Creëer datasets, groepen en andere interessante dingen</p>
+
+    <div class="u-spacer"></div>
+</div>
+
+<div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+    <form action="" class="inline-label-form" method="post">
+
+        {{ form.errors(error_summary) }}
+
+        <div class="inline-label-form--field-container">
+            <label class="inline-label-form--label-left" for="field-user">{{ _("Username") }}:</label>
+            <div class="inline-label-form--input-field">
+                <input class="input-field input-field--block input-field__dark" type="text" id="field-username" value="{{ data.name }}" name="name" placeholder="{{ _("username") }}">
+                {% if errors.name and errors.name is iterable %}<span class="error-block">{{ errors.name|join(', ') }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="inline-label-form--field-container">
+            <label class="inline-label-form--label-left" for="field-naam">{{ _("Full Name") }}:</label>
+            <div class="inline-label-form--input-field">
+                <input class="input-field input-field--block input-field__dark" type="text" id="field-fullname" value="{{ data.fullname }}" name="fullname" placeholder="{{ _("Joe Bloggs") }}">
+                {% if errors.fullname and errors.fullname is iterable %}<span class="error-block">{{ errors.fullname|join(', ') }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="inline-label-form--field-container">
+            <label class="inline-label-form--label-left" for="field-email">{{ _("Email") }}:</label>
+            <div class="inline-label-form--input-field">
+                <input class="input-field input-field--block input-field__dark" type="text" id="field-email" value="{{ data.email }}" name="email" placeholder="{{ _("joe@example.com") }}">
+                {% if errors.email and errors.email is iterable %}<span class="error-block">{{ errors.email|join(', ') }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="inline-label-form--field-container">
+            <label class="inline-label-form--label-left" for="field-wachtwoord">{{ _("Password") }}:</label>
+            <div class="inline-label-form--input-field">
+                <input class="input-field input-field--block input-field__dark" type="password" id="field-password" value="{{ data.password1 }}" name="password1" placeholder="••••••••">
+                {% if errors.password1 and errors.password1 is iterable %}<span class="error-block">{{ errors.password1|join(', ') }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="inline-label-form--field-container">
+            <label class="inline-label-form--label-left" for="field-confirm">{{ _("Confirm") }}:</label>
+            <div class="inline-label-form--input-field">
+                <input class="input-field input-field--block input-field__dark" type="password" id="field-confirm-password" value="{{ data.password2 }}" name="password2" placeholder="••••••••">
+                {% if errors.password2 and errors.password2 is iterable %}<span class="error-block">{{ errors.password2|join(', ') }}</span>{% endif %}
+            </div>
+        </div>
+
+        {% if g.recaptcha_publickey %}
+            <div class="inline-label-form--field-container">
+            {% snippet "user/snippets/recaptcha.html", public_key=g.recaptcha_publickey %}
+            </div>
+        {% endif %}
+
+        <div class="inline-label-form--field-container inline-label-form--field-container--push-left">
+            <input class="inline-label-form--input-submit button button-block" type="submit" name="save" value="{{ _("Create Account") }}">
+        </div>
+    </form>
+    <div class="u-spacer--large"></div>
+</div>
+

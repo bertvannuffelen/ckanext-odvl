@@ -1,12 +1,119 @@
 {% ckan_extends %}
 
-{% block secondary_content %}
-{{ super() }}
+{% block package_info %}
+    {% snippet 'package/snippets/info.html', pkg=pkg %}
 
-{# Add the geospatial bounding box display #}
-{% set dataset_extent = h.get_pkg_dict_extra(c.pkg_dict, 'spatial', '') %}
-{% if dataset_extent %}
-{% snippet "spatial/snippets/dataset_map_sidebar.html", extent=dataset_extent %}
-{% endif %}
+    {# Add the geospatial bounding box display #}
+    {% set dataset_extent = h.get_pkg_dict_extra(c.pkg_dict, 'spatial', '') %}
+    {% if dataset_extent %}
+        {% snippet "spatial/snippets/dataset_map_sidebar.html", extent=dataset_extent %}
+    {% endif %}
+{% endblock %}
+
+{% block secondary %}{% endblock %}
+
+{% block package_organization %}
+    {% if pkg.organization %}
+        {% set org = h.get_organization(pkg.organization.name) %}
+        {% set truncate = truncate or 0 %}
+        {% set url = h.url_for(controller='organization', action='read', id=org.name) %}
+
+
+        <div style="display:inline-block" class="organisation-meta">
+            <h2 class="organisation-meta--title">{{ _('Organization') }}</h2>
+            <div class="image" style="display:inline-block; vertical-align: top;">
+                <a href="{{ url }}">
+                    <img src="{{ org.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" width="50" alt="{{ org.name }}" />
+                </a>
+            </div>
+            <a class="organisation-meta--link" href="{{ url }}">{{ org.title or org.name }}</a>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block package_license %}
+    <div class="package_license_info">
+    <h2 class="organisation-meta--title">{{ _('License') }}</h2>
+    {% snippet "snippets/license.html", pkg_dict=pkg, text_only=true %}
+    </div>
+{% endblock %}
+
+
+
+
+{% block primary_content %}
+     <div>
+        <div class="grid-item grid-item--a-6">
+            <hr class="u-divider">
+        </div>
+        <div class="grid-item--a-6 grid-jump--a-2">
+            <div class="grid-item grid-item--a-2 grid-item--no-margin grid-item--a-6--small organisation-meta">
+                {{ self.package_organization() }}
+            </div>
+            <div class="grid-item grid-item--a-2 grid-item--a-6--small organisation-meta">
+                {{ self.package_license() }}
+            </div>
+             {# Add the geospatial bounding box display #}
+             {% set dataset_extent = h.get_pkg_dict_extra(c.pkg_dict, 'spatial', '') %}
+             {% if dataset_extent %}
+             <div class="grid-item grid-item--a-4 grid-item--no-margin grid-item--a-4--small">
+                 <section class="dataset-map organisation-meta">
+                     <h2 class="organisation-meta--title">{{ _('Dataset extent') }}</h2>
+                     {% snippet "spatial/snippets/dataset_map_base.html", extent=dataset_extent %}
+                 </section>
+             </div>
+             {% endif %}
+        </div>
+
+        <div class="grid-item grid-item--a-6">
+            <hr class="u-divider">
+
+             {% if pkg.tags %}
+                 {% snippet 'snippets/tag_list.html', tags=pkg.tags, _class='tag-list' %}
+                 <hr class="u-divider">
+             {% endif %}
+         </div>
+
+
+
+        {% block package_notes %}
+            {% if c.pkg_notes_formatted %}
+                <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+                    <div class="u-spacer u-spacer--clear--small"></div>
+                    <p class="data-clamp-remove-target js-clamped" data-clamp="10" data-clamp-id="1">
+                    {{ c.pkg_notes_formatted }}
+                    </p>
+                    <a href="#" class="js-remove-clamp-button" data-clamp-remove-id="1">Lees meer</a>
+                    <div class="u-spacer u-spacer--clear--small"></div>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
+
+            {% snippet 'package/snippets/resources_list.html', pkg=pkg, resources=pkg.resources %}
+
+            <div class="u-spacer--large u-spacer--clear--small"></div>
+        </div>
+
+         {% block package_additional_info %}
+
+        <div class="grid-item grid-item--a-5 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small table-data">
+            {% snippet "package/snippets/additional_info.html", pkg_dict=pkg %}
+            <div class="u-spacer--large u-spacer--clear--small"></div>
+        </div>
+         {% endblock %}
+
+        <div class="grid-item grid-item--a-6 info-block info-block--activity">
+            <header class="info-block__header">
+                <h1 class="info-block__title">Activiteitenstroom</h1>
+            </header>
+            <div class="info-block__content">
+                {{ h.get_action('package_activity_list_html', {'id': pkg.id}) }}
+            </div>
+        </div>
+
+     </div>
+
 
 {% endblock %}

@@ -1,0 +1,15 @@
+{% ckan_extends %}
+
+{% block subtitle %}{{ _('Register') }}{% endblock %}
+
+
+{% block breadcrumb_content %}
+  <li class="active">{{ h.nav_link(_('Register for an Account'), controller='user', action='register') }}</li>
+{% endblock %}
+
+{% block primary_content %}
+        {{ c.form | safe }}
+{% endblock %}
+
+{% block secondary_content %}
+{% endblock %}
