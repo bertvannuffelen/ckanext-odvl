@@ -2121,7 +2121,7 @@ msgstr "Bestand wordt geupload. Als u deze pagina verlaat stopt de upload. Weet 
 
 #: ckan/public/base/javascript/modules/resource-view-reorder.js:8
 msgid "Reorder resource view"
-msgstr ""
+msgstr "Hersorteer"
 
 #: ckan/public/base/javascript/modules/slug-preview.js:35
 #: ckan/templates/group/snippets/group_form.html:18
@@ -3229,7 +3229,7 @@ msgstr "Wijzigen metadata"
 #: ckan/templates/package/edit_view.html:8
 #: ckan/templates/package/edit_view.html:12
 msgid "Edit view"
-msgstr ""
+msgstr "Wijzig verkenning"
 
 #: ckan/templates/package/edit_view.html:20
 #: ckan/templates/package/new_view.html:28
@@ -3282,7 +3282,7 @@ msgstr "Nieuwe bron"
 #: ckan/templates/package/new_view.html:8
 #: ckan/templates/package/new_view.html:12
 msgid "Add view"
-msgstr ""
+msgstr "Verkenning toevoegen"
 
 #: ckan/templates/package/new_view.html:19
 msgid ""
@@ -3374,7 +3374,7 @@ msgstr "DataStore"
 
 #: ckan/templates/package/resource_edit_base.html:28
 msgid "Views"
-msgstr ""
+msgstr "Gegevensverkenningen"
 
 #: ckan/templates/package/resource_read.html:39
 msgid "API Endpoint"
@@ -3473,7 +3473,7 @@ msgstr "Licentie"
 
 #: ckan/templates/package/resource_views.html:10
 msgid "New view"
-msgstr ""
+msgstr "Nieuwe verkenning"
 
 #: ckan/templates/package/resource_views.html:28
 msgid "This resource has no views"
@@ -3515,11 +3515,11 @@ msgstr "U kunt ook het register raadplegen met behulp van de %(api_link)s (see %
 
 #: ckan/templates/package/view_edit_base.html:9
 msgid "All views"
-msgstr ""
+msgstr "Alle verkenningen"
 
 #: ckan/templates/package/view_edit_base.html:12
 msgid "View view"
-msgstr ""
+msgstr "Bekijk verkenning"
 
 #: ckan/templates/package/view_edit_base.html:37
 msgid "View preview"
@@ -4581,7 +4581,7 @@ msgstr ""
 
 #: ckanext/reclineview/plugin.py:82
 msgid "Data Explorer"
-msgstr ""
+msgstr "Data verkenner"
 
 #: ckanext/reclineview/plugin.py:106
 msgid "Table"
