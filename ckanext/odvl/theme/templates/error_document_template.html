@@ -1,0 +1,24 @@
+{% extends "page.html" %}
+
+{% block breadcrumb_content %}We vinden de pagina niet ...{% endblock %}
+
+{% block primary %}
+  <article class="module">
+    <div class="module-content">
+        <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-6--medium grid-jump--a-1--medium">
+            <p>Jammer genoeg kunnen we de pagina die u vroeg niet tonen. U kunt ons helpen de site te verbeteren door ons dit te <a href="mailto:opendata@vlaanderen.be">melden</a>. Probeer de zoekfunctie om de informatie ergens anders op de site te vinden.</p>
+        </div>
+        <!--
+      {{ gettext('Error %(error_code)s', error_code=c.code[0]) }}
+      {{ c.content}}
+      -->
+    </div>
+  </article>
+{% endblock %}
+
+
+{% block flash %}
+  {# eat the flash messages caused by the 404 #}
+  {% set flash_messages = h.flash.pop_messages() %}
+{% endblock %}
+
