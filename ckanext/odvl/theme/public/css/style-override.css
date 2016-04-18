@@ -113,7 +113,7 @@ label:after {
 }
 
 
-h2, h3 {
+h1, h2, h3 {
     font-size: 2.4rem;
     font-family: flanders-serif;
     font-weight: 500;
@@ -212,7 +212,7 @@ h2, h3 {
 }
 
 /* apply vlaanderen-ui 'button' style to CKAN .btn */
-.btn {
+.btn:not([class*=" icon-"]):not(.btn-mini):not(.btn-small) {
 
     /* override bootstrap inherited style */
     text-shadow: none;
@@ -244,6 +244,25 @@ h2, h3 {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin-left: 2px;
+}
+
+/* reinstate these blocks that get overridden by previous .btn declaration */
+.js .js-hide {
+    display: none!important;
+}
+.show-filters.btn, .hide-filters {
+    display: none!important;
+}
+
+.btn[class*=" icon-"]:before {
+    top: -3px!important;
+    left: -5px!important;
+}
+
+/* fix height of extra value 'key' and 'value' */
+.input-append .add-on, .input-prepend .add-on {
+    height: 24px;
 }
 
 .js .table tr.toggle-show-more>td {

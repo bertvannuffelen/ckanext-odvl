@@ -1,6 +1,11 @@
 {% ckan_extends %}
 
 
+{% block main_content %}
+    <div>
+        {{ self.flash() }}
+    </div>
+
 {% block primary_content %}
 
     <section class="region">
@@ -17,9 +22,9 @@
                 <div class="u-spacer u-spacer--clear--small"></div>
                 <form class="inline-label-form" method="get" action="{% url_for controller='package', action='search' %}">
                     <div class="inline-label-form--field-container">
-                        <label class="inline-label-form--label-left" for="field-search">{{ _("Search Your Data") }}</label>
+                        <label class="inline-label-form--label-left" for="field-search">{{ _("Search data") }}</label>
                         <div class="inline-label-form--input-submit-wrapper">
-                            <input type="text" class="input-field inline-label-form--input-field inline-label-form--input-field--push-left" name="q" value="{{ c.q }}" autocomplete="off" placeholder="{{ _('eg. Gold Prices') }}" />
+                            <input type="text" class="input-field inline-label-form--input-field inline-label-form--input-field--push-left" name="q" value="{{ c.q }}" autocomplete="off" placeholder="{{ _('E.g. environment') }}" />
                             <button class="inline-label-form--input-submit--icon" type="submit"><span class="icon icon-search"></span></button>
                         </div>
                         <div class="inline-label-form--field-container inline-label-form--field-container--push-left">
@@ -36,7 +41,7 @@
     <section class="region">
         <div class="layout layout--normal">
             <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
-                <h2 class="h3">{{ _('Popular Tags') }}</h2>
+                <h2 class="h3">{{ _('Popular tags') }}</h2>
             </div>
 
             <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
@@ -118,6 +123,8 @@
         {{ self.newfooter() }}
 
     </section>
+
+{% endblock %}
 
 {% endblock %}
 
