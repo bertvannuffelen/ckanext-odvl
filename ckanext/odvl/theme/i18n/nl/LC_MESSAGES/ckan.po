@@ -33,7 +33,7 @@ msgstr "Autorisatiefunctie niet gevonden: %s"
 
 #: ckan/new_authz.py:190
 msgid "Admin"
-msgstr "Beheerder"
+msgstr "Beheer"
 
 #: ckan/new_authz.py:194
 msgid "Editor"
