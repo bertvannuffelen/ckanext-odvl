@@ -117,9 +117,7 @@
                 </div>
 
                 {% for facet in c.facet_titles %}
-                    <div class="filter__field">
-                        {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
-                    </div>
+                    {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
                 {% endfor %}
                 <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
             </div>
