@@ -212,7 +212,7 @@ h1, h2, h3 {
 }
 
 /* apply vlaanderen-ui 'button' style to CKAN .btn */
-.btn:not([class*=" icon-"]):not(.btn-mini):not(.btn-small) {
+.btn:not([class*=" icon-"]):not(.btn-mini):not(.btn-small):not(.btn-remove-url) {
 
     /* override bootstrap inherited style */
     text-shadow: none;
