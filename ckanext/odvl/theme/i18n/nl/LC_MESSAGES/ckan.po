@@ -1167,7 +1167,7 @@ msgid ""
 "Please click the following link to confirm this request:\n"
 "\n"
 "   {reset_link}\n"
-msgstr ""
+msgstr "Je hebt je wachtwoord aangevraagd op {site_title} to be reset.\n\nKlik op de volgende link om dit te bevestigen:\n\n   {reset_link}\n"
 
 #: ckan/lib/mailer.py:119
 msgid ""
@@ -1328,7 +1328,7 @@ msgstr "Die naam kan niet worden gebruikt"
 #: ckan/logic/validators.py:356
 #, python-format
 msgid "Must be at least %s characters long"
-msgstr ""
+msgstr "Moet tenminste %s karakters lang zijn"
 
 #: ckan/logic/validators.py:358 ckan/logic/validators.py:636
 #, python-format
@@ -1339,7 +1339,7 @@ msgstr "Naam mag maximaal %i karakters lang zijn"
 msgid ""
 "Must be purely lowercase alphanumeric (ascii) characters and these symbols: "
 "-_"
-msgstr ""
+msgstr "Mag alleen bestaan uit kleine alfanummerieke (ascii) karakters of -_"
 
 #: ckan/logic/validators.py:379
 msgid "That URL is already in use."
@@ -1863,7 +1863,7 @@ msgstr "Geldige API key nodig om een groep te wijzigen"
 
 #: ckan/model/license.py:177
 msgid "License not specified"
-msgstr ""
+msgstr "Licentie is niet gespecificeerd"
 
 #: ckan/model/license.py:187
 msgid "Open Data Commons Public Domain Dedication and License (PDDL)"
@@ -2950,15 +2950,15 @@ msgstr "Dit is een gekenmerkte sectie"
 
 #: ckan/templates/home/snippets/search.html:2
 msgid "E.g. environment"
-msgstr ""
+msgstr "bv. Milieu"
 
 #: ckan/templates/home/snippets/search.html:6
 msgid "Search data"
-msgstr ""
+msgstr "Zoek data"
 
 #: ckan/templates/home/snippets/search.html:16
 msgid "Popular tags"
-msgstr ""
+msgstr "Populaire tags"
 
 #: ckan/templates/home/snippets/stats.html:5
 msgid "{0} statistics"
@@ -3156,7 +3156,7 @@ msgid ""
 "organizations, admins can assign roles and authorise its members, giving "
 "individual users the right to publish datasets from that particular "
 "organisation (e.g. Office of National Statistics).</p> "
-msgstr ""
+msgstr " <p>Organisaties handelen zoals publishing afdelingen voor datasets (bv. het Ministerie voor Volksgezondheid. Dit betekent dat de datasets gepubliceerd kunnen worden door een afdeling in plaats van een enkele gebruiker.</p> <p>Binnen organisaties kunnen beheerders rollen toewijzen aan haar leden. Hiermee geven zij de leden toestemming om datasets te publiceren (bv. Centraal Bureau voor de Statistiek).</p> "
 
 #: ckan/templates/organization/snippets/helper.html:8
 msgid ""
@@ -3554,7 +3554,7 @@ msgstr "Status"
 
 #: ckan/templates/package/snippets/additional_info.html:62
 msgid "Last Updated"
-msgstr ""
+msgstr "Laatst gewijzigd"
 
 #: ckan/templates/package/snippets/data_api_button.html:10
 msgid "Data API"
@@ -3742,7 +3742,7 @@ msgstr "Insluiten"
 
 #: ckan/templates/package/snippets/resource_view.html:24
 msgid "This resource view is not available at the moment."
-msgstr ""
+msgstr "Dit is automatisch gegenereerd. U kunt dit bewerken als u wilt"
 
 #: ckan/templates/package/snippets/resource_view.html:63
 msgid "Embed resource view"
@@ -3776,7 +3776,7 @@ msgstr "Data en bronnen"
 
 #: ckan/templates/package/snippets/resources_list.html:29
 msgid "This dataset has no data"
-msgstr ""
+msgstr "Deze dataset bevat geen informatie"
 
 #: ckan/templates/package/snippets/revisions_table.html:24
 #, python-format
@@ -4888,7 +4888,7 @@ msgid "This should include the http:// part of the URL"
 msgstr "Geef ook http:// mee als deel van de url"
 
 msgid "Source type"
-msgstr "Bron type
+msgstr "Bron type"
 
 msgid "Update frequency"
 msgstr "Frequentie"
@@ -4896,6 +4896,11 @@ msgstr "Frequentie"
 msgid "Configuration"
 msgstr "Configuratie"
 
+msgid "Add datasets"
+msgstr "Datasets toevoegen"
+
+msgid "updated on"
+msgstr "gewijzigd op"
 
 # Titles for extra fields from DCAT imports
 msgid "issued"
