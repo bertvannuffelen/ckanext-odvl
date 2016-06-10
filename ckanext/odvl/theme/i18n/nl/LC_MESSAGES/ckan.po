@@ -4945,6 +4945,9 @@ msgstr "Aantal bytes"
 msgid "rights"
 msgstr "Rechten"
 
+msgid "You are not part of any organization. You must be member of an organization to submit or update datasets."
+msgstr "Om datasets te kunnen toevoegen moet je lid van een organisatie zijn. Stuur een mail naar <a href='mailto:opendata@vlaanderen.be'>opendata@vlaanderen.be</a> met duidelijke vermelding voor welke organisatie je datasets wilt toevoegen"
+
 #: ckan/ckan/templates/snippets/license.html:21
 #, python-format
 msgid " See <a href=\"%(url)s\">original metadata record</a> (Usage Rights) "
