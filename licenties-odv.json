@@ -15,7 +15,6 @@
         "url": ""
     },
 
-
     {
         "domain_content": true,
         "domain_data": true,
@@ -27,6 +26,19 @@
         "maintainer": "",
         "status": "active",
         "title": "Modellicentie 1 -  CC0-verklaring",
+        "url": "http://overheid.vlaanderen.be/hergebruik/licenties/v1-0/html/cc0"
+    },
+    {
+        "domain_content": true,
+        "domain_data": true,
+        "domain_software": true,
+        "family": "",
+        "id": "cc-zero-old",
+        "is_okd_compliant": true,
+        "is_osi_compliant": false,
+        "maintainer": "",
+        "status": "retired",
+        "title": "Modellicentie 1 -  CC0-verklaring - Deprecated",
         "url": "http://overheid.vlaanderen.be/opendata/licenties/v1-0/html/cc0"
     },
     {
@@ -79,11 +91,23 @@
         "is_okd_compliant": true,
         "is_osi_compliant": false,
         "maintainer": "",
-        "status": "active",
+        "status": "retired",
         "title": "Modellicentie 2 - Gratis Open Data Licentie - v1.2",
         "url": "http://overheid.vlaanderen.be/opendata/licenties/v1-2/html/gratis-open-data-licentie"
     },
-
+    {
+        "domain_content": false,
+        "domain_data": true,
+        "domain_software": false,
+        "family": "",
+        "id": "gratis-hergebruik-1.0",
+        "is_okd_compliant": true,
+        "is_osi_compliant": false,
+        "maintainer": "",
+        "status": "active",
+        "title": "Modellicentie Gratis Hergebruik - v1.0",
+        "url": "http://overheid.vlaanderen.be/hergebruik/licenties/v1-0/html/modellicentie-gratis-hergebruik"
+    },
 
 
     {
@@ -121,11 +145,24 @@
         "is_okd_compliant": false,
         "is_osi_compliant": false,
         "maintainer": "",
-        "status": "active",
+        "status": "retired",
         "title": "Modellicentie 3 - Open Data Licentie tegen Billijke Vergoeding - v1.2",
         "url": "http://overheid.vlaanderen.be/opendata/licenties/v1-2/html/open-data-licentie-tegen-billijke-vergoeding"
     },
 
+    {
+        "domain_content": false,
+        "domain_data": true,
+        "domain_software": false,
+        "family": "",
+        "id": "hergebruik-tegen-vergoeding-1.0",
+        "is_okd_compliant": false,
+        "is_osi_compliant": false,
+        "maintainer": "",
+        "status": "active",
+        "title": "Modellicentie Hergebruik Tegen Vergoeding",
+        "url": "http://overheid.vlaanderen.be/hergebruik/licenties/v1-0/html/modellicentie-hergebruik-tegen-vergoeding"
+    },
 
 
     {
@@ -163,7 +200,7 @@
         "is_okd_compliant": false,
         "is_osi_compliant": false,
         "maintainer": "",
-        "status": "active",
+        "status": "retired",
         "title": "Modellicentie 4a - Gratis Open Data Licentie voor Niet-Commercieel Hergebruik - v1.2",
         "url": "http://overheid.vlaanderen.be/opendata/licenties/v1-2/html/gratis-open-data-licentie-voor-niet-commercieel-hergebruik"
     },
@@ -205,7 +242,7 @@
         "is_okd_compliant": false,
         "is_osi_compliant": false,
         "maintainer": "",
-        "status": "active",
+        "status": "retired",
         "title": "Modellicentie 4b - Open Data Licentie voor Commercieel Hergebruik - v1.2",
         "url": "http://overheid.vlaanderen.be/opendata/licenties/v1-2/html/open-data-licentie-tegen-billijke-vergoeding-voor-commercieel_hergebruik"
     }
