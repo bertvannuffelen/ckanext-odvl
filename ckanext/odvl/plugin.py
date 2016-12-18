@@ -1,4 +1,6 @@
 import os
+import re
+from ckan.plugins.toolkit import Invalid
 import inspect
 import ckan.plugins as p
 import ckanext.odvl.helpers as helpers
@@ -10,6 +12,8 @@ import ckan.lib.dictization.model_dictize as model_dictize
 from ckanext.hierarchy.model import GroupTreeNode
 from ckan import model
 
+
+EMAIL_REGEX = re.compile(r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
 
 @logic.side_effect_free
 def members_of_orgs(context, data_dict=None):
@@ -116,11 +120,53 @@ def _group_tree_branch(root_group, highlight_group_name=None, type='group', grou
     return root_node
 
 
-class ODVLExtension(p.SingletonPlugin):
+def is_email(value):
+    if not EMAIL_REGEX.match(value):
+        raise Invalid("Value is not an email")
+    return value
+
+class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.ITemplateHelpers)
     p.implements(p.IActions)
+    p.implements(p.IDatasetForm)
 
+    def is_fallback(self):
+        # Return True to register this plugin as the default handler for
+        # package types not handled by any other IDatasetForm plugin.
+        return True
+
+    def package_types(self):
+        # This plugin doesn't handle any special package types, it just
+        # registers itself as the default (above).
+        return []
+
+    def _modify_package_schema(self, schema):
+        schema.update({
+            'title': [p.toolkit.get_validator('not_empty')],
+            'notes': [p.toolkit.get_validator('not_empty')],
+            'owner_org': [p.toolkit.get_validator('not_empty')],
+            'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
+
+        })
+
+        schema['resources'].update({
+            'url' : [ p.toolkit.get_validator('not_empty') ],
+            'name' : [ p.toolkit.get_validator('not_empty') ],
+            'description' : [ p.toolkit.get_validator('not_empty') ]
+        })
+
+        return schema
+
+    def create_package_schema(self):
+        schema = super(ODVLExtension, self).create_package_schema()
+        schema = self._modify_package_schema(schema)
+        return schema
+
+    def update_package_schema(self):
+        schema = super(ODVLExtension, self).update_package_schema()
+        schema = self._modify_package_schema(schema)
+        return schema
 
     def get_actions(self):
         return {
