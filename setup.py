@@ -27,6 +27,7 @@ setup(
         [ckan.plugins]
 	# Add plugins here, eg
 	odvl_extension=ckanext.odvl.plugin:ODVLExtension
+	geopunt_harvester=ckanext.odvl.plugin:GeopuntHarvester
 
 	    [ckan.rdf.profiles]
     vl_dcat_ap=ckanext.odvl.profiles:VLDCATAPProfile

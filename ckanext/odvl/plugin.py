@@ -10,6 +10,9 @@ import ckan.new_authz as new_authz
 import traceback
 import ckan.lib.dictization.model_dictize as model_dictize
 from ckanext.hierarchy.model import GroupTreeNode
+from ckanext.spatial.interfaces import ISpatialHarvester
+import ckan.plugins.toolkit as toolkit
+import ckan.lib.navl.dictization_functions as df
 from ckan import model
 
 
@@ -119,10 +122,23 @@ def _group_tree_branch(root_group, highlight_group_name=None, type='group', grou
             nodes[group_id] = node
     return root_node
 
+def is_valid_license(value):
+    licenses = model.Package.get_license_register().licenses
+    for lic in licenses:
+        if lic['id'] == value:
+            return value
+
+    # TODO uncomment this to enforce predefined licenses
+    #if value and not value is df.missing:
+    #    raise Invalid("License is unknown: " + value)
+
+    return value
 
 def is_email(value):
+    if (value and value.startswith("mailto:")):
+        value = value[7:].strip()
     if not EMAIL_REGEX.match(value):
-        raise Invalid("Value is not an email")
+        raise Invalid("Value is not an email: " + value)
     return value
 
 class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
@@ -146,8 +162,9 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
             'title': [p.toolkit.get_validator('not_empty')],
             'notes': [p.toolkit.get_validator('not_empty')],
             'owner_org': [p.toolkit.get_validator('not_empty')],
+            'license_id': [is_valid_license],
+            'license_title': [],
             'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
-
         })
 
         schema['resources'].update({
@@ -206,6 +223,16 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
         # render our custom snippet
         return p.toolkit.render_snippet('custom_snippet.html', data)
 
+    def validate(self, context, data_dict, schema, action):
+        # when triggered through harvesters, default schema is taken (see usage of default_create_package_schema in harvesters)
+        # override this method to enforce our schema
+
+        if (action == 'package_create'):
+            schema = self.create_package_schema()
+        elif (action == 'package_update'):
+            schema = self.update_package_schema()
+
+        return toolkit.navl_validate(data_dict, schema, context)
 
     def get_helpers(self):
         return {
@@ -213,3 +240,20 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
                 'top_publishers': helpers.top_publishers,
                 'most_viewed_datasets': helpers.most_viewed_datasets,
                 }
+
+class GeopuntHarvester(p.SingletonPlugin):
+    p.implements(ISpatialHarvester, inherit=True)
+
+    def get_package_dict(self, context, data_dict):
+        package_dict = data_dict['package_dict']
+        opendataTag = next((x for x in package_dict['tags'] if x['name'].lower() == 'vlaamse open data'), None)
+        kosteloosTag = next((x for x in package_dict['tags'] if x['name'].lower() == 'kosteloos'), None)
+
+        if (opendataTag):
+            if (kosteloosTag):
+                package_dict['license_id'] = 'gratis-hergebruik-1.0'
+            else:
+                package_dict['license_id'] = 'Gratis Vlaamse Open Data'
+        #else:   #this should not happen - only 'Vlaamse Open Data' datasets should be harvested
+
+        return package_dict
