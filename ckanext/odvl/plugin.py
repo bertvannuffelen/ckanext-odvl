@@ -163,8 +163,8 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
             'notes': [p.toolkit.get_validator('not_empty')],
             'owner_org': [p.toolkit.get_validator('not_empty')],
             'license_id': [is_valid_license],
-            'license_title': [],
-            'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
+            'license_title': []
+            #,'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
         })
 
         schema['resources'].update({
