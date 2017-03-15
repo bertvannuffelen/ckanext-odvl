@@ -129,8 +129,8 @@ def is_valid_license(value):
             return value
 
     # TODO uncomment this to enforce predefined licenses
-    #if value and not value is df.missing:
-    #    raise Invalid("License is unknown: " + value)
+    if value and not value is df.missing:
+        raise Invalid("License is unknown: " + value)
 
     return value
 
@@ -160,17 +160,17 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     def _modify_package_schema(self, schema):
         schema.update({
             'title': [p.toolkit.get_validator('not_empty')],
-            #'notes': [p.toolkit.get_validator('not_empty')],
+            'notes': [p.toolkit.get_validator('not_empty')],
             'owner_org': [p.toolkit.get_validator('not_empty')],
             'license_id': [is_valid_license],
             'license_title': []
-            #,'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
+            ,'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
         })
 
         schema['resources'].update({
             'url' : [ p.toolkit.get_validator('not_empty') ],
             'name' : [ p.toolkit.get_validator('not_empty') ],
-            #'description' : [ p.toolkit.get_validator('not_empty') ]
+            'description' : [ p.toolkit.get_validator('not_empty') ]
         })
 
         return schema
