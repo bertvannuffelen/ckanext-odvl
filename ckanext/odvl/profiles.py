@@ -48,7 +48,8 @@ class VLDCATAPProfile(RDFProfile):
                 matching_license = next(
                     (lic for lic in licenses if (lic['id'] == license_value or
                                                  lic['url'] == license_value or
-                                                 lic['title'] == license_value)),
+                                                 lic['title'] == license_value or
+                                                 ('alternateUrls' in lic._data and license_value in lic._data['alternateUrls']) )),
                     None)
                 if matching_license:
                     dataset_dict['license_id'] = matching_license['id']

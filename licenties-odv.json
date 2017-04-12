@@ -40,7 +40,8 @@
         "maintainer": "",
         "status": "active",
         "title": "Modellicentie 1 -  CC0-verklaring",
-        "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "alternateUrls": ["http://creativecommons.org/publicdomain/zero/1.0/legalcode"]
     },
     {
         "domain_content": true,
