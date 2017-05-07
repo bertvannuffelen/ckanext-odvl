@@ -1,5 +1,6 @@
 import os
 import re
+import formencode as fe
 from ckan.plugins.toolkit import Invalid
 import inspect
 import ckan.plugins as p
@@ -141,6 +142,62 @@ def is_email(value):
         raise Invalid("Value is not an email: " + value)
     return value
 
+def warnValidator(converter):
+    def wrappedValidator(key, converted_data, errors, context):
+
+
+        if inspect.isclass(converter) and issubclass(converter, fe.Validator):
+            try:
+                value = converted_data.get(key)
+                value = converter().to_python(value, state=context)
+            except fe.Invalid, e:
+                context['warnings'].append(e.msg)
+            return
+
+        if isinstance(converter, fe.Validator):
+            try:
+                value = converted_data.get(key)
+                value = converter.to_python(value, state=context)
+            except fe.Invalid, e:
+                context['warnings'].append(e.msg)
+            return
+
+        try:
+            value = converter(converted_data.get(key))
+            converted_data[key] = value
+            return
+        except TypeError, e:
+            ## hack to make sure the type error was caused by the wrong
+            ## number of arguments given.
+            if not converter.__name__ in str(e):
+                raise
+        except Invalid, e:
+            context['warnings'].append(e.error)
+            return
+
+        try:
+            converter(key, converted_data, errors, context)
+            return
+        except Invalid, e:
+            context['warnings'].append(e.error)
+            return
+        except TypeError, e:
+            ## hack to make sure the type error was caused by the wrong
+            ## number of arguments given.
+            if not converter.__name__ in str(e):
+                raise
+
+        try:
+            value = converter(converted_data.get(key), context)
+            converted_data[key] = value
+            return
+        except Invalid, e:
+            context['warnings'].append(e.error)
+            return
+
+    return wrappedValidator
+
+
 class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.ITemplateHelpers)
@@ -160,11 +217,11 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     def _modify_package_schema(self, schema):
         schema.update({
             'title': [p.toolkit.get_validator('not_empty')],
-            'notes': [p.toolkit.get_validator('not_empty')],
+            'notes': [warnValidator(p.toolkit.get_validator('not_empty'))],
             'owner_org': [p.toolkit.get_validator('not_empty')],
-            'license_id': [is_valid_license],
+            'license_id': [warnValidator(is_valid_license)],
             'license_title': []
-            ,'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
+            ,'maintainer_email': [p.toolkit.get_validator('not_empty'), warnValidator(is_email)]
         })
 
         schema['resources'].update({
