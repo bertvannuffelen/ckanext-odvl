@@ -35,7 +35,8 @@ class OdvlController(BaseController):
                    grp.name,
                    p.metadata_modified,
                    p.private,
-                   hs.title
+                   hs.title,
+                   p.state
                FROM package AS p
                LEFT OUTER JOIN public.user AS u ON u.id = p.creator_user_id
                LEFT OUTER JOIN public.group AS grp ON grp.id = p.owner_org
@@ -50,7 +51,7 @@ class OdvlController(BaseController):
             quoting=csv.QUOTE_NONNUMERIC
         )
 
-        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'private?', 'harvestSource'])
+        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'private?', 'harvestSource'])
 
         for t in conn.execute(sql).fetchall():
             csvwriter.writerow(t)
