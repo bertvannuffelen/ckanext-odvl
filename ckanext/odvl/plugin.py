@@ -146,6 +146,14 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     p.implements(p.ITemplateHelpers)
     p.implements(p.IActions)
     p.implements(p.IDatasetForm)
+    p.implements(p.IRoutes, inherit=True)
+
+    def after_map(self, map):
+
+        controller = 'ckanext.odvl.controllers:OdvlController'
+        map.connect('/summary.csv', controller=controller, action='summary_csv')
+
+        return map
 
     def is_fallback(self):
         # Return True to register this plugin as the default handler for
