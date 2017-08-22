@@ -36,7 +36,7 @@ class OdvlController(BaseController):
                    p.metadata_modified,
                    p.private,
                    hs.title,
-                   ho.current,
+                   ( SELECT bool_or(ho.current) FROM harvest_object AS ho WHERE ho.package_id = p.id GROUP BY ho.package_id) AS isCurrent,
                    p.state
                FROM package AS p
                LEFT OUTER JOIN public.user AS u ON u.id = p.creator_user_id
