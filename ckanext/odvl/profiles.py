@@ -1,8 +1,10 @@
 from rdflib.namespace import Namespace
 from ckanext.dcat.profiles import RDFProfile
 import ckan.model as model
+from rdflib import URIRef, BNode, Literal
 
 DCT = Namespace("http://purl.org/dc/terms/")
+VODAP = Namespace("http://opendata.vlaanderen.be/ont/")
 
 
 class VLDCATAPProfile(RDFProfile):
@@ -80,3 +82,14 @@ class VLDCATAPProfile(RDFProfile):
                 dataset_dict['maintainer_uri'] = extras['contact_uri']['value']
 
         return dataset_dict
+
+    def graph_from_dataset(self, dataset_dict, dataset_ref):
+        g = self.g
+        if self.validation_mode:
+            g.bind('vodap', VODAP)
+
+            org_id = self._get_dataset_value(dataset_dict, 'owner_org')
+
+            g.add((dataset_ref, VODAP.org, Literal(org_id)))
+
+
