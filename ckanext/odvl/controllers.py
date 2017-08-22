@@ -1,5 +1,6 @@
 from ckan.plugins import toolkit
 from ckan.model.meta import Session
+from ckan.common import response
 import ckan.lib.base as base
 import ckan.model as model
 import ckan.logic as logic
@@ -28,7 +29,7 @@ class OdvlController(BaseController):
         conn = Session.connection()
 
         sql = '''
-            SELECT p.id,
+            SELECT DISTINCT p.id,
                    p.name,
                    u.name,
                    grp.name,
@@ -55,6 +56,9 @@ class OdvlController(BaseController):
             csvwriter.writerow(t)
 
         csvout.seek(0)
+
+        response.headers['Content-Type'] = 'text/csv'
+
         return csvout.read()
 
 
