@@ -165,32 +165,40 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
         # registers itself as the default (above).
         return []
 
-    def _modify_package_schema(self, schema):
+    def _modify_package_schema(self, schema, isHarvesting=False):
         schema.update({
             'title': [p.toolkit.get_validator('not_empty')],
             #'notes': [p.toolkit.get_validator('not_empty')],
             'owner_org': [p.toolkit.get_validator('not_empty')],
             'license_id': [is_valid_license],
             'license_title': []
-            #,'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
         })
 
         schema['resources'].update({
             'url' : [ p.toolkit.get_validator('not_empty') ],
-            'name' : [ p.toolkit.get_validator('not_empty') ],
-            #'description' : [ p.toolkit.get_validator('not_empty') ]
+            'name' : [ p.toolkit.get_validator('not_empty') ]
         })
 
+        if not isHarvesting:
+            schema.update({
+                'notes': [p.toolkit.get_validator('not_empty')],
+                'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
+            })
+
+            schema['resources'].update({
+                'description' : [ p.toolkit.get_validator('not_empty') ]
+            })
+
         return schema
 
-    def create_package_schema(self):
+    def create_package_schema(self, isHarvesting=True):
         schema = super(ODVLExtension, self).create_package_schema()
-        schema = self._modify_package_schema(schema)
+        schema = self._modify_package_schema(schema, isHarvesting=isHarvesting)
         return schema
 
-    def update_package_schema(self):
+    def update_package_schema(self, isHarvesting=True):
         schema = super(ODVLExtension, self).update_package_schema()
-        schema = self._modify_package_schema(schema)
+        schema = self._modify_package_schema(schema, isHarvesting=isHarvesting)
         return schema
 
     def get_actions(self):
@@ -236,9 +244,9 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
         # override this method to enforce our schema
 
         if (action == 'package_create'):
-            schema = self.create_package_schema()
+            schema = self.create_package_schema(isHarvesting = (not context.get('save')))
         elif (action == 'package_update'):
-            schema = self.update_package_schema()
+            schema = self.update_package_schema(isHarvesting = (not context.get('save')))
 
         return toolkit.navl_validate(data_dict, schema, context)
 
