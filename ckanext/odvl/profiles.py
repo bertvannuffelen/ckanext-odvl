@@ -24,7 +24,7 @@ class VLDCATAPProfile(RDFProfile):
             dataset_dict['resources'].append(resource_dict)
 
         # Spatial label
-        if not dataset_dict['resources'][0]['url']:
+        if len(dataset_dict['resources']) > 0 and not dataset_dict['resources'][0]['url']:
             dataset_dict['resources'][0]['url'] = dataset_dict['resources'][0]['uri']
 
         licenses = model.Package.get_license_register().licenses
