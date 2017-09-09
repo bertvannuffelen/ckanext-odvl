@@ -4,8 +4,7 @@ import ckan.model as model
 from rdflib import URIRef, BNode, Literal
 
 DCT = Namespace("http://purl.org/dc/terms/")
-VODAP = Namespace("http://opendata.vlaanderen.be/ont/")
-
+VODAP = Namespace("http://data.vlaanderen.be/ns/vodap#")
 
 class VLDCATAPProfile(RDFProfile):
     '''
@@ -88,7 +87,7 @@ class VLDCATAPProfile(RDFProfile):
         if self.validation_mode:
             g.bind('vodap', VODAP)
 
-            org_id = self._get_dataset_value(dataset_dict, 'owner_org')
+            org_id = self._get_dataset_value(dataset_dict, 'ckan-organisation')
 
             g.add((dataset_ref, VODAP.org, Literal(org_id)))
 
