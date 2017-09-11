@@ -87,8 +87,8 @@ class VLDCATAPProfile(RDFProfile):
         if self.validation_mode:
             g.bind('vodap', VODAP)
 
-            org_id = self._get_dataset_value(dataset_dict, 'ckan-organisation')
+            org_id = self._get_dataset_value(dataset_dict, 'owner_org')
 
-            g.add((dataset_ref, VODAP.org, Literal(org_id)))
+            g.add((dataset_ref, VODAP['ckan-organisation'], Literal(org_id)))
 
 
