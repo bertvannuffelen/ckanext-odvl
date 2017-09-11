@@ -88,7 +88,9 @@ class VLDCATAPProfile(RDFProfile):
             g.bind('vodap', VODAP)
 
             org_id = self._get_dataset_value(dataset_dict, 'owner_org')
-
             g.add((dataset_ref, VODAP['ckan-organisation'], Literal(org_id)))
+            org = model.Group.get(org_id)
+            if (org):
+                g.add((dataset_ref, VODAP['ckan-organisation-name'], Literal(org.name)))
 
 
