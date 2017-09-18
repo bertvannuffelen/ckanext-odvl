@@ -132,6 +132,9 @@ def is_valid_license(value):
     #if value and not value is df.missing:
     #    raise Invalid("License is unknown: " + value)
 
+    if value is None or value is df.missing:
+        raise Invalid("License is missing")
+
     return value
 
 def is_email(value):
