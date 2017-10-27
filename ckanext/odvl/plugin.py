@@ -137,12 +137,28 @@ def is_valid_license(value):
 
     return value
 
-def is_email(value):
+def clean_email(value):
     if (value and value.startswith("mailto:")):
         value = value[7:].strip()
+
+    if value is df.missing:
+            value = None
+
+    return value
+
+def is_email(value):
     if not EMAIL_REGEX.match(value):
         raise Invalid("Value is not an email: " + value)
     return value
+
+def validate_extra(extra_name, validator_list):
+    def validator(key, data, errors, context):
+        extra_key = (key[0], key[1], 'key')
+        if data.get(extra_key) == extra_name:
+            for extra_validator in validator_list:
+                data[key] = extra_validator(data[key])
+
+    return validator
 
 class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     p.implements(p.IConfigurer, inherit=True)
@@ -171,8 +187,10 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
     def _modify_package_schema(self, schema, isHarvesting=False):
         schema.update({
             'license_id': [is_valid_license],
-            'license_title': []
+            'license_title': [],
+            'maintainer_email': [clean_email]
         })
+        schema['extras']['value'].append(validate_extra('contact_email', [clean_email]))
 
         schema['resources'].update({
             'url' : [ p.toolkit.get_validator('not_empty') ]
@@ -184,7 +202,7 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
                 #'notes': [p.toolkit.get_validator('not_empty')],
                 'owner_org': [p.toolkit.get_validator('not_empty')],
                 'notes': [p.toolkit.get_validator('not_empty')],
-                'maintainer_email': [p.toolkit.get_validator('not_empty'), is_email]
+                'maintainer_email': [p.toolkit.get_validator('not_empty'), clean_email, is_email]
             })
 
             schema['resources'].update({
