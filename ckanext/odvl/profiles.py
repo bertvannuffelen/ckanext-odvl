@@ -84,7 +84,7 @@ class VLDCATAPProfile(RDFProfile):
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
         g = self.g
-        if self.validation_mode:
+        if hasattr(self, 'validation_mode') and self.validation_mode:
             g.bind('vodap', VODAP)
 
             org_id = self._get_dataset_value(dataset_dict, 'owner_org')
