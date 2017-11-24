@@ -3,6 +3,8 @@ from ckanext.dcat.profiles import RDFProfile
 import ckan.model as model
 from rdflib import URIRef, BNode, Literal
 
+from rdflib.namespace import Namespace, RDF, XSD, SKOS, RDFS
+DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCT = Namespace("http://purl.org/dc/terms/")
 VODAP = Namespace("http://data.vlaanderen.be/ns/vodap#")
 
@@ -84,6 +86,7 @@ class VLDCATAPProfile(RDFProfile):
 
     def graph_from_dataset(self, dataset_dict, dataset_ref):
         g = self.g
+        licenses = model.Package.get_license_register().licenses
         if hasattr(self, 'validation_mode') and self.validation_mode:
             g.bind('vodap', VODAP)
 
@@ -93,4 +96,12 @@ class VLDCATAPProfile(RDFProfile):
             if (org):
                 g.add((dataset_ref, VODAP['ckan-organisation-name'], Literal(org.name)))
 
-
+        if ('license_id' in dataset_dict):
+            matching_license = next(
+                (lic for lic in licenses if (lic['id'] == dataset_dict.get('license_id'))),
+                None)
+            # check if resources have a license already
+            if matching_license:
+                for resource in g.subjects(RDF.type, DCAT.Distribution):
+                    if (resource, DCT.license, None) not in g:
+                        g.add((resource, DCT.license, Literal(matching_license['url'])))
