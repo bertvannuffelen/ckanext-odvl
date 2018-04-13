@@ -104,4 +104,4 @@ class VLDCATAPProfile(RDFProfile):
             if matching_license:
                 for resource in g.subjects(RDF.type, DCAT.Distribution):
                     if (resource, DCT.license, None) not in g:
-                        g.add((resource, DCT.license, Literal(matching_license['url'])))
+                        g.add((resource, DCT.license, URIRef(matching_license['url'])))
