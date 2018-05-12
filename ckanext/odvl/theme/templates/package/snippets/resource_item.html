@@ -21,9 +21,11 @@
     <div class="data-file-list-item--content">
         <a href="{{ url }}" title="{{ res.name or res.description }}">
         <h2>{{ h.resource_display_name(res) | truncate(50) }}</h2>
-        {{ h.popular('views', res.tracking_summary.total, min=10) }}
-        {% if res.tracking_summary.total > 0 %}
-            <em>{{ _('{0} downloads').format(res.tracking_summary.total) }}</em>
+        {% if 'tracking_summary' in res %}
+            {{ h.popular('views', res.tracking_summary.total, min=10) }}
+            {% if res.tracking_summary.total > 0 %}
+                <em>{{ _('{0} downloads').format(res.tracking_summary.total) }}</em>
+            {% endif %}
         {% endif %}
         </a>
     </div>
