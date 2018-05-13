@@ -55,7 +55,7 @@ def most_viewed_datasets(num_datasets=NUM_MOST_VIEWED_DATASETS):
         data = {'rows': num_datasets,
                 'sort': u'views_total desc',
                 'facet': u'false',
-                'fl': 'id, name, title, modified_date, tracking'}
+                'fl': ['id', 'name', 'title', 'modified_date', 'tracking']}
         results = p.toolkit.get_action('package_search')(context, data)
 
         return [r for r in results.get('results', [])

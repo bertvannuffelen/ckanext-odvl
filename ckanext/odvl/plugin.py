@@ -6,7 +6,7 @@ import ckan.plugins as p
 import ckanext.odvl.helpers as helpers
 import ckanext.hierarchy as hierarchy
 import ckan.logic as logic
-import ckan.new_authz as new_authz
+import ckan.authz as authz
 import traceback
 import ckan.lib.dictization.model_dictize as model_dictize
 from ckanext.hierarchy.model import GroupTreeNode
@@ -27,7 +27,7 @@ def members_of_orgs(context, data_dict=None):
         currentuser = context['user']
 
         #logic.check_access('members_of_orgs', context, data_dict)
-        sysadmin = new_authz.is_sysadmin(currentuser)
+        sysadmin = authz.is_sysadmin(currentuser)
 
         if sysadmin:
             users = model.Session.query(model.User) \
@@ -68,7 +68,7 @@ def members_of_orgs(context, data_dict=None):
 def organization_list(context, data_dict):
 
     currentuser = context['user']
-    sysadmin = new_authz.is_sysadmin(currentuser)
+    sysadmin = authz.is_sysadmin(currentuser)
 
     orgs = logic.action.get.organization_list(context, data_dict)
 
@@ -80,7 +80,7 @@ def organization_list(context, data_dict):
 @logic.side_effect_free
 def group_tree_filtered(context, data_dict):
     currentuser = context['user']
-    sysadmin = new_authz.is_sysadmin(currentuser)
+    sysadmin = authz.is_sysadmin(currentuser)
 
     model = context['model']
     group_type = data_dict.get('type', 'group')
@@ -123,6 +123,9 @@ def _group_tree_branch(root_group, highlight_group_name=None, type='group', grou
     return root_node
 
 def is_valid_license(value):
+    if value is df.missing:
+        return 'notspecified'
+
     licenses = model.Package.get_license_register().licenses
     for lic in licenses:
         if lic['id'] == value:

@@ -39,7 +39,7 @@
             {% else %}
                 <p class="empty u-hidden-mobile">{{ _("This dataset has no description") }}
             {% endif %}
-            {% if package.tracking_summary.total > 0 %}
+            {% if package.tracking_summary and package.tracking_summary.total > 0 %}
                 <em > - {{ _('{0} views').format(package.tracking_summary.total) }}</em>
             {% endif %}
             </p>
