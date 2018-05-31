@@ -105,3 +105,7 @@
 .alert-block p + p {
     margin-top: 5px;
 }
+
+.ckanext-datapreview iframe {
+    min-height: 650px
+}
