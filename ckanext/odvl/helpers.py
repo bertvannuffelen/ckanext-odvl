@@ -2,7 +2,6 @@ import logging
 import datetime
 import operator
 import pylons.config as config
-import genshi
 import sqlalchemy.exc
 import json
 import urllib
