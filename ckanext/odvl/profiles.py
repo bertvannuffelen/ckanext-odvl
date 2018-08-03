@@ -7,6 +7,7 @@ from rdflib.namespace import Namespace, RDF, XSD, SKOS, RDFS
 DCAT = Namespace("http://www.w3.org/ns/dcat#")
 DCT = Namespace("http://purl.org/dc/terms/")
 VODAP = Namespace("http://data.vlaanderen.be/ns/vodap#")
+LOCN = Namespace('http://www.w3.org/ns/locn#')
 
 class VLDCATAPProfile(RDFProfile):
     '''
@@ -32,10 +33,11 @@ class VLDCATAPProfile(RDFProfile):
 
         # Licenses
         dataset_license = self._object_value(dataset_ref, DCT.license)
-        if 'license_id' in dataset_dict:
+        #if 'license_id' in dataset_dict:
             # there's a license_id already, use it
-            dataset_dict['license_id'] = dataset_dict['id']
-        else:
+        #    dataset_dict['license_id'] = dataset_dict['id']
+        #else:
+        if (not ('license_id' in dataset_dict and dataset_dict['license_id']) ):
             license_value = None
             if dataset_license:
                 license_value = dataset_license
