@@ -77,11 +77,11 @@
 
 
         {% block package_notes %}
-            {% if c.pkg_notes_formatted %}
+            {% if pkg.notes %}
                 <div class="grid-item grid-item--a-4 grid-jump--a-2 grid-item--a-5--medium grid-item--a-6--small grid-jump--a-1--small">
                     <div class="u-spacer u-spacer--clear--small"></div>
                     <p class="data-clamp-remove-target js-clamped" data-clamp="10" data-clamp-id="1">
-                    {{ c.pkg_notes_formatted }}
+                        {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
                     </p>
                     <a href="#" class="js-remove-clamp-button" data-clamp-remove-id="1">Lees meer</a>
                     <div class="u-spacer u-spacer--clear--small"></div>
