@@ -293,7 +293,7 @@ msgstr "Groepen"
 #: ckan/templates/tag/index.html:3 ckan/templates/tag/index.html:6
 #: ckan/templates/tag/index.html:12
 msgid "Tags"
-msgstr "Zoektermen"
+msgstr "Trefwoorden"
 
 #: ckan/controllers/group.py:288 ckan/controllers/home.py:73
 #: ckan/controllers/package.py:244 ckan/lib/helpers.py:684
@@ -3541,6 +3541,16 @@ msgstr "Bijsluiter"
 msgid "Maintainer"
 msgstr "Beheerder"
 
+msgid "Contact Point"
+msgstr "Contactpunt"
+
+msgid "Publisher"
+msgstr "Uitgever"
+
+msgid "Modified (original)"
+msgstr "Laatst gewijzigd (originele)"
+
+
 #: ckan/templates/package/snippets/additional_info.html:49
 #: ckan/templates/package/snippets/package_metadata_fields.html:10
 msgid "Version"
@@ -4924,10 +4934,10 @@ msgstr "Compliant met standard"
 msgid "spatial_uri"
 msgstr "Geographishe dekking"
 
-msgid "temporal_start"
+msgid "temporal-extent-begin"
 msgstr "Dekking in tijd - Vanaf"
 
-msgid "temporal_end"
+msgid "temporal-extent-end"
 msgstr "Dekking in tijd - Tot"
 
 msgid "download_url"
