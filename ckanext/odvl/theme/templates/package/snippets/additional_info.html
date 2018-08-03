@@ -1,23 +1,54 @@
 {% ckan_extends %}
 
 {% block extras scoped %}
-    {% for extra in h.sorted_extras(pkg_dict.extras) %}
-        {% set key, value = extra %}
-        <tr rel="dc:relation" resource="_:extra{{ i }}">
-            <th scope="row" class="dataset-label" property="rdfs:label">{{ _(key) }}</th>
-            <td class="dataset-details" property="rdf:value">
 
-                {% if key in ['language', 'theme'] %}
-                    {# TODO json parse array #}
-                    {{ value }}
-                {% else %}
-                    {% if '://' in value %}
-                        <a href={{ value }}> {{ value }} </a>
-                    {% else %}
-                        {{ value }}
-                    {% endif %}
+    {% set sortedExtras = h.sorted_extras(pkg_dict.extras) %}
+    {% set extrasDict = dict(sortedExtras) %}
+
+    {# Display publisher separately #}
+    {% if ('publisher' in extrasDict or 'publisher_name' in extrasDict or 'publisher_email' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Publisher') }}</th>
+            <td class="dataset-details" property="dct:publisher">
+                {% if ('publisher_email' in extrasDict): %}
+                {{ h.mail_to(email_address=extrasDict['publisher_email'], name=extrasDict['publisher_name'] or extrasDict['publisher_email']) }}
+                {% elif ('publisher_uri' in extrasDict): %}
+                <a href="{{extrasDict['publisher_uri']}}" target="_blank" rel="nofollow">{{extrasDict['publisher_name'] or extrasDict['publisher_uri']}}</a>
+                {% else : %}
+                {{extrasDict['publisher_name']}}
                 {% endif %}
             </td>
         </tr>
+    {% endif %}
+
+    {% for extra in sortedExtras %}
+        {% set key, value = extra %}
+        {% if key in ('publisher', 'publisher_name', 'publisher_uri', 'publisher_email', 'publisher_type'): %}
+           {# Ignore #}
+        {% else: %}
+            <tr rel="dc:relation" resource="_:extra{{ i }}">
+                <th scope="row" class="dataset-label" property="rdfs:label">
+                    {% if key in ['modified']: %}
+                        {# This is the original metadata modification date #}
+                        {{ _('Modified (original)') }}
+                    {% else: %}
+                        {{ _(key) }}
+                    {% endif %}
+                </th>
+                <td class="dataset-details" property="rdf:value">
+
+                    {% if key in ['language', 'theme']: %}
+                        {# TODO json parse array #}
+                        {{ value }}
+                    {% else: %}
+                        {% if '://' in value %}
+                            <a href={{ value }}> {{ value }} </a>
+                        {% else %}
+                            {{ value }}
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endif %}
     {% endfor %}
 {% endblock %}
