@@ -4925,6 +4925,9 @@ msgstr "Versie Nota's"
 msgid "language"
 msgstr "Taal"
 
+msgid "theme"
+msgstr "Thema"
+
 msgid "frequency"
 msgstr "Update frequentie"
 
