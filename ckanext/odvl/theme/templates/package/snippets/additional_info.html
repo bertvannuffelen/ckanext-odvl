@@ -3,6 +3,7 @@
 {% block extras scoped %}
 
     {% set sortedExtras = h.sorted_extras(pkg_dict.extras) %}
+    {% set sortedVodapExtras = h.filter_vodap_extras(sortedExtras) %}
     {% set extrasDict = dict(sortedExtras) %}
 
     {# Display publisher separately #}
@@ -21,11 +22,8 @@
         </tr>
     {% endif %}
 
-    {% for extra in sortedExtras %}
+    {% for extra in sortedVodapExtras %}
         {% set key, value = extra %}
-        {% if key in ('publisher', 'publisher_name', 'publisher_uri', 'publisher_email', 'publisher_type'): %}
-           {# Ignore #}
-        {% else: %}
             <tr rel="dc:relation" resource="_:extra{{ i }}">
                 <th scope="row" class="dataset-label" property="rdfs:label">
                     {% if key in ['modified']: %}
@@ -38,17 +36,33 @@
                 <td class="dataset-details" property="rdf:value">
 
                     {% if key in ['language', 'theme']: %}
-                        {# TODO json parse array #}
-                        {{ value }}
-                    {% else: %}
-                        {% if '://' in value %}
-                            <a href={{ value }}> {{ value }} </a>
-                        {% else %}
-                            {{ value }}
+                        {% set parsed_value = h.json_parse(value.encode('utf8')) %}
+                        {% if h.is_list(parsed_value)  %}
+                            {% for val in parsed_value %}
+                                {{ h.render_link(val) | safe }}<br/>
+                            {% endfor %}
+                        {% else: %}
+                            {{ parsed_value }}
                         {% endif %}
+                    {% else: %}
+                        {{ h.render_link(value) | safe }}
                     {% endif %}
                 </td>
             </tr>
-        {% endif %}
     {% endfor %}
+
+    {% if c.userobj.sysadmin %}
+        <tr style="border-top: 1px solid black; padding-top: 10px"><td colspan="2" style="font-weight: bold">Unknown attributes</td></tr>
+    {% for extra in sortedExtras if extra not in sortedVodapExtras %}
+    {% set key, value = extra %}
+    <tr rel="dc:relation" resource="_:extra{{ i }}">
+        <th scope="row" class="dataset-label" property="rdfs:label">
+            {{ key }}
+        </th>
+        <td class="dataset-details" property="rdf:value">
+            {{ h.render_link(value) | safe }}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
 {% endblock %}

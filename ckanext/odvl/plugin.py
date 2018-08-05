@@ -279,6 +279,10 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
                 'recent_updates': helpers.recent_updates,
                 'top_publishers': helpers.top_publishers,
                 'most_viewed_datasets': helpers.most_viewed_datasets,
+                'json_parse': helpers.json_parse,
+                'render_link': helpers.render_link,
+                'filter_vodap_extras': helpers.filter_vodap_extras,
+                'is_list' : helpers.is_list
                 }
 
 class GeopuntHarvester(p.SingletonPlugin):

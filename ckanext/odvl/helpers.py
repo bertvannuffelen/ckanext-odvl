@@ -10,12 +10,32 @@ import ckan
 import ckan.model as model
 import ckan.plugins as p
 import ckan.lib.search as search
+import json
 
 NUM_TOP_PUBLISHERS = 6
 NUM_MOST_VIEWED_DATASETS = 10
 
 log = logging.getLogger(__file__)
 
+
+def filter_vodap_extras(extras):
+    return [extra for extra in extras if extra[0] in ('access_rights', 'language', 'issued', 'modified', 'temporal-extent-begin', 'temporal-extent-end', 'spatial')]
+            #not in ('publisher', 'publisher_name', 'publisher_uri', 'publisher_email', 'publisher_type', 'contact_name', 'contact_uri')
+
+def is_list(value):
+    return isinstance(value, list)
+
+def render_link(s):
+    if s and '://' in s:
+        return '<a href="'+s+'"> '+s+' </a>'
+    else:
+        return s
+
+def json_parse(json_string):
+    try:
+        return json.loads(json_string)
+    except:
+        return json_string
 
 def recent_updates(n):
     '''
