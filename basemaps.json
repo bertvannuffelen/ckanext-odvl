@@ -25,20 +25,6 @@
         "url" : "http://tile.informatievlaanderen.be/ws/raadpleegdiensten/wmts",
         "matrixSet" : "GoogleMapsVL",
         "layer" : "omwrgbmrvl"
-    },
-    {
-        "title": "Ferrariskaart (1777)",
-        "type" : "wmts",
-        "url" : "http://tile.informatievlaanderen.be/ws/raadpleegdiensten/wmts",
-        "matrixSet" : "GoogleMapsVL",
-        "layer" : "ferraris"
-    },
-    {
-        "title": "Basiskaart - GRB - WGS84",
-        "type" : "wmts",
-        "url" : "http://tile.informatievlaanderen.be/ws/raadpleegdiensten/wmts",
-        "matrixSet" : "WGS84VL",
-        "layer" : "grb_bsk"
     }
 
 ]
