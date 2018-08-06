@@ -19,7 +19,7 @@ log = logging.getLogger(__file__)
 
 
 def filter_vodap_extras(extras):
-    return [extra for extra in extras if extra[0] in ('access_rights', 'language', 'issued', 'modified', 'temporal-extent-begin', 'temporal-extent-end', 'spatial')]
+    return [extra for extra in extras if extra[0] in ('access_rights', 'language', 'issued', 'modified', 'temporal-extent-begin', 'temporal-extent-end', 'spatial', 'theme')]
             #not in ('publisher', 'publisher_name', 'publisher_uri', 'publisher_email', 'publisher_type', 'contact_name', 'contact_uri')
 
 def is_list(value):
