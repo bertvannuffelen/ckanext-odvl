@@ -2805,7 +2805,7 @@ msgstr "mijn-groep"
 #: ckan/templates/package/snippets/view_form.html:9
 #: ckan/templates/related/snippets/related_form.html:21
 msgid "Description"
-msgstr "Omschrijving"
+msgstr "Beschrijving"
 
 #: ckan/templates/group/snippets/group_form.html:20
 msgid "A little information about my group..."
