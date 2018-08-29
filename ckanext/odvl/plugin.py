@@ -70,6 +70,8 @@ def organization_list(context, data_dict):
     currentuser = context['user']
     sysadmin = authz.is_sysadmin(currentuser)
 
+    data_dict['all_fields'] = True
+
     orgs = logic.action.get.organization_list(context, data_dict)
 
     if (not sysadmin):
