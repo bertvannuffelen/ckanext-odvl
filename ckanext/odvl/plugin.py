@@ -70,12 +70,13 @@ def organization_list(context, data_dict):
     currentuser = context['user']
     sysadmin = authz.is_sysadmin(currentuser)
 
-    data_dict['all_fields'] = True
+    # this is no longer compatible with new paging logic in ckan/controllers/group:174
+    #data_dict['all_fields'] = True
 
     orgs = logic.action.get.organization_list(context, data_dict)
 
-    if (not sysadmin):
-        orgs = [org for org in orgs if org['package_count'] > 0]
+    #if (not sysadmin):
+    #    orgs = [org for org in orgs if org['package_count'] > 0]
 
     return orgs
 
