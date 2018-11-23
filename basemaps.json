@@ -1,5 +1,11 @@
 [
     {
+        "title": "OSM Grijs",
+        "type" : "custom",
+        "url" : "https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png",
+        "attribution" : " Map tiles & Data by OpenStreetMap, under CC BY SA."
+    },
+    {
         "title": "OSM",
         "type" : "custom",
         "url" : "http://tile.openstreetmap.org/{z}/{x}/{y}.png",
