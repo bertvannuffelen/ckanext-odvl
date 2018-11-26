@@ -295,9 +295,9 @@ class GeopuntHarvester(p.SingletonPlugin):
 
         if (opendataTag):
             if (kosteloosTag):
-                package_dict['license_id'] = 'gratis-hergebruik-1.0'
-            else:
                 package_dict['license_id'] = 'Gratis Vlaamse Open Data'
+            else:
+                package_dict['license_id'] = None
         #else:   #this should not happen - only 'Vlaamse Open Data' datasets should be harvested
 
         return package_dict
