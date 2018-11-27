@@ -2,6 +2,10 @@
     padding: 2px;
 }
 
+#stat-table-container .row {
+    margin-left: 0px;
+}
+
 #stat-table-container td:first-child:hover {
     overflow: visible;
     background-color: white;
