@@ -174,6 +174,7 @@ class ODVLExtension(p.SingletonPlugin, p.toolkit.DefaultDatasetForm):
 
         controller = 'ckanext.odvl.controllers:OdvlController'
         map.connect('/summary.csv', controller=controller, action='summary_csv')
+        map.connect('/summary/{facet}.{format}', controller=controller, action='summary_facet')
 
         return map
 

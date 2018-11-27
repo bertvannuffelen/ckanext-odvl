@@ -76,14 +76,11 @@ class VLDCATAPProfile(RDFProfile):
             extras[extra['key']] = extra
 
         # Take contact as maintainer
-        if not 'maintainer_email' in dataset_dict:
-            if 'contact_email' in extras:
-                dataset_dict['maintainer_email'] = extras['contact_email']['value']
-            if 'contact_name' in extras:
-                dataset_dict['maintainer'] = extras['contact_name']['value']
-            # This is useless as maintainer_uri is not part of the model
-            #if 'contact_uri' in extras:
-            #    dataset_dict['maintainer_uri'] = extras['contact_uri']['value']
+        if not 'contact_email' in extras:
+            if 'maintainer_email' in dataset_dict:
+                dataset_dict['extras'].append({'key': 'contact_email', 'value': dataset_dict['maintainer_email']})
+            if 'maintainer' in dataset_dict:
+                dataset_dict['extras'].append({'key': 'contact_name', 'value': dataset_dict['maintainer']})
 
         return dataset_dict
 

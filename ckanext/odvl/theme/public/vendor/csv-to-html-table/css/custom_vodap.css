@@ -1,0 +1,38 @@
+#stat-table-container td, #stat-table-container th {
+    padding: 2px;
+}
+
+#stat-table-container td:first-child:hover {
+    overflow: visible;
+    background-color: white;
+}
+
+.dataTables_wrapper .dataTables_length {
+    display: inline-block;
+    float: left;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    display: inline-block;
+    float: right;
+}
+
+.dataTables_paginate .paginate_button {
+    margin-right: 3px;
+}
+
+#stat-table-container td:first-child .stat_cell {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*
+#stat-table-container td:first-child:hover .stat_cell {
+    overflow: visible;
+    background-color: #FFFFFFEE;
+    position: absolute;
+    width: auto;
+}
+*/

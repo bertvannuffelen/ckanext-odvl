@@ -1,0 +1,34 @@
+{% ckan_extends %}
+
+{% block menu_items %}
+{{ super() }}
+<li class="nav-item"><a href="#stats-faceted" data-toggle="tab">{{ _('Datasets Per Field') }}</a></li>
+{% endblock %}
+
+{% block stat_sections %}
+{{ super() }}
+
+<section id="stats-faceted" class="module-content tab-content">
+    <h2>{{ _('Datasets Per') }}
+        <select name="facet_name" onchange="displayCsv(this.value)">
+            <option>org</option>
+            <option>user</option>
+            <option>theme</option>
+            <option>publisher</option>
+            <option>extra</option>
+            <option>license</option>
+            <option>tag</option>
+        </select>
+    </h2>
+
+    <div id='stat-table-container'></div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% resource 'ckanext-odvl/csv_to_html' %}
+
+{% endblock %}
