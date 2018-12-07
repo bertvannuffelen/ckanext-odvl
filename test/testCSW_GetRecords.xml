@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+
+    <!-- Search results mocked from
+         https://metadata.geopunt.be/zoekdienst/srv/dut/csw?service=CSW&request=GetRecords&version=2.0.2&elementsetname=summary&constraintLanguage=CQL_TEXT&constraint=Subject%20like%20%27Vlaamse?open?data%27&constraint_language_version=1.1.0&elementsetname=brief&typenames=csw:Record&resulttype=results&outputschema=http://www.isotc211.org/2005/gmd
+     -->
+
+    <csw:SearchStatus timestamp="2018-12-01T09:00:00" />
+    <csw:SearchResults numberOfRecordsMatched="1" numberOfRecordsReturned="1" elementSet="brief">
+
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:gml="http://www.opengis.net/gml" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:gco="http://www.isotc211.org/2005/gco">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>0000-tests-0001</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" />
+            </gmd:hierarchyLevel>
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 1</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+    </csw:SearchResults>
+</csw:GetRecordsResponse>
+
