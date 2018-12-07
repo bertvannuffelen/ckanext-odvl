@@ -5,14 +5,20 @@
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 
-<http://lexvo.org/id/iso639-3/eng> a dc:LinguisticSystem .
-<http://lexvo.org/id/iso639-3/nld> a dc:LinguisticSystem .
 
+# VODAP Test DCAT feed
+#
 # literal values in these tests are defined so as to be easily identified
 # i.e. 10min increments for timestamps within a test (to avoid timezones ambiguities)
 #      day of month matching test number
 #      1999 timestamps for values that should not make it through the harvester
 #      URIs with IGNORED or ERROR for URIS that should not make it through the harvester
+#
+# This file can be validated at http://dcat-ap.semic.eu/dcat-ap_validator.html
+
+
+<http://lexvo.org/id/iso639-3/eng> a dc:LinguisticSystem .
+<http://lexvo.org/id/iso639-3/nld> a dc:LinguisticSystem .
 
 <http://tests.opendata.vlaanderen.be/dcat>
   a dcat:Catalog ;
@@ -24,7 +30,7 @@
   dc:license <http://www.opendefinition.org/licenses/cc-zero> ;
   dc:publisher <http://opendata.vlaanderen.be> ;
   dc:modified "2018-11-01T09:30:00+0000" ;
-  dcat:dataset <http://datasets.antwerpen.be/v4/public/gis/openbaartoilet> .
+  dcat:dataset <http://tests.opendata.vlaanderen.be/dcat/test1>, <http://tests.opendata.vlaanderen.be/dcat/test2>, <http://tests.opendata.vlaanderen.be/dcat/test3>, <http://tests.opendata.vlaanderen.be/dcat/test4>, <http://tests.opendata.vlaanderen.be/dcat/test5> .
 
 <http://www.opendefinition.org/licenses/cc-zero>
   a dc:LicenseDocument ;
