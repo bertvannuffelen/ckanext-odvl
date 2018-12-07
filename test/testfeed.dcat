@@ -111,23 +111,23 @@
 
 <http://tests.opendata.vlaanderen.be/dcat/test3>
   a dcat:Dataset ;
-  dc:title "Test 3 /éüè`%$\" ;
-  dc:description "Test non-ascii and escaped characters /éüè`%$\" ;
+  dc:title "Test 3 /éüè`%$\\" ;
+  dc:description "Test non-ascii and escaped characters /éüè`%$\\" ;
   dc:identifier "test3" ;
   dc:issued "2018-12-03T09:00:00+0000" ;
   dc:modified "2018-12-03T09:30:00+0000" ;
   dcat:landingPage <http://tests.opendata.vlaanderen.be/dcat/test3.html> ;
   dc:publisher <http://tests.opendata.vlaanderen.be/publisher1> ;
   dcat:contactPoint <http://tests.opendata.vlaanderen.be/contact> ;
-  dcat:keyword "keyword1", "keyword /éüè`%$\";
+  dcat:keyword "keyword1", "keyword /éüè`%$\\";
   dc:language <http://lexvo.org/id/iso639-3/nld> ;
   dcat:distribution <http://tests.opendata.vlaanderen.be/dcat/test3/data.txt> .
 
 <http://tests.opendata.vlaanderen.be/dcat/test3/data.txt>
   a dcat:Distribution ;
   dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test3/data.txt> ;
-  dc:title "Test 3 Data /éüè`%$\" ;
-  dc:description "a /éüè`%$\ distribution for test 3" ;
+  dc:title "Test 3 Data /éüè`%$\\" ;
+  dc:description "a /éüè`%$\\ distribution for test 3" ;
   dcat:mediaType "text/plain" ;
   dc:issued "2018-12-03T09:40:00+0000" .
 
