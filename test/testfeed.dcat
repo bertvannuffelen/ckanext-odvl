@@ -1,0 +1,172 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<http://lexvo.org/id/iso639-3/eng> a dc:LinguisticSystem .
+<http://lexvo.org/id/iso639-3/nld> a dc:LinguisticSystem .
+
+# literal values in these tests are defined so as to be easily identified
+# i.e. 10min increments for timestamps within a test (to avoid timezones ambiguities)
+#      day of month matching test number
+#      1999 timestamps for values that should not make it through the harvester
+#      URIs with IGNORED or ERROR for URIS that should not make it through the harvester
+
+<http://tests.opendata.vlaanderen.be/dcat>
+  a dcat:Catalog ;
+  dc:title "Test Catalog" ;
+  dc:description "A catalog of DCAT datasets to test the VODAP" ;
+  dc:issued "2018-11-01T09:00:00+0000" ;
+  dc:language <http://lexvo.org/id/iso639-3/eng> ;
+  foaf:homepage <http://tests.opendata.vlaanderen.be/tests> ;
+  dc:license <http://www.opendefinition.org/licenses/cc-zero> ;
+  dc:publisher <http://opendata.vlaanderen.be> ;
+  dc:modified "2018-11-01T09:30:00+0000" ;
+  dcat:dataset <http://datasets.antwerpen.be/v4/public/gis/openbaartoilet> .
+
+<http://www.opendefinition.org/licenses/cc-zero>
+  a dc:LicenseDocument ;
+  dc:type <http://purl.org/adms/licencetype/PublicDomain> .
+
+<http://media.toerismevlaanderen.be/OpenData/licenties/modellicentie_gratis_hergebruik.html>
+  a dc:LicenseDocument ;
+  dc:type <http://purl.org/adms/licencetype/Attribution> .
+
+<http://opendata.vlaanderen.be>
+  a foaf:Agent ;
+  foaf:name "VODAP" .
+
+<http://tests.opendata.vlaanderen.be/publisher1>
+  a foaf:Agent ;
+  foaf:name "VODAP Test Publisher 1", "Test Publisher 1", "Publisher 1" .
+
+
+# ### Test 1 ###
+
+<http://tests.opendata.vlaanderen.be/dcat/test1>
+  a dcat:Dataset ;
+  dc:title "Test 1" ;
+  dc:description "Basic test" ;
+  dc:identifier "test1" ;
+  dc:issued "2018-12-01T09:00:00+0000" ;
+  dc:modified "2018-12-01T09:30:00+0000" ;
+  dcat:landingPage <http://tests.opendata.vlaanderen.be/dcat/test1.html> ;
+  dc:publisher <http://tests.opendata.vlaanderen.be/publisher1> ;
+  # dc:source is likely to be removed from DCAT AP - to be ignored
+  dc:source <http://tests.opendata.vlaanderen.be/dcat/test1/IGNORE> ;
+  # dc:date should be ignored
+  dc:date "1999-01-01T09:00:00+0000" ;
+  dc:language <http://lexvo.org/id/iso639-3/nld> ;
+  dcat:contactPoint <http://tests.opendata.vlaanderen.be/contact> ;
+  dcat:keyword "keyword1", "keyword2" ;
+  dcat:theme <http://tests.opendata.vlaanderen.be/themes#TestTheme1> ;
+  dcat:distribution <http://tests.opendata.vlaanderen.be/dcat/test1/data.txt> .
+
+<http://tests.opendata.vlaanderen.be/themes#TestTheme1> rdfs:label "Test Theme 1" .
+
+<http://tests.opendata.vlaanderen.be/dcat/test1/data.txt>
+  a dcat:Distribution ;
+  dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test1/data_access_url> ;
+  dcat:downloadURL <http://tests.opendata.vlaanderen.be/dcat/test1/data.txt> ;
+  dc:title "Test 1 Data" ;
+  dc:description "a txt distribution for test 1" ;
+  dcat:mediaType "text/plain" ;
+  dc:issued "2018-12-01T09:40:00+0000" .
+
+
+# ### Test 2 : multiple distributions ###
+
+<http://tests.opendata.vlaanderen.be/dcat/test2>
+  a dcat:Dataset ;
+  dc:title "Test 2" ;
+  dc:description "Test with 2 distributions" ;
+  dc:identifier "test2" ;
+  dc:issued "2018-12-02T09:00:00+0000" ;
+  dc:modified "2018-12-02T09:30:00+0000" ;
+  dcat:landingPage <http://tests.opendata.vlaanderen.be/dcat/test2.html> ;
+  dc:publisher <http://tests.opendata.vlaanderen.be/publisher1> ;
+  dc:language <http://lexvo.org/id/iso639-3/nld> ;
+  dcat:distribution <http://tests.opendata.vlaanderen.be/dcat/test2/data.txt>, <http://tests.opendata.vlaanderen.be/dcat/test2/data.json> .
+
+<http://tests.opendata.vlaanderen.be/dcat/test2/data.txt>
+  a dcat:Distribution ;
+  dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test2/data.txt> ;
+  dc:title "Test 2 Data - Txt" ;
+  dc:description "a txt distribution for test 2" ;
+  dcat:mediaType "text/plain" ;
+  dc:issued "2018-12-02T09:40:00+0000" .
+
+<http://tests.opendata.vlaanderen.be/dcat/test2/data.json>
+  a dcat:Distribution ;
+  dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test2/data.json> ;
+  dc:title "Test 2 Data - Json" ;
+  dc:description "a json distribution for test 2" ;
+  dcat:mediaType "application/json" ;
+  dc:issued "2018-12-02T09:50:00+0000" .
+
+
+# ### Test 3 : special characters ###
+
+<http://tests.opendata.vlaanderen.be/dcat/test3>
+  a dcat:Dataset ;
+  dc:title "Test 3 /éüè`%$\" ;
+  dc:description "Test non-ascii and escaped characters /éüè`%$\" ;
+  dc:identifier "test3" ;
+  dc:issued "2018-12-03T09:00:00+0000" ;
+  dc:modified "2018-12-03T09:30:00+0000" ;
+  dcat:landingPage <http://tests.opendata.vlaanderen.be/dcat/test3.html> ;
+  dc:publisher <http://tests.opendata.vlaanderen.be/publisher1> ;
+  dcat:contactPoint <http://tests.opendata.vlaanderen.be/contact> ;
+  dcat:keyword "keyword1", "keyword /éüè`%$\";
+  dc:language <http://lexvo.org/id/iso639-3/nld> ;
+  dcat:distribution <http://tests.opendata.vlaanderen.be/dcat/test3/data.txt> .
+
+<http://tests.opendata.vlaanderen.be/dcat/test3/data.txt>
+  a dcat:Distribution ;
+  dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test3/data.txt> ;
+  dc:title "Test 3 Data /éüè`%$\" ;
+  dc:description "a /éüè`%$\ distribution for test 3" ;
+  dcat:mediaType "text/plain" ;
+  dc:issued "2018-12-03T09:40:00+0000" .
+
+
+# ### Test 4 : Spatial and temporal coverage ###
+
+<http://tests.opendata.vlaanderen.be/dcat/test4>
+  a dcat:Dataset ;
+  dc:title "Test 4" ;
+  dc:description "Test temporal and spatial coverage" ;
+  dc:identifier "test4" ;
+  dc:issued "2018-12-04T09:00:00+0000" ;
+  dc:modified "2018-12-04T09:30:00+0000" ;
+  dc:publisher <http://tests.opendata.vlaanderen.be/publisher1> ;
+  dct:spatial [ a dct:Location ; locn:geometry "{ \"type\": \"Polygon\", \"coordinates\": [ [ [2.54,50.68], [2.54,51.51], [5.92,51.51], [5.92,50.68], [2.54,50.68] ] ] }" ] ;
+  dcat:distribution <http://tests.opendata.vlaanderen.be/dcat/test4/data.txt> .
+
+<http://tests.opendata.vlaanderen.be/dcat/test4/data.txt>
+  a dcat:Distribution ;
+  dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test4/data.txt> ;
+  dc:title "Test 4 Data" ;
+  dc:description "a distribution for test 4" ;
+  dcat:mediaType "text/plain" ;
+  dc:issued "2018-12-04T09:40:00+0000" .
+
+
+# ### Test 5 : Structured contact point ###
+
+<http://tests.opendata.vlaanderen.be/dcat/test5>
+  a dcat:Dataset ;
+  dc:title "Test 5" ;
+  dc:description "Test structured contact point" ;
+  dc:identifier "test5" ;
+  dc:issued "2018-12-05T09:00:00+0000" ;
+  dc:modified "2018-12-05T09:30:00+0000" ;
+  dc:publisher <http://tests.opendata.vlaanderen.be/publisher1> ;
+  dcat:contactPoint [ a vcard:Individual ; vcard:fn "Alice"; vcard:hasEmail <mailto:alice@acme.org> ] ;
+  dcat:distribution <http://tests.opendata.vlaanderen.be/dcat/test5/data.txt> .
+
+<http://tests.opendata.vlaanderen.be/dcat/test5/data.txt>
+  a dcat:Distribution ;
+  dcat:accessURL <http://tests.opendata.vlaanderen.be/dcat/test5/data.txt> ;
+  dc:title "Test 5 Data" ;
+  dcat:mediaType "text/plain" ;
+  dc:issued "2018-12-05T09:40:00+0000" .
