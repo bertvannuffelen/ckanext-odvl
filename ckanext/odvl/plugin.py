@@ -292,13 +292,15 @@ class GeopuntHarvester(p.SingletonPlugin):
     def get_package_dict(self, context, data_dict):
         package_dict = data_dict['package_dict']
         opendataTag = next((x for x in package_dict['tags'] if x['name'].lower() == 'vlaamse open data'), None)
-        kosteloosTag = next((x for x in package_dict['tags'] if x['name'].lower() == 'kosteloos'), None)
 
         if (opendataTag):
+            kosteloosTag = next((x for x in package_dict['tags'] if x['name'].lower() == 'kosteloos'), None)
             if (kosteloosTag):
-                package_dict['license_id'] = 'Gratis Vlaamse Open Data'
+                package_dict['license_id'] = 'gratis-hergebruik-1.0'
             else:
-                package_dict['license_id'] = None
-        #else:   #this should not happen - only 'Vlaamse Open Data' datasets should be harvested
+                package_dict['license_id'] = 'geopunt_record_license'
+        else:
+            #this should not happen - only 'Vlaamse Open Data' datasets should be harvested
+            package_dict['license_id'] = 'geopunt_record_license'
 
         return package_dict
