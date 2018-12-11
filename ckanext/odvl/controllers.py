@@ -154,7 +154,7 @@ class OdvlController(BaseController):
         #engine = model.meta.engine
         conn = Session.connection()
 
-        sql = '''
+        old_sql = '''
             SELECT DISTINCT p.id,
                    p.name,
                    u.name,
@@ -172,13 +172,31 @@ class OdvlController(BaseController):
                ORDER BY grp.name, p.metadata_modified
         '''
 
+        sql = '''
+            SELECT DISTINCT p.id,
+                   p.name,
+                   u.name,
+                   grp.name,
+                   p.metadata_modified,
+                   p.metadata_created,
+                   ( SELECT count(ho.current) FROM harvest_object as ho WHERE ho.package_id = p.id) AS harvestObjects,
+                   ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'publisher_name') AS publisher_name,
+                   ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'publisher_email') AS publisher_email,
+                   p.private,
+                   p.state
+               FROM package AS p
+               LEFT OUTER JOIN public.user AS u ON u.id = p.creator_user_id
+               LEFT OUTER JOIN public.group AS grp ON grp.id = p.owner_org
+               ORDER BY grp.name, p.metadata_modified
+        '''
+
         csvout = StringIO()
         csvwriter = csv.writer(
             csvout,
             quoting=csv.QUOTE_NONNUMERIC
         )
 
-        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'private?', 'harvestSource', 'current', 'state'])
+        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'creation date', 'harvestSources', 'publisher name', 'publisher email', 'private?', 'state'])
 
         for t in conn.execute(sql).fetchall():
             csvwriter.writerow(t)
