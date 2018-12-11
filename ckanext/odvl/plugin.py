@@ -303,4 +303,9 @@ class GeopuntHarvester(p.SingletonPlugin):
             #this should not happen - only 'Vlaamse Open Data' datasets should be harvested
             package_dict['license_id'] = 'geopunt_record_license'
 
+        use_constraints = data_dict['iso_values'].get('use-constraints', '')
+        for use_constraint in use_constraints:
+            if 'geen beperkingen' in use_constraint.strip().lower():
+                package_dict['extras'].append({'key': 'access_rights', 'value': 'Public'})
+
         return package_dict
