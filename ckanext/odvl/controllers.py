@@ -173,20 +173,29 @@ class OdvlController(BaseController):
         '''
 
         sql = '''
-            SELECT DISTINCT p.id,
+SELECT DISTINCT p.id,
                    p.name,
                    u.name,
                    grp.name,
                    p.metadata_modified,
                    p.metadata_created,
-                   ( SELECT count(ho.current) FROM harvest_object as ho WHERE ho.package_id = p.id) AS harvestObjects,
                    ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'publisher_name') AS publisher_name,
                    ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'publisher_email') AS publisher_email,
                    p.private,
-                   p.state
+                   p.state,
+                   count(ho.id)
                FROM package AS p
                LEFT OUTER JOIN public.user AS u ON u.id = p.creator_user_id
                LEFT OUTER JOIN public.group AS grp ON grp.id = p.owner_org
+               LEFT OUTER JOIN public.harvest_object AS ho ON ho.package_id = p.id
+               GROUP BY p.id,
+                   p.name,
+                   u.name,
+                   grp.name,
+                   p.metadata_modified,
+                   p.metadata_created,
+                   p.private,
+                   p.state
                ORDER BY grp.name, p.metadata_modified
         '''
 
@@ -196,7 +205,7 @@ class OdvlController(BaseController):
             quoting=csv.QUOTE_NONNUMERIC
         )
 
-        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'creation date', 'harvestSources', 'publisher name', 'publisher email', 'private?', 'state'])
+        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'creation date', 'publisher name', 'publisher email', 'private?', 'state', 'harvestSources'])
 
         for t in conn.execute(sql).fetchall():
             csvwriter.writerow(t)
