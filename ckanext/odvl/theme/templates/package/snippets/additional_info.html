@@ -6,13 +6,35 @@
     {% set sortedVodapExtras = h.filter_vodap_extras(sortedExtras) %}
     {% set extrasDict = dict(sortedExtras) %}
 
+    {# Display contact separately #}
+    {% if ('contact_uri' in extrasDict or 'contact_name' in extrasDict or 'contact_email' in extrasDict): %}
+    <tr>
+        <th scope="row" class="dataset-label">{{ _('Contact Point') }}</th>
+        <td class="dataset-details" property="dcat:contactpoint">
+            {% if ('contact_email' in extrasDict): %}
+            {{ h.mail_to(email_address=extrasDict['contact_email'], name=extrasDict['contact_name'] or extrasDict['contact_email']) }}
+            {% if extrasDict.contact_uri %}
+            <a href="{{extrasDict.contact_uri}}" class="fa fa-external-link" style="text-decoration: none"></a>
+            {% endif %}
+            {% elif ('contact_uri' in extrasDict): %}
+            <a href="{{extrasDict['contact_uri']}}" target="_blank" rel="nofollow">{{extrasDict['contact_name'] or extrasDict['contact_uri']}}</a>
+            {% else : %}
+            {{extrasDict['contact_name']}}
+            {% endif %}
+        </td>
+    </tr>
+    {% endif %}
+
     {# Display publisher separately #}
-    {% if ('publisher' in extrasDict or 'publisher_name' in extrasDict or 'publisher_email' in extrasDict): %}
+    {% if ('publisher_uri' in extrasDict or 'publisher_name' in extrasDict or 'publisher_email' in extrasDict): %}
         <tr>
             <th scope="row" class="dataset-label">{{ _('Publisher') }}</th>
             <td class="dataset-details" property="dct:publisher">
                 {% if ('publisher_email' in extrasDict): %}
-                {{ h.mail_to(email_address=extrasDict['publisher_email'], name=extrasDict['publisher_name'] or extrasDict['publisher_email']) }}
+                    {{ h.mail_to(email_address=extrasDict['publisher_email'], name=extrasDict['publisher_name'] or extrasDict['publisher_email']) }}
+                    {% if extrasDict.publisher_uri %}
+                    <a href="{{extrasDict.publisher_uri}}" class="fa fa-external-link" style="text-decoration: none"></a>
+                    {% endif %}
                 {% elif ('publisher_uri' in extrasDict): %}
                 <a href="{{extrasDict['publisher_uri']}}" target="_blank" rel="nofollow">{{extrasDict['publisher_name'] or extrasDict['publisher_uri']}}</a>
                 {% else : %}
@@ -21,6 +43,18 @@
             </td>
         </tr>
     {% endif %}
+
+    {# Access rights #}
+    {# Currently displayed in extras below - to re-assess
+    {% if ('access_rights' in extrasDict): %}
+    <tr>
+        <th scope="row" class="dataset-label">{{ _('Access rights') }}</th>
+        <td class="dataset-details" property="dct:accessRights">
+            {{extrasDict['access_rights']}}
+        </td>
+    </tr>
+    {% endif %}
+    #}
 
     {% for extra in sortedVodapExtras %}
         {% set key, value = extra %}
@@ -53,6 +87,35 @@
 
     {% if c.userobj.sysadmin %}
         <tr style="border-top: 1px solid black; padding-top: 10px"><td colspan="2" style="font-weight: bold">Unknown attributes</td></tr>
+
+
+    {# Maintainer and author are removed from display by default, as per VODAP mapping definition #}
+    {% if pkg_dict.author_email %}
+    <tr>
+        <th scope="row" class="dataset-label">{{ _("Author") }}</th>
+        <td class="dataset-details" property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
+    </tr>
+    {% elif pkg_dict.author %}
+    <tr>
+        <th scope="row" class="dataset-label">{{ _("Author") }}</th>
+        <td class="dataset-details" property="dc:creator">{{ pkg_dict.author }}</td>
+    </tr>
+    {% endif %}
+
+    {% if pkg_dict.maintainer_email or pkg_dict.maintainer %}
+    <tr>
+        <th scope="row" class="dataset-label">{{ _('Maintainer') }}</th>
+        <td class="dataset-details" property="dc:contributor">
+            {% if pkg_dict.maintainer_email %}
+            {{ h.mail_to(email_address=pkg_dict.maintainer_email, name=pkg_dict.maintainer or pkg_dict.maintainer_email) }}
+            {% else %}
+            {{ pkg_dict.maintainer }}
+            {% endif %}
+        </td>
+    </tr>
+    {% endif %}
+
+
     {% for extra in sortedExtras if extra not in sortedVodapExtras %}
     {% set key, value = extra %}
     <tr rel="dc:relation" resource="_:extra{{ i }}">
