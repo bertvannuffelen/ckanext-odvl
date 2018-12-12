@@ -975,7 +975,7 @@
                          xmlns:geonet="http://www.fao.org/geonetwork"
                          xsi:schemaLocation="http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd">
             <gmd:fileIdentifier>
-                <gco:CharacterString>vodap-csw-tests-0006</gco:CharacterString>
+                <gco:CharacterString>vodap-csw-tests-0007</gco:CharacterString>
             </gmd:fileIdentifier>
             <gmd:characterSet>
                 <gmd:MD_CharacterSetCode codeListValue="utf8"
@@ -1034,7 +1034,9 @@
                          Maps to CKAN dataset:description -->
                     <gmd:abstract>
                         <gco:CharacterString>
-                            Test 7 : test proper support of many responsible parties, including a distributor
+                            Test 7 : test proper support of many responsible parties, including a distributor.
+                            In particular, pointOfContact is placed in gmd:contact (not gmd:identificationInfo),
+                            and owner (to become publisher) has multiple roles.
                         </gco:CharacterString>
                     </gmd:abstract>
                     <gmd:pointOfContact>
@@ -1189,6 +1191,7 @@
                             </gmd:role>
                         </gmd:CI_ResponsibleParty>
                     </gmd:pointOfContact>
+                    <!-- add owner1 as author-->
                     <gmd:pointOfContact>
                         <gmd:CI_ResponsibleParty>
                             <gmd:organisationName>
@@ -1215,28 +1218,28 @@
                             <gmd:role>
                                 <gmd:CI_RoleCode
                                         codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
-                                        codeListValue="owner"/>
+                                        codeListValue="author"/>
                             </gmd:role>
                         </gmd:CI_ResponsibleParty>
                     </gmd:pointOfContact>
                     <gmd:pointOfContact>
                         <gmd:CI_ResponsibleParty>
                             <gmd:organisationName>
-                                <gco:CharacterString>owner2</gco:CharacterString>
+                                <gco:CharacterString>owner1</gco:CharacterString>
                             </gmd:organisationName>
                             <gmd:contactInfo>
                                 <gmd:CI_Contact>
                                     <gmd:address>
                                         <gmd:CI_Address>
                                             <gmd:electronicMailAddress>
-                                                <gco:CharacterString>owner2@acme.org</gco:CharacterString>
+                                                <gco:CharacterString>owner1@acme.org</gco:CharacterString>
                                             </gmd:electronicMailAddress>
                                         </gmd:CI_Address>
                                     </gmd:address>
                                     <gmd:onlineResource>
                                         <gmd:CI_OnlineResource>
                                             <gmd:linkage>
-                                                <gmd:URL>https://acme.org/owner2</gmd:URL>
+                                                <gmd:URL>https://acme.org/owner1</gmd:URL>
                                             </gmd:linkage>
                                         </gmd:CI_OnlineResource>
                                     </gmd:onlineResource>
