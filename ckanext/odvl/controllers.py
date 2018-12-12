@@ -181,6 +181,9 @@ SELECT DISTINCT p.id,
                    p.metadata_created,
                    ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'publisher_name') AS publisher_name,
                    ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'publisher_email') AS publisher_email,
+                   ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'total_owner') AS total_owner,
+                   ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'total_publisher') AS total_publisher,
+                   ( SELECT extras.value FROM package_extra as extras WHERE extras.package_id = p.id AND extras.key = 'total_custodian') AS total_custodian,
                    p.private,
                    p.state,
                    count(ho.id)
@@ -205,7 +208,7 @@ SELECT DISTINCT p.id,
             quoting=csv.QUOTE_NONNUMERIC
         )
 
-        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'creation date', 'publisher name', 'publisher email', 'private?', 'state', 'harvestSources'])
+        csvwriter.writerow(['ID', 'name', 'creator', 'org', 'modification date', 'creation date', 'publisher name', 'publisher email', 'total_owner', 'total_publisher', 'total_custodian', 'private?', 'state', 'harvestHistory'])
 
         for t in conn.execute(sql).fetchall():
             csvwriter.writerow(t)
