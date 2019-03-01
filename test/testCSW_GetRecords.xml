@@ -760,7 +760,7 @@
                     <gmd:abstract>
                         <gco:CharacterString>
                             Test 4 : test proper support of 'owner' responsible party only, i.e. it should map to
-                            extra:publisher.
+                            extra:publisher, with label 'Uitgever'.
                         </gco:CharacterString>
                     </gmd:abstract>
 
@@ -832,7 +832,7 @@
                     <gmd:abstract>
                         <gco:CharacterString>
                             Test 5 : test proper support of 'publisher' responsible party only, i.e. it should map to
-                            extra:publisher.
+                            extra:publisher, with label 'Uitgever'.
                         </gco:CharacterString>
                     </gmd:abstract>
 
@@ -904,7 +904,7 @@
                     <gmd:abstract>
                         <gco:CharacterString>
                             Test 6 : test proper support of 'publisher' and 'owner' responsible parties, i.e.
-                            'publisher' should map to extra:publisher.
+                            'publisher' should map to extra:publisher, with label 'Uitgever'.
                         </gco:CharacterString>
                     </gmd:abstract>
 
@@ -1461,6 +1461,315 @@
                 </gmd:MD_Distribution>
             </gmd:distributionInfo>
         </gmd:MD_Metadata>
+
+        <!--  ***********************************
+              Test 8 : Dataset with tags.
+              *********************************** -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0008</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 8 : Test with tags, using no specific vocabulary. Tags should go into ckan:tags, with label 'Trefwoord'.
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 8 - Test with tags</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+
+                    <gmd:descriptiveKeywords>
+                        <gmd:MD_Keywords>
+                            <gmd:keyword>
+                                <gco:CharacterString>Tag1</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Tag2</gco:CharacterString>
+                            </gmd:keyword>
+                            <gmd:keyword>
+                                <gco:CharacterString>Tag3</gco:CharacterString>
+                            </gmd:keyword>
+                        </gmd:MD_Keywords>
+                    </gmd:descriptiveKeywords>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+
+        <!--  ********************************************
+             Test 9 : Dataset with Responsible Party 'pointOfContact' only
+             ********************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xsi:schemaLocation="http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0009</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:characterSet>
+                <gmd:MD_CharacterSetCode codeListValue="utf8"
+                                         codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_CharacterSetCode"/>
+            </gmd:characterSet>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+
+            <gmd:identificationInfo>
+                <gmd:MD_DataIdentification>
+                    <gmd:citation>
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 9 : Dataset with Responsible Party 'PointOfContact' only
+                                </gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <!-- Abstract
+                         Maps to CKAN dataset:description -->
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 4 : test proper support of 'PointOfContact' responsible party only, i.e. it should map to
+                            extra:contact, with label 'ContactPunt'.
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:pointOfContact>
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>
+                                    PointOfContact / Responsible Party / PointOfContact
+                                </gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo>
+                                <gmd:CI_Contact>
+                                    <gmd:address>
+                                        <gmd:CI_Address>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>pointofcontact@acme.org</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode
+                                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                        codeListValue="pointOfContact"/>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+
+        </gmd:MD_Metadata>
+
+
+        <!--  ********************************************
+             Test 10 : Dataset with Responsible Party 'custodian' only
+             ********************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xsi:schemaLocation="http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0010</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:characterSet>
+                <gmd:MD_CharacterSetCode codeListValue="utf8"
+                                         codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_CharacterSetCode"/>
+            </gmd:characterSet>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+
+            <gmd:identificationInfo>
+                <gmd:MD_DataIdentification>
+                    <gmd:citation>
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 10 : Dataset with Responsible Party 'custodian' only
+                                </gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <!-- Abstract
+                         Maps to CKAN dataset:description -->
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 5 : test proper support of 'custodian' responsible party only, i.e. it should map to
+                            extra:contact, with label 'ContactPunt'.
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:pointOfContact>
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>
+                                    PointOfContact / Responsible Party / Custodian
+                                </gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo>
+                                <gmd:CI_Contact>
+                                    <gmd:address>
+                                        <gmd:CI_Address>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>custodian@acme.org</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode
+                                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                        codeListValue="custodian"/>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+
+        </gmd:MD_Metadata>
+
+
+        <!--  ********************************************
+             Test 11 : Dataset with both 'pointOfContact' and 'custodian' Responsible Parties
+             ********************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xsi:schemaLocation="http://www.isotc211.org/2005/gmx http://www.isotc211.org/2005/gmx/gmx.xsd http://www.isotc211.org/2005/gmd http://www.isotc211.org/2005/gmd/gmd.xsd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0011</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:characterSet>
+                <gmd:MD_CharacterSetCode codeListValue="utf8"
+                                         codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_CharacterSetCode"/>
+            </gmd:characterSet>
+            <gmd:hierarchyLevel>
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+
+            <gmd:identificationInfo>
+                <gmd:MD_DataIdentification>
+                    <gmd:citation>
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 11 : Dataset with 'pointOfContact' and 'custodian' Responsible Parties
+                                </gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <!-- Abstract
+                         Maps to CKAN dataset:description -->
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 11 : test proper support of 'pointOfContact' and 'custodian' responsible parties, i.e.
+                            'pointOfContact' should map to extra:contact, with label 'ContactPunt'.
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:pointOfContact>
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>
+                                    PointOfContact / Responsible Party / Custodian
+                                </gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo>
+                                <gmd:CI_Contact>
+                                    <gmd:address>
+                                        <gmd:CI_Address>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>custodian@acme.org</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode
+                                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                        codeListValue="custodian"/>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+
+                    <gmd:pointOfContact>
+                        <gmd:CI_ResponsibleParty>
+                            <gmd:organisationName>
+                                <gco:CharacterString>
+                                    PointOfContact / Responsible Party / PointOfContact
+                                </gco:CharacterString>
+                            </gmd:organisationName>
+                            <gmd:contactInfo>
+                                <gmd:CI_Contact>
+                                    <gmd:address>
+                                        <gmd:CI_Address>
+                                            <gmd:electronicMailAddress>
+                                                <gco:CharacterString>pointofcontact@acme.org</gco:CharacterString>
+                                            </gmd:electronicMailAddress>
+                                        </gmd:CI_Address>
+                                    </gmd:address>
+                                </gmd:CI_Contact>
+                            </gmd:contactInfo>
+                            <gmd:role>
+                                <gmd:CI_RoleCode
+                                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_RoleCode"
+                                        codeListValue="pointOfContact"/>
+                            </gmd:role>
+                        </gmd:CI_ResponsibleParty>
+                    </gmd:pointOfContact>
+
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+
+        </gmd:MD_Metadata>
+
 
     </csw:SearchResults>
 </csw:GetRecordsResponse>
