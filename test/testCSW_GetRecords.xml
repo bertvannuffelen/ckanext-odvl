@@ -2,6 +2,7 @@
 <csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                         xmlns:gco="http://www.isotc211.org/2005/gco"
+                        xmlns:gml="http://www.opengis.net/gml"
                         xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
 
     <!-- Search results mocked from
@@ -190,9 +191,13 @@
                             <gmd:alternateTitle>
                                 <gco:CharacterString>Test 2 - alternate title</gco:CharacterString>
                             </gmd:alternateTitle>
-                            <gmd:date>
+                            <!-- Mapped to version -->
+                            <gmd:edition>
+                                <gco:CharacterString>Toestand 23/10/2018</gco:CharacterString>
+                            </gmd:edition>
 
-                                <!-- Creation date -->
+                            <!-- Creation date -->
+                            <gmd:date>
                                 <gmd:CI_Date>
                                     <gmd:date>
                                         <gco:Date>2017-12-01</gco:Date>
@@ -204,6 +209,35 @@
                                     </gmd:dateType>
                                 </gmd:CI_Date>
                             </gmd:date>
+
+                            <!-- Publication date -->
+                            <gmd:date>
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2017-12-02</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode
+                                                codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                codeListValue="publication"/>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+
+                            <!-- Revision date -->
+                            <gmd:date>
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2017-12-03</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode
+                                                codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                codeListValue="revision"/>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+
                             <gmd:identifier>
                                 <gmd:RS_Identifier>
                                     <gmd:code>
@@ -397,6 +431,31 @@
                                     </gmd:northBoundLatitude>
                                 </gmd:EX_GeographicBoundingBox>
                             </gmd:geographicElement>
+
+                            <!-- Geographic description -->
+                            <gmd:geographicElement>
+                                <gmd:EX_GeographicDescription>
+                                    <gmd:geographicIdentifier>
+                                        <gmd:MD_Identifier>
+                                            <gmd:code>
+                                                <gco:CharacterString>Roerdalslenk Zuidoost-Nederland en Vlaanderen</gco:CharacterString>
+                                            </gmd:code>
+                                        </gmd:MD_Identifier>
+                                    </gmd:geographicIdentifier>
+                                </gmd:EX_GeographicDescription>
+                            </gmd:geographicElement>
+
+                            <!-- Temporal Extent-->
+                            <gmd:temporalElement>
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent>
+                                        <gml:TimePeriod gml:id="tp1">
+                                            <gml:beginPosition>2012-03-13</gml:beginPosition>
+                                            <gml:endPosition>2014-06-30</gml:endPosition>
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
                         </gmd:EX_Extent>
                     </gmd:extent>
                 </gmd:MD_DataIdentification>
@@ -1770,6 +1829,627 @@
 
         </gmd:MD_Metadata>
 
+        <!--  *********************************************************
+              Test 12 : Dataset with useConstraints 'Geen Beperkingen'.
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0012</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 12 : Test with MD_Constraints/useLimitation containing 'Geen beperkingen'.
+                            Should result in extra:access_rights (labeled ToegangsRechten) == 'Public' .
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 12 - Test with 'Geen beperkingen' MD_Constraints</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:resourceConstraints>
+                        <gmd:MD_Constraints>
+                            <gmd:useLimitation>
+                                <gco:CharacterString>MD_Constraints/useLimitation : Geen beperkingen.
+                                </gco:CharacterString>
+                            </gmd:useLimitation>
+                        </gmd:MD_Constraints>
+                    </gmd:resourceConstraints>
+
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 13 : Dataset with MD_DataIdentification.language
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0013</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 13 : Test with MD_DataIdentification.language == 'dut' .
+                            Should result in extra:language (labeled Taal) == 'dut' .
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 13 - Test with MD_DataIdentification.language == 'dut'</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:language>
+                        <gco:CharacterString>dut</gco:CharacterString>
+                    </gmd:language>
+
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+
+        <!--  *********************************************************
+              Test 14 : Dataset with Publication Date
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0014</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 14 : Test with MD_DataIdentification.citation > CI_Citation.date > CI_Date.date [CI_date.type > CI_DateTypeCode == publication]
+                            Should result in extra:issued (labeled Publicatiedatum) being set .
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 14 - Test with Publication Date</gco:CharacterString>
+                            </gmd:title>
+
+                            <!-- Publication date -->
+                            <gmd:date>
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2017-12-01</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode
+                                                codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                codeListValue="publication"/>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 15 : Dataset with Revision Date
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0015</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 15 : Test with MD_DataIdentification.citation > CI_Citation.date > CI_Date.date [CI_date.type > CI_DateTypeCode == revision]
+                            Should result in extra:modified (labeled Laatst gewijzigd) being set .
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 15 - Test with Revision Date</gco:CharacterString>
+                            </gmd:title>
+
+                            <!-- Revision date -->
+                            <gmd:date>
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2017-12-01</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode
+                                                codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                codeListValue="revision"/>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 16 : Dataset with Creation Date
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0016</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 16 : Test with MD_DataIdentification.citation > CI_Citation.date > CI_Date.date [CI_date.type > CI_DateTypeCode == creation]
+                            Should result in no specific field.
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 16 - Test with Creation Date</gco:CharacterString>
+                            </gmd:title>
+
+                            <!-- Creation date -->
+                            <gmd:date>
+                                <gmd:CI_Date>
+                                    <gmd:date>
+                                        <gco:Date>2017-12-01</gco:Date>
+                                    </gmd:date>
+                                    <gmd:dateType>
+                                        <gmd:CI_DateTypeCode
+                                                codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode"
+                                                codeListValue="creation"/>
+                                    </gmd:dateType>
+                                </gmd:CI_Date>
+                            </gmd:date>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 17 : Dataset with Temporal Extent
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0017</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 17 : Test with MD_Metadata > MD_DataIdentification.extent > EX_Extent > EX_TemporalExtent
+                            Should result in extra:temporal_extent_begin, extra:temporal_extent_end, labeled as Geldigheidsperiode
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 17 - Test with Temporal Extent</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:temporalElement>
+                                <gmd:EX_TemporalExtent>
+                                    <gmd:extent>
+                                        <gml:TimePeriod gml:id="tp1">
+                                            <gml:beginPosition>2012-03-13</gml:beginPosition>
+                                            <gml:endPosition>2014-06-30</gml:endPosition>
+                                        </gml:TimePeriod>
+                                    </gmd:extent>
+                                </gmd:EX_TemporalExtent>
+                            </gmd:temporalElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 18 : Dataset with Geographic Description
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0018</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 18 : Test with MD_Metadata > MD_DataIdentification.extent > EX_Extent > EX_GeographicExtent > EX_GeographicDescription
+                            Should result in extra:geographic_description, labeled as Ruimtelijke dekking
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 18 - Test with Geographic Description</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                            <gmd:geographicElement>
+                                <gmd:EX_GeographicDescription>
+                                    <gmd:geographicIdentifier>
+                                        <gmd:MD_Identifier>
+                                            <gmd:code>
+                                                <gco:CharacterString>Roerdalslenk Zuidoost-Nederland en Vlaanderen</gco:CharacterString>
+                                            </gmd:code>
+                                        </gmd:MD_Identifier>
+                                    </gmd:geographicIdentifier>
+                                </gmd:EX_GeographicDescription>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 19 : Dataset with Version
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0019</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 19 : Test with MD_Metadata > MD_DataIdentification.citation > CI_Citation.edition
+                            Should result in field version, labeled as Versie
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 19 - Test with Geographic Description</gco:CharacterString>
+                            </gmd:title>
+
+                            <!-- Version -->
+                            <gmd:edition>
+                                <gco:CharacterString>Toestand 23/10/2018</gco:CharacterString>
+                            </gmd:edition>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+        </gmd:MD_Metadata>
+
+        <!--  *********************************************************
+              Test 20 : Dataset with resources
+              ********************************************************* -->
+        <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
+            <gmd:fileIdentifier>
+                <gco:CharacterString>vodap-csw-tests-0020</gco:CharacterString>
+            </gmd:fileIdentifier>
+            <gmd:hierarchyLevel xmlns:xlink="http://www.w3.org/1999/xlink">
+                <gmd:MD_ScopeCode
+                        codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode"
+                        codeListValue="dataset"/>
+            </gmd:hierarchyLevel>
+
+            <gmd:identificationInfo xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple">
+                <gmd:MD_DataIdentification>
+                    <gmd:abstract>
+                        <gco:CharacterString>
+                            Test 20 : Test resources
+                            Should result in two resources. First with no title, second with both title and description.
+                            Format should be labeled 'Formaat'.
+                        </gco:CharacterString>
+                    </gmd:abstract>
+
+                    <gmd:citation xlink:type="simple">
+                        <gmd:CI_Citation>
+                            <gmd:title>
+                                <gco:CharacterString>Test 20 - Test Resources</gco:CharacterString>
+                            </gmd:title>
+                        </gmd:CI_Citation>
+                    </gmd:citation>
+
+                    <gmd:extent xlink:type="simple">
+                        <gmd:EX_Extent>
+                            <gmd:geographicElement xlink:type="simple">
+                                <gmd:EX_GeographicBoundingBox>
+                                    <gmd:westBoundLongitude>
+                                        <gco:Decimal>2.53</gco:Decimal>
+                                    </gmd:westBoundLongitude>
+                                    <gmd:southBoundLatitude>
+                                        <gco:Decimal>50.67</gco:Decimal>
+                                    </gmd:southBoundLatitude>
+                                    <gmd:eastBoundLongitude>
+                                        <gco:Decimal>5.92</gco:Decimal>
+                                    </gmd:eastBoundLongitude>
+                                    <gmd:northBoundLatitude>
+                                        <gco:Decimal>51.51</gco:Decimal>
+                                    </gmd:northBoundLatitude>
+                                </gmd:EX_GeographicBoundingBox>
+                            </gmd:geographicElement>
+                        </gmd:EX_Extent>
+                    </gmd:extent>
+                </gmd:MD_DataIdentification>
+            </gmd:identificationInfo>
+
+            <gmd:distributionInfo>
+                <gmd:MD_Distribution>
+                    <gmd:distributionFormat>
+                        <gmd:MD_Format>
+                            <gmd:name>
+                                <gco:CharacterString>Distribution Format</gco:CharacterString>
+                            </gmd:name>
+                            <gmd:version>
+                                <gco:CharacterString>format version</gco:CharacterString>
+                            </gmd:version>
+                        </gmd:MD_Format>
+                    </gmd:distributionFormat>
+
+                    <gmd:transferOptions>
+                        <gmd:MD_DigitalTransferOptions>
+                            <gmd:onLine>
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>https://acme.org/test2/directdownload</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>WWW:DOWNLOAD-1.0-http--download</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:description>
+                                        <gco:CharacterString>Test 20 / Resource 1 - Direct Download link. Should have no Name.</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                            <gmd:onLine>
+                                <gmd:CI_OnlineResource>
+                                    <gmd:linkage>
+                                        <gmd:URL>https://acme.org/test2/wms</gmd:URL>
+                                    </gmd:linkage>
+                                    <gmd:protocol>
+                                        <gco:CharacterString>OGC:WMS</gco:CharacterString>
+                                    </gmd:protocol>
+                                    <gmd:name>
+                                        <gco:CharacterString>Test 20 / Resource 1 - WMS</gco:CharacterString>
+                                    </gmd:name>
+                                    <gmd:description>
+                                        <gco:CharacterString>Test 20 / Resource 2 - WMS</gco:CharacterString>
+                                    </gmd:description>
+                                </gmd:CI_OnlineResource>
+                            </gmd:onLine>
+                        </gmd:MD_DigitalTransferOptions>
+                    </gmd:transferOptions>
+                </gmd:MD_Distribution>
+            </gmd:distributionInfo>
+        </gmd:MD_Metadata>
 
     </csw:SearchResults>
 </csw:GetRecordsResponse>
