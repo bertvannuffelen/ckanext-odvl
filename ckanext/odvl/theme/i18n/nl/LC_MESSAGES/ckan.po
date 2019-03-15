@@ -4914,7 +4914,7 @@ msgstr "gewijzigd op"
 
 # Titles for extra fields from DCAT imports
 msgid "issued"
-msgstr "Datum publicatie"
+msgstr "Publicatiedatum"
 
 msgid "modified"
 msgstr "Laatst gewijzigd"
@@ -4934,14 +4934,23 @@ msgstr "Update frequentie"
 msgid "conforms_to"
 msgstr "Compliant met standard"
 
-msgid "spatial_uri"
-msgstr "Geographishe dekking"
+msgid "Spatial Coverage"
+msgstr "Ruimtelijke dekking"
 
 msgid "temporal-extent-begin"
-msgstr "Dekking in tijd - Vanaf"
+msgstr "Geldigheidsperiode - Vanaf"
 
 msgid "temporal-extent-end"
-msgstr "Dekking in tijd - Tot"
+msgstr "Geldigheidsperiode - Tot"
+
+msgid "Validity Period"
+msgstr "Geldigheidsperiode"
+
+msgid "from"
+msgstr "vanaf"
+
+msgid "to"
+msgstr "tot"
 
 msgid "download_url"
 msgstr "URL van download"
@@ -4957,6 +4966,9 @@ msgstr "Aantal bytes"
 
 msgid "rights"
 msgstr "Rechten"
+
+msgid "Access rights"
+msgstr "Toegangsrechten"
 
 msgid "You are not part of any organization. You must be member of an organization to submit or update datasets."
 msgstr "Om datasets te kunnen toevoegen moet je lid van een organisatie zijn. Stuur een mail naar <a href='mailto:opendata@vlaanderen.be'>opendata@vlaanderen.be</a> met duidelijke vermelding voor welke organisatie je datasets wilt toevoegen"

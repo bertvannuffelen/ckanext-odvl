@@ -1,40 +1,39 @@
-{% ckan_extends %}
+<section class="additional-info">
+    <h3>{{ _('Additional Info') }}</h3>
+    <table class="table table-striped table-bordered table-condensed">
+        <tbody>
+        {% set sortedExtras = h.sorted_extras(pkg_dict.extras) %}
+        {% set extrasDict = dict(sortedExtras) %}
 
-{% block extras scoped %}
+        {# >>> ContactPunt - Display contact separately #}
+        {% if ('contact_uri' in extrasDict or 'contact_name' in extrasDict or 'contact_email' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Contact Point') }}</th>
+            <td class="dataset-details" property="dcat:contactpoint">
+                {% if ('contact_email' in extrasDict): %}
+                {{ h.mail_to(email_address=extrasDict['contact_email'], name=extrasDict['contact_name'] or extrasDict['contact_email']) }}
+                {% if extrasDict.contact_uri %}
+                <a href="{{extrasDict.contact_uri}}" class="fa fa-external-link" style="text-decoration: none"></a>
+                {% endif %}
+                {% elif ('contact_uri' in extrasDict): %}
+                <a href="{{extrasDict['contact_uri']}}" target="_blank" rel="nofollow">{{extrasDict['contact_name'] or extrasDict['contact_uri']}}</a>
+                {% else : %}
+                {{extrasDict['contact_name']}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
 
-    {% set sortedExtras = h.sorted_extras(pkg_dict.extras) %}
-    {% set sortedVodapExtras = h.filter_vodap_extras(sortedExtras) %}
-    {% set extrasDict = dict(sortedExtras) %}
-
-    {# Display contact separately #}
-    {% if ('contact_uri' in extrasDict or 'contact_name' in extrasDict or 'contact_email' in extrasDict): %}
-    <tr>
-        <th scope="row" class="dataset-label">{{ _('Contact Point') }}</th>
-        <td class="dataset-details" property="dcat:contactpoint">
-            {% if ('contact_email' in extrasDict): %}
-            {{ h.mail_to(email_address=extrasDict['contact_email'], name=extrasDict['contact_name'] or extrasDict['contact_email']) }}
-            {% if extrasDict.contact_uri %}
-            <a href="{{extrasDict.contact_uri}}" class="fa fa-external-link" style="text-decoration: none"></a>
-            {% endif %}
-            {% elif ('contact_uri' in extrasDict): %}
-            <a href="{{extrasDict['contact_uri']}}" target="_blank" rel="nofollow">{{extrasDict['contact_name'] or extrasDict['contact_uri']}}</a>
-            {% else : %}
-            {{extrasDict['contact_name']}}
-            {% endif %}
-        </td>
-    </tr>
-    {% endif %}
-
-    {# Display publisher separately #}
-    {% if ('publisher_uri' in extrasDict or 'publisher_name' in extrasDict or 'publisher_email' in extrasDict): %}
+        {# >>> Uitgever - Display publisher separately #}
+        {% if ('publisher_uri' in extrasDict or 'publisher_name' in extrasDict or 'publisher_email' in extrasDict): %}
         <tr>
             <th scope="row" class="dataset-label">{{ _('Publisher') }}</th>
             <td class="dataset-details" property="dct:publisher">
                 {% if ('publisher_email' in extrasDict): %}
-                    {{ h.mail_to(email_address=extrasDict['publisher_email'], name=extrasDict['publisher_name'] or extrasDict['publisher_email']) }}
-                    {% if extrasDict.publisher_uri %}
-                    <a href="{{extrasDict.publisher_uri}}" class="fa fa-external-link" style="text-decoration: none"></a>
-                    {% endif %}
+                {{ h.mail_to(email_address=extrasDict['publisher_email'], name=extrasDict['publisher_name'] or extrasDict['publisher_email']) }}
+                {% if extrasDict.publisher_uri %}
+                <a href="{{extrasDict.publisher_uri}}" class="fa fa-external-link" style="text-decoration: none"></a>
+                {% endif %}
                 {% elif ('publisher_uri' in extrasDict): %}
                 <a href="{{extrasDict['publisher_uri']}}" target="_blank" rel="nofollow">{{extrasDict['publisher_name'] or extrasDict['publisher_uri']}}</a>
                 {% else : %}
@@ -42,90 +41,168 @@
                 {% endif %}
             </td>
         </tr>
-    {% endif %}
+        {% endif %}
 
-    {# Access rights #}
-    {# Currently displayed in extras below - to re-assess
-    {% if ('access_rights' in extrasDict): %}
-    <tr>
-        <th scope="row" class="dataset-label">{{ _('Access rights') }}</th>
-        <td class="dataset-details" property="dct:accessRights">
-            {{extrasDict['access_rights']}}
-        </td>
-    </tr>
-    {% endif %}
-    #}
+        {# >>> Thema #}
+        {% if ('theme' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label" property="rdfs:label">{{ _('theme') }}</th>
+            <td class="dataset-details" property="rdf:value">
+                {% set parsed_value = h.json_parse(extrasDict['theme'].encode('utf8')) %}
+                {% if h.is_list(parsed_value)  %}
+                {% for val in parsed_value %}
+                {{ h.render_link(val) | safe }}<br/>
+                {% endfor %}
+                {% else: %}
+                {{ parsed_value }}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
 
-    {% for extra in sortedVodapExtras %}
-        {% set key, value = extra %}
-            <tr rel="dc:relation" resource="_:extra{{ i }}">
-                <th scope="row" class="dataset-label" property="rdfs:label">
-                    {% if key in ['modified']: %}
-                        {# This is the original metadata modification date #}
-                        {{ _('Modified (original)') }}
-                    {% else: %}
-                        {{ _(key) }}
-                    {% endif %}
-                </th>
-                <td class="dataset-details" property="rdf:value">
+        {# >>> Toegangsrechten - Access rights #}
+        {% if ('access_rights' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Access rights') }}</th>
+            <td class="dataset-details" property="dct:accessRights">
+                {{extrasDict['access_rights']}}
+            </td>
+        </tr>
+        {% endif %}
 
-                    {% if key in ['language', 'theme']: %}
-                        {% set parsed_value = h.json_parse(value.encode('utf8')) %}
-                        {% if h.is_list(parsed_value)  %}
-                            {% for val in parsed_value %}
-                                {{ h.render_link(val) | safe }}<br/>
-                            {% endfor %}
-                        {% else: %}
-                            {{ parsed_value }}
-                        {% endif %}
-                    {% else: %}
-                        {{ h.render_link(value) | safe }}
-                    {% endif %}
-                </td>
-            </tr>
-    {% endfor %}
-
-    {% if c.userobj.sysadmin %}
-        <tr style="border-top: 1px solid black; padding-top: 10px"><td colspan="2" style="font-weight: bold">Unknown attributes</td></tr>
-
-
-    {# Maintainer and author are removed from display by default, as per VODAP mapping definition #}
-    {% if pkg_dict.author_email %}
-    <tr>
-        <th scope="row" class="dataset-label">{{ _("Author") }}</th>
-        <td class="dataset-details" property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
-    </tr>
-    {% elif pkg_dict.author %}
-    <tr>
-        <th scope="row" class="dataset-label">{{ _("Author") }}</th>
-        <td class="dataset-details" property="dc:creator">{{ pkg_dict.author }}</td>
-    </tr>
-    {% endif %}
-
-    {% if pkg_dict.maintainer_email or pkg_dict.maintainer %}
-    <tr>
-        <th scope="row" class="dataset-label">{{ _('Maintainer') }}</th>
-        <td class="dataset-details" property="dc:contributor">
-            {% if pkg_dict.maintainer_email %}
-            {{ h.mail_to(email_address=pkg_dict.maintainer_email, name=pkg_dict.maintainer or pkg_dict.maintainer_email) }}
+        {# >>> URL - Bijsluiter #}
+        {% if pkg_dict.url %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Source') }}</th>
+            {% if h.is_url(pkg_dict.url) %}
+            <td class="dataset-details" property="foaf:homepage">{{ h.link_to(pkg_dict.url, pkg_dict.url, rel='foaf:homepage', target='_blank') }}</td>
             {% else %}
-            {{ pkg_dict.maintainer }}
+            <td class="dataset-details" property="foaf:homepage">{{ pkg_dict.url }}</td>
             {% endif %}
-        </td>
-    </tr>
-    {% endif %}
+        </tr>
+        {% endif %}
+
+        {# >>> Taal #}
+        {% if ('language' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label" property="rdfs:label">{{ _('language') }}</th>
+            <td class="dataset-details" property="rdf:value">
+                {% set parsed_value = h.json_parse(extrasDict['language'].encode('utf8')) %}
+                {% if h.is_list(parsed_value)  %}
+                {% for val in parsed_value %}
+                {{ h.render_link(val) | safe }}<br/>
+                {% endfor %}
+                {% else: %}
+                {{ parsed_value }}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+
+        {# >>> Publicatiedatum - Issued #}
+        {% if ('issued' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('issued') }}</th>
+            <td class="dataset-details" >
+                {{extrasDict['issued']}}
+            </td>
+        </tr>
+        {% endif %}
+
+        {# >>> Laatst gewijzigd - Modified #}
+        {% if ('modified' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('modified') }}</th>
+            <td class="dataset-details">
+                {{extrasDict['modified']}}
+            </td>
+        </tr>
+        {% endif %}
+
+        {# >>> Geldigheidsperiode - temporal_extent_begin, temporal_extent_end #}
+        {% if ('temporal-extent-begin' in extrasDict or 'temporal-extent-end' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Validity Period') }}</th>
+            <td class="dataset-details">
+                {% if ('temporal-extent-begin' in extrasDict): %}
+                {{_('from') + ' ' + extrasDict['temporal-extent-begin']}}
+                {% endif %}
+                {% if ('temporal-extent-begin' in extrasDict): %}
+                {{_('to') + ' ' + extrasDict['temporal-extent-end']}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+
+        {# >>> Ruimtelijke Dekking - spatial_uri or spatial_text #}
+        {% if ('spatial_uri' in extrasDict or 'spatial_text' in extrasDict): %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Spatial Coverage') }}</th>
+            <td class="dataset-details" property="dct:accessRights">
+                {% if ('spatial_uri' in extrasDict): %}
+                <a href="{{extrasDict['spatial_uri']}}" target="_blank" rel="nofollow">{{extrasDict['spatial_text'] or extrasDict['spatial_uri']}}</a>
+                {% else : %}
+                {{extrasDict['spatial_text']}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+
+        {# >>> Versie #}
+        {% if pkg_dict.version %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _("Version") }}</th>
+            <td class="dataset-details">{{ pkg_dict.version }}</td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    
+    {# Display remaining information only to amdins #}
+    {% if c.userobj.sysadmin %}
+    <h3>{{ _('System information') }}</h3>
+    <table class="table table-striped table-bordered table-condensed">
+        <tbody>
+        {# Maintainer and author are removed from display by default, as per VODAP mapping definition #}
+        {% if pkg_dict.author_email %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _("Author") }}</th>
+            <td class="dataset-details" property="dc:creator">{{ h.mail_to(email_address=pkg_dict.author_email, name=pkg_dict.author) }}</td>
+        </tr>
+        {% elif pkg_dict.author %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _("Author") }}</th>
+            <td class="dataset-details" property="dc:creator">{{ pkg_dict.author }}</td>
+        </tr>
+        {% endif %}
+
+        {% if pkg_dict.maintainer_email or pkg_dict.maintainer %}
+        <tr>
+            <th scope="row" class="dataset-label">{{ _('Maintainer') }}</th>
+            <td class="dataset-details" property="dc:contributor">
+                {% if pkg_dict.maintainer_email %}
+                {{ h.mail_to(email_address=pkg_dict.maintainer_email, name=pkg_dict.maintainer or pkg_dict.maintainer_email) }}
+                {% else %}
+                {{ pkg_dict.maintainer }}
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
 
 
-    {% for extra in sortedExtras if extra not in sortedVodapExtras %}
-    {% set key, value = extra %}
-    <tr rel="dc:relation" resource="_:extra{{ i }}">
-        <th scope="row" class="dataset-label" property="rdfs:label">
-            {{ key }}
-        </th>
-        <td class="dataset-details" property="rdf:value">
-            {{ h.render_link(value) | safe }}
-        </td>
-    </tr>
-    {% endfor %}
+        {% for extra in sortedExtras if extra not in ('contact_uri', 'contact_name', 'contact_email', 'publisher_uri', 'publisher_name', 'publisher_email', 'theme', 'access_rights', 'language', 'issued', 'modified', 'temporal-extent-begin', 'temporal-extent-end', 'spatial_uri', 'spatial_text') %}
+        {% set key, value = extra %}
+        <tr rel="dc:relation" resource="_:extra{{ i }}">
+            <th scope="row" class="dataset-label" property="rdfs:label">
+                {{ key }}
+            </th>
+            <td class="dataset-details" property="rdf:value">
+                {{ h.render_link(value) | safe }}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
-{% endblock %}
+</section>

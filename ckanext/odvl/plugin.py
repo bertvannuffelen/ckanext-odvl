@@ -304,6 +304,8 @@ class GeopuntHarvester(p.SingletonPlugin):
             package_dict['license_id'] = 'geopunt_record_license'
 
         use_constraints = data_dict['iso_values'].get('use-constraints', '')
+
+        # set 'access_rights' to Public only if use_constraints (i.e. ISO gmd:MD_Constraints/gmd:useLimitation) contains 'geen beperkingen'
         for use_constraint in use_constraints:
             if 'geen beperkingen' in use_constraint.strip().lower():
                 package_dict['extras'].append({'key': 'access_rights', 'value': 'Public'})
