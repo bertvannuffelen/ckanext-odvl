@@ -75,7 +75,7 @@
                 <gco:CharacterString>vodap-csw-tests-0002</gco:CharacterString>
             </gmd:fileIdentifier>
             <gmd:language>
-                <gco:CharacterString>dut</gco:CharacterString>
+                <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut"/>
             </gmd:language>
             <gmd:characterSet>
                 <gmd:MD_CharacterSetCode codeListValue="utf8"
@@ -408,7 +408,7 @@
                     </gmd:spatialResolution>
 
                     <gmd:language>
-                        <gco:CharacterString>dut</gco:CharacterString>
+                        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut"/>
                     </gmd:language>
                     <gmd:topicCategory>
                         <gmd:MD_TopicCategoryCode>planningCadastre</gmd:MD_TopicCategoryCode>
@@ -1924,7 +1924,7 @@
                     </gmd:citation>
 
                     <gmd:language>
-                        <gco:CharacterString>dut</gco:CharacterString>
+                        <gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/" codeListValue="dut"/>
                     </gmd:language>
 
 
