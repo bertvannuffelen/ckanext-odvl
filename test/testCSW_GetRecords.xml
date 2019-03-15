@@ -2313,7 +2313,7 @@
                     <gmd:citation xlink:type="simple">
                         <gmd:CI_Citation>
                             <gmd:title>
-                                <gco:CharacterString>Test 19 - Test with Geographic Description</gco:CharacterString>
+                                <gco:CharacterString>Test 19 - Test with Version</gco:CharacterString>
                             </gmd:title>
 
                             <!-- Version -->
